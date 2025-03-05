@@ -14,16 +14,23 @@ header {
     animation: fadeIn 1s ease-in-out;
 }
 
-.logo {
+.logo-container {
     width: 100%;
     height: 100px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.text {
-    font-size: 3rem;
+.logo {
+    width: 100%;
+    height: 100%;
+}
+
+.logo-path {
     fill: none;
-    stroke: #00ffcc;
+    stroke: #ffffff;
     stroke-width: 2;
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
@@ -42,7 +49,7 @@ h2 {
 }
 
 .cta-button {
-    background-color: #00ffcc;
+    background-color: #ffffff;
     color: #121212;
     padding: 15px 30px;
     border: none;
@@ -53,7 +60,7 @@ h2 {
 }
 
 .cta-button:hover {
-    background-color: #00cc99;
+    background-color: #ffffff;
 }
 
 .hero {
