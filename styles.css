@@ -190,25 +190,47 @@ h2 {
 }
 
 .cta-button {
-    background-color: #6a1b9a; /* Transparent background by default */
-    color: #ffffff; /* White text */
+    background: linear-gradient(45deg, #861fc6, #be4cde); /* Purple gradient */
+    color: #ffffff;
     padding: 15px 30px;
-    border: 2px solid #6a1b9a; /* White border */
-    border-radius: 10px; /* Rounded edges */
+    border: none; /* Remove border to blend with gradient */
+    border-radius: 50px; /* Fully rounded */
     font-size: 1.2rem;
     cursor: pointer;
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-    text-decoration: none; /* Remove underline */
-    display: inline-block; /* Ensure it behaves like a button */
-    outline: none; /* Remove default focus outline */
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    outline: none;
 }
 
 .cta-button:hover {
-    background-color: #4a148c; /* Fill background on hover */
-    color: #ffffff; /* Change text color on hover */
-    transform: scale(1.05); /* Slightly expand on hover */
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); /* Add a subtle shadow on hover */
+    background: linear-gradient(45deg, #4a148c, #7b1fa2); /* Darker gradient on hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
+
+.cta2-button {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 15px 30px;
+    border: 2px solid #ffffff;
+    border-radius: 50px; /* Fully rounded */
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex; /* Use flex for icon positioning */
+    align-items: center; /* Center items vertically */
+    gap: 10px; /* Space between text and icon */
+    outline: none;
+}
+
+.cta2-button:hover {
+    background-color: #b1b1b1;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
 
 footer {
     text-align: center;
@@ -239,7 +261,7 @@ footer {
     height: 100vh; /* Full viewport height */
     background: radial-gradient(
         circle at 0% 0%, /* Most purple at the top-left corner */
-        rgba(55, 0, 55, 0.4), /* More visible purple */
+        rgba(37, 0, 37, 0.4), /* More visible purple */
         rgba(128, 0, 128, 0) 80% /* Transparent at the edges */
     );
     z-index: -1; /* Place it behind all other content */
