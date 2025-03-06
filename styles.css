@@ -169,6 +169,70 @@ h2 {
     transition: all 0.5s ease; /* Smooth transition for the logo */
 }
 
+
+/* Logo Container */
+.logo-container {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    display: flex;
+    justify-content: center; /* Center the logo by default */
+    align-items: center;
+    margin: 20px 0;
+    transition: all 0.5s ease; /* Smooth transition for expanding/shrinking */
+    position: relative; /* Ensure child elements are positioned relative to this container */
+}
+
+/* Navigation Buttons (Left Side) */
+.nav-buttons {
+    display: none; /* Hide buttons by default */
+    gap: 10px; /* Space between buttons */
+    position: absolute; /* Position absolutely within the logo container */
+    left: 20px; /* Position on the left */
+    top: 0 5px; /* Align to the top */
+    align-items: center; /* Center buttons vertically */
+}
+
+
+/* Show buttons when logo is shrunk */
+.logo-container.shrink .nav-buttons{
+    display: flex; /* Show buttons */
+    align-items: center;
+}
+
+/* Navigation Buttons */
+.nav-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.nav-button:hover {
+    color: #00ffcc;
+}
+
+/* Join Waitlist Button */
+.join-waitlist-button {
+    background: linear-gradient(45deg, #6a1b9a, #8e24aa); /* Same gradient as cta-button */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.join-waitlist-button:hover {
+    background: linear-gradient(45deg, #4a148c, #7b1fa2); /* Darker gradient on hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Shrunken Header */
 .logo-container.shrink {
     position: fixed;
     top: 0;
@@ -177,17 +241,16 @@ h2 {
     height: 60px; /* Adjust the height as needed */
     background-color: #121212; /* Match the background color of your header */
     z-index: 1000; /* Ensure it stays on top of other content */
-    padding: 0; /* Remove padding to avoid gaps */
+    padding: 0; /* Remove padding */
     margin: 0; /* Remove margin to avoid gaps */
-    display: flex;
-    justify-content: center;
-    align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Optional: Add a shadow for better visibility */
 }
 
 .logo-container.shrink .logo {
     max-width: 150px; /* Adjust the size of the shrunken logo */
+    margin: 0 auto; /* Center the logo */
 }
+
 
 .cta-button {
     background: linear-gradient(45deg, #6a1b9a, #8e24aa); /* Purple gradient */
