@@ -119,5 +119,18 @@
     <p>&copy; 2025 SpoilSafe. All rights reserved.</p>
 </footer>
 
+<script>
+    window.addEventListener('scroll', function() {
+        const logoContainer = document.querySelector('.logo-container');
+        const scrollPosition = window.scrollY;
+
+        if (scrollPosition > 50) { // Adjust the scroll threshold as needed
+            logoContainer.classList.add('shrink');
+        } else {
+            logoContainer.classList.remove('shrink');
+        }
+    });
+</script>
+
 </body>
 </html>
