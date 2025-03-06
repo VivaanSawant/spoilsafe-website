@@ -83,11 +83,12 @@ header h3 {
     }
 }
 
-#dynamic-text {
-    display: inline-block; /* Ensure the text container doesn't collapse */
-    min-width: 200px; /* Adjust based on the longest phrase */
-    text-align: left; /* Align text to the left */
-}
+/* include if cursor isnt there */
+/* #dynamic-text {*/
+   /* display: inline-block; /* Ensure the text container doesn't collapse */
+   /*    min-width: 200px; /* Adjust based on the longest phrase */
+   /* text-align: left; /* Align text to the left */
+/*}*/ 
 
 h2 {
     font-size: 1.5rem;
