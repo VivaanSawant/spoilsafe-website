@@ -230,3 +230,19 @@ footer {
         width: 90%;
     }
 }
+
+#gradient-background {
+    position: fixed; /* Fixed position to cover the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    background: radial-gradient(
+        circle at 0% 0%, /* Most purple at the top-left corner */
+        rgba(55, 0, 55, 0.4), /* More visible purple */
+        rgba(128, 0, 128, 0) 80% /* Transparent at the edges */
+    );
+    z-index: -1; /* Place it behind all other content */
+    pointer-events: none; /* Ensure it doesn't block interactions */
+    transition: background-position 0.1s ease; /* Smooth movement */
+}
