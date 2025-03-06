@@ -15,22 +15,30 @@ header {
 }
 /* Make the text bigger and fill the page */
 header h2 {
-    font-size: 2.5rem; /* Adjust the size as needed */
+    font-size: 3rem; /* Adjust the size as needed */
+    margin: 35px 0; /* Add some spacing */
+    line-height: 1.5; /* Improve readability */
+}
+
+/* Make the text bigger and fill the page */
+header h3 {
+    font-size: 2.5 rem; /* Adjust the size as needed */
     margin: 20px 0; /* Add some spacing */
     line-height: 1.5; /* Improve readability */
+    color: #7e7e7e;
 }
 
 /* Darker rainbow text effect */
 .rainbow-text {
     background: linear-gradient(
         90deg,
-        #8b0000, /* Dark Red */
-        #ff4500, /* Dark Orange */
-        #ffd700, /* Dark Yellow */
-        #006400, /* Dark Green */
-        #00008b, /* Dark Blue */
-        #4b0082, /* Indigo */
-        #800080  /* Dark Violet */
+        #800080,
+        #9a3d8f,
+        #b14c7a, 
+        #c15a66, 
+        #d16956,
+        #e17746,
+        #e5004a  
     );
     background-clip: text;
     -webkit-background-clip: text;
@@ -80,20 +88,7 @@ h2 {
     color: #ffffff;
 }
 
-.cta-button {
-    background-color: #ffffff;
-    color: #121212;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
-.cta-button:hover {
-    background-color: #ffffff;
-}
 
 .hero {
     display: flex;
@@ -188,10 +183,10 @@ h2 {
 }
 
 .cta-button {
-    background-color: transparent; /* Transparent background by default */
+    background-color: #6a1b9a; /* Transparent background by default */
     color: #ffffff; /* White text */
     padding: 15px 30px;
-    border: 2px solid #ffffff; /* White border */
+    border: 2px solid #6a1b9a; /* White border */
     border-radius: 10px; /* Rounded edges */
     font-size: 1.2rem;
     cursor: pointer;
@@ -202,8 +197,8 @@ h2 {
 }
 
 .cta-button:hover {
-    background-color: #ffffff; /* Fill background on hover */
-    color: #121212; /* Change text color on hover */
+    background-color: #4a148c; /* Fill background on hover */
+    color: #ffffff; /* Change text color on hover */
     transform: scale(1.05); /* Slightly expand on hover */
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); /* Add a subtle shadow on hover */
 }
