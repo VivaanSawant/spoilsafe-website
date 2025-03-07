@@ -267,7 +267,7 @@ footer {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 4rem;
+    font-size: 3rem;
     z-index: 9999; /* Very high z-index to ensure it's on top */
     animation: fadeIn 1s ease-in-out;
     height: 40px;
@@ -282,7 +282,7 @@ footer {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed position */
     top: 10px; /* Distance from the top */
-    left: 110px; /* Distance from the left */
+    left: 100px; /* Distance from the left */
     padding: 10px 20px;
     background-color: transparent; /* Purple background */
     color: #ffffff; /* White text */
@@ -302,7 +302,7 @@ footer {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed position */
     top: 10px; /* Distance from the top */
-    left: 220px; /* Distance from the left */
+    left: 210px; /* Distance from the left */
     padding: 10px 20px;
     background-color: transparent; /* Purple background */
     color: #ffffff; /* White text */
