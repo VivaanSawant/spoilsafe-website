@@ -68,9 +68,24 @@
         <button class="cta2-button" onclick="window.location.href='../Product Page/product.html'";>Learn More</button>
     </header>
 
-<section class="hero">
-    <img src="logo.svg" alt="Food freshness sensors in action" style="width: 100%; height: auto;">
-</section>
+    <section class="the-problem">
+        <div class="problem-stack">
+            <div class="problem-card problem-title-card">
+                <h2>The Problem</h2>
+            </div>
+            <div class="problem-card problem-text-card">
+                <p>Food waste is a significant issue worldwide, with millions of tons of food being thrown away each year. This not only impacts the environment but also leads to financial losses for households and businesses alike.</p>
+            </div>
+            <div class="problem-card left-card">
+                <h3>Environmental Impact</h3>
+                <p>Food waste contributes to greenhouse gas emissions, deforestation, and water waste.</p>
+            </div>
+            <div class="problem-card right-card">
+                <h3>Financial Loss</h3>
+                <p>Households and businesses lose billions of dollars annually due to food spoilage.</p>
+            </div>
+        </div>
+    </section>
 
 <section class="how-it-works">
     <h2>How It Works</h2>
@@ -128,6 +143,54 @@
 </footer>
 
 <script>
+
+    window.addEventListener('scroll', function () {
+        const problemSection = document.querySelector('.the-problem');
+        const problemStack = document.querySelector('.problem-stack');
+        const problemTitleCard = document.querySelector('.problem-title-card');
+        const problemTextCard = document.querySelector('.problem-text-card');
+        const leftCard = document.querySelector('.left-card');
+        const rightCard = document.querySelector('.right-card');
+
+        const sectionTop = problemSection.offsetTop;
+        const sectionHeight = problemSection.offsetHeight;
+        const scrollY = window.scrollY;
+        const viewportHeight = window.innerHeight;
+
+        // Calculate the scroll progress within the section
+        const scrollProgress = (scrollY - sectionTop + viewportHeight / 2) / (sectionHeight / 2);
+
+        if (scrollY > sectionTop - viewportHeight / 2 && scrollY < sectionTop + sectionHeight / 2) {
+            // Section is in view
+            problemTitleCard.classList.add('scrolled');
+            problemTextCard.classList.add('scrolled');
+            leftCard.classList.add('scrolled');
+            rightCard.classList.add('scrolled');
+
+            problemTitleCard.classList.remove('half-covered');
+            problemTextCard.classList.remove('half-covered');
+            leftCard.classList.remove('half-covered');
+            rightCard.classList.remove('half-covered');
+        } else if (scrollY > sectionTop + sectionHeight / 2) {
+            // Section is half-covered or scrolled past
+            problemTitleCard.classList.add('half-covered');
+            problemTextCard.classList.add('half-covered');
+            leftCard.classList.add('half-covered');
+            rightCard.classList.add('half-covered');
+
+            problemTitleCard.classList.remove('scrolled');
+            problemTextCard.classList.remove('scrolled');
+            leftCard.classList.remove('scrolled');
+            rightCard.classList.remove('scrolled');
+        } else {
+            // Section is out of view
+            problemTitleCard.classList.remove('scrolled', 'half-covered');
+            problemTextCard.classList.remove('scrolled', 'half-covered');
+            leftCard.classList.remove('scrolled', 'half-covered');
+            rightCard.classList.remove('scrolled', 'half-covered');
+        }
+    });
+
     window.addEventListener('scroll', function() {
         const logoContainer = document.querySelector('.logo-container');
         const headerButton1 = document.getElementById('header-button1');
