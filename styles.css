@@ -56,18 +56,6 @@ header h3 {
     }
 }
 
-.logo-container {
-    width: 100%; /* Make the container full width */
-    height: auto; /* Let the height adjust automatically */
-    max-height: 80vh; /* Limit the height to 80% of the viewport height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0; /* Add some margin for spacing */
-}
-
-
-
 .logo-path {
     fill: none;
     stroke: #ffffff;
@@ -266,4 +254,86 @@ footer {
     z-index: -1; /* Place it behind all other content */
     pointer-events: none; /* Ensure it doesn't block interactions */
     transition: background-position 0.1s ease; /* Smooth movement */
+}
+
+.header-button1 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    top: 10px; /* Distance from the top */
+    left: 10px; /* Distance from the left */
+    padding: 10px 20px;
+    background-color: transparent; /* Purple background */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 9999; /* Very high z-index to ensure it's on top */
+    animation: fadeIn 1s ease-in-out;
+}
+
+.header-button1:hover {
+    color: #8e24aa; /* Darker purple on hover */
+}
+
+.header-button2 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    top: 10px; /* Distance from the top */
+    left: 110px; /* Distance from the left */
+    padding: 10px 20px;
+    background-color: transparent; /* Purple background */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 9999; /* Very high z-index to ensure it's on top */
+    animation: fadeIn 1s ease-in-out;
+}
+
+.header-button2:hover {
+    color: #8e24aa; /* Darker purple on hover */
+}
+
+.header-button3 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    top: 10px; /* Distance from the top */
+    left: 210px; /* Distance from the left */
+    padding: 10px 20px;
+    background-color: transparent; /* Purple background */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 9999; /* Very high z-index to ensure it's on top */
+    animation: fadeIn 1s ease-in-out;
+}
+
+.header-button3:hover {
+    color: #8e24aa; /* Darker purple on hover */
+}
+
+.header-buttonR {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    top: 10px; /* Distance from the top */
+    left: 1125px; /* Distance from the left */
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #6a1b9a, #8e24aa); /* Purple gradient */
+    color: #ffffff;
+    border: none; /* Remove border to blend with gradient */
+    border-radius: 50px; /* Fully rounded */
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 9999; /* Very high z-index to ensure it's on top */
+    animation: fadeIn 1s ease-in-out;
+}
+
+.header-buttonR:hover {
+    background: linear-gradient(45deg, #4a148c, #7b1fa2); /* Darker gradient on hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
