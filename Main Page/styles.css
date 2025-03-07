@@ -401,6 +401,12 @@ footer {
     opacity: 1;
 }
 
+.problem-title-card.scrolled:hover {
+    transform: translateY(-150px) scale(1.1); /* Slightly expand the card */
+    transition: transform 0.3s ease; /* Smooth transition */
+    z-index: 5;
+}
+
 .problem-text-card.scrolled {
     transform: translateY(50px) rotate(0); /* Move further down */
     opacity: 1;
@@ -411,19 +417,37 @@ footer {
     opacity: 1;
 }
 
+.left-card.scrolled:hover {
+    transform: translateX(-250px) translateY(0) scale(1.1);  /* matches orginal state */
+    transition: transform 0.3s ease;
+    z-index: 5;
+}
+
 .right-card.scrolled {
     transform: translateX(350px) translateY(0) rotate(0); /* Move further right */
     opacity: 1;
 }
 
+.right-card.scrolled:hover {
+    transform: translateX(250px) translateY(0) scale(1.1);  /* matches orginal state */
+    transition: transform 0.3s ease; 
+    z-index: 5; 
+}
+
 .problem-title-card.half-covered {
-    transform: translateY(0) rotate(-5deg); /* Slightly rotated */
-    z-index: 4; /* Ensure the title card is on top */
+    transform: translateY(0) rotate(-5deg); /* matches orginal state */
+    z-index: 4; 
 }
 
 .problem-text-card.half-covered {
     transform: translateY(20px) rotate(3deg); /* Slightly offset and rotated */
     z-index: 3; /* Below the title card */
+}
+
+.problem-text-card.half-covered:hover {
+    z-index: 2;
+    transform: scale(1.1);  /* matches orginal state */
+    transition: transform 0.3s ease; 
 }
 
 .left-card.half-covered {
