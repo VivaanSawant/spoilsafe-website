@@ -412,6 +412,12 @@ footer {
     opacity: 1;
 }
 
+.problem-text-card.scrolled:hover{
+    z-index: 6;
+    transform: scale(1.1);  /* matches orginal state */
+    transition: transform 0.3s ease;
+}
+
 .left-card.scrolled {
     transform: translateX(-350px) translateY(0) rotate(0); /* Move further left */
     opacity: 1;
@@ -444,11 +450,7 @@ footer {
     z-index: 3; /* Below the title card */
 }
 
-.problem-text-card.half-covered:hover {
-    z-index: 2;
-    transform: scale(1.1);  /* matches orginal state */
-    transition: transform 0.3s ease; 
-}
+
 
 .left-card.half-covered {
     transform: translateY(40px) rotate(-7deg); /* Slightly offset and rotated */
