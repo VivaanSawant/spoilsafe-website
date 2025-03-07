@@ -146,7 +146,6 @@
 
     window.addEventListener('scroll', function () {
         const problemSection = document.querySelector('.the-problem');
-        const problemStack = document.querySelector('.problem-stack');
         const problemTitleCard = document.querySelector('.problem-title-card');
         const problemTextCard = document.querySelector('.problem-text-card');
         const leftCard = document.querySelector('.left-card');
@@ -157,11 +156,15 @@
         const scrollY = window.scrollY;
         const viewportHeight = window.innerHeight;
 
-        // Calculate the scroll progress within the section
-        const scrollProgress = (scrollY - sectionTop + viewportHeight / 2) / (sectionHeight / 2);
+        // Customizable thresholds
+        const expandThreshold = 0.4; 
+        const shrinkThreshold = 0.35;
 
-        if (scrollY > sectionTop - viewportHeight / 2 && scrollY < sectionTop + sectionHeight / 2) {
-            // Section is in view
+        // Calculate the scroll progress within the section
+        const scrollProgress = (scrollY - sectionTop + viewportHeight * expandThreshold) / (sectionHeight * (shrinkThreshold - expandThreshold));
+
+        if (scrollY > sectionTop - viewportHeight * expandThreshold && scrollY < sectionTop + sectionHeight * shrinkThreshold) {
+            // Section is in view (expand cards)
             problemTitleCard.classList.add('scrolled');
             problemTextCard.classList.add('scrolled');
             leftCard.classList.add('scrolled');
@@ -171,8 +174,8 @@
             problemTextCard.classList.remove('half-covered');
             leftCard.classList.remove('half-covered');
             rightCard.classList.remove('half-covered');
-        } else if (scrollY > sectionTop + sectionHeight / 2) {
-            // Section is half-covered or scrolled past
+        } else if (scrollY > sectionTop + sectionHeight * shrinkThreshold) {
+            // Section is half-covered or scrolled past (shrink cards)
             problemTitleCard.classList.add('half-covered');
             problemTextCard.classList.add('half-covered');
             leftCard.classList.add('half-covered');
@@ -183,7 +186,7 @@
             leftCard.classList.remove('scrolled');
             rightCard.classList.remove('scrolled');
         } else {
-            // Section is out of view
+            // Section is out of view (reset cards)
             problemTitleCard.classList.remove('scrolled', 'half-covered');
             problemTextCard.classList.remove('scrolled', 'half-covered');
             leftCard.classList.remove('scrolled', 'half-covered');

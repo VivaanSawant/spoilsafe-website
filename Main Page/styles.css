@@ -345,7 +345,7 @@ footer {
 .the-problem {
     position: relative;
     padding: 100px 20px;
-    background-color: #1e1e1e;
+    background-color: transparent;
     color: #ffffff;
     text-align: center;
     overflow: hidden;
@@ -407,20 +407,31 @@ footer {
 }
 
 .left-card.scrolled {
-    transform: translateX(-200px) translateY(0) rotate(0); /* Move further left */
+    transform: translateX(-350px) translateY(0) rotate(0); /* Move further left */
     opacity: 1;
 }
 
 .right-card.scrolled {
-    transform: translateX(200px) translateY(0) rotate(0); /* Move further right */
+    transform: translateX(350px) translateY(0) rotate(0); /* Move further right */
     opacity: 1;
 }
 
-/* Half-covered state */
-.problem-title-card.half-covered,
-.problem-text-card.half-covered,
-.left-card.half-covered,
+.problem-title-card.half-covered {
+    transform: translateY(0) rotate(-5deg); /* Slightly rotated */
+    z-index: 4; /* Ensure the title card is on top */
+}
+
+.problem-text-card.half-covered {
+    transform: translateY(20px) rotate(3deg); /* Slightly offset and rotated */
+    z-index: 3; /* Below the title card */
+}
+
+.left-card.half-covered {
+    transform: translateY(40px) rotate(-7deg); /* Slightly offset and rotated */
+    z-index: 2; /* Below the text card */
+}
+
 .right-card.half-covered {
-    transform: translateY(0) rotate(0); /* Reset to default stacked state */
-    opacity: 0.5;
+    transform: translateY(60px) rotate(5deg); /* Slightly offset and rotated */
+    z-index: 1; /* At the bottom */
 }
