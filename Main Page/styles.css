@@ -516,3 +516,24 @@ footer {
     height: 100%; /* Fill the card height */
     border-radius: 10px; /* Match the card's border radius */
 }
+
+/* Light bar shit */
+
+/* Black rectangle */
+.black-rectangle {
+    position: absolute;
+    bottom: 0; /* Position at the bottom of the container */
+    left: 50%; /* Center the rectangle */
+    transform: translateX(-50%); /* Center the rectangle */
+    width: 0; /* Start with no width */
+    height: 20px; /* Height of the black rectangle */
+    background-color: #000; /* Black color */
+    transition: width 0.5s ease; /* Smooth expansion */
+    z-index: 1; /* Ensure it appears above other elements */
+}
+
+/* Expand the black rectangle when the cards are fully displayed */
+.problem-stack.cards-displayed ~ .black-rectangle {
+    width: 80%; /* Expand to 80% of the container width */
+}
+

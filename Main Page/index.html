@@ -83,6 +83,7 @@
                 <div class="card-image2"></div>
             </div>
         </div>
+        <div class="black-rectangle"></div>
     </section>
 
 <section class="how-it-works">
@@ -141,6 +142,31 @@
 </footer>
 
 <script>
+
+    window.addEventListener('scroll', function () {
+        const problemSection = document.querySelector('.the-problem');
+        const problemStack = document.querySelector('.problem-stack');
+        const blackRectangle = document.querySelector('.black-rectangle');
+        const sectionTop = problemSection.offsetTop;
+        const sectionHeight = problemSection.offsetHeight;
+        const scrollY = window.scrollY;
+        const viewportHeight = window.innerHeight;
+
+        // Adjusted threshold for collapsing the black rectangle earlier
+        const collapseThreshold = 0.4; // Adjust this value to control when the rectangle collapses
+
+        // Check if the problem section is in view
+        if (scrollY > sectionTop - viewportHeight / 2 && scrollY < sectionTop + sectionHeight * collapseThreshold) {
+            // Section is in view
+            problemStack.classList.add('cards-displayed');
+            blackRectangle.style.width = '80%'; // Expand the black rectangle
+        } else {
+            // Section is out of view or scrolled past the collapse threshold
+            problemStack.classList.remove('cards-displayed');
+            blackRectangle.style.width = '0'; // Collapse the black rectangle
+        }
+    });
+
 
     window.addEventListener('scroll', function () {
         const problemSection = document.querySelector('.the-problem');
