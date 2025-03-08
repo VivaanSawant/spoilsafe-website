@@ -3,7 +3,7 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212;
+    background-color: #ffffff;
     color: #ffffff;
     scroll-behavior: smooth;
 }
@@ -18,6 +18,7 @@ header h2 {
     font-size: 3rem; /* Adjust the size as needed */
     margin: 35px 0; /* Add some spacing */
     line-height: 1.5; /* Improve readability */
+    color: #000000;
 }
 
 /* Make the text bigger and fill the page */
@@ -58,7 +59,7 @@ header h3 {
 
 .logo-path {
     fill: none;
-    stroke: #ffffff;
+    stroke: #000000;
     stroke-width: 2;
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
@@ -248,8 +249,8 @@ footer {
     height: 100vh; /* Full viewport height */
     background: radial-gradient(
         circle at 0% 0%, /* Most purple at the top-left corner */
-        rgba(37, 0, 37, 0.4), /* More visible purple */
-        rgba(128, 0, 128, 0) 80% /* Transparent at the edges */
+        rgba(255, 255, 255, 0.4), /* More visible purple */
+        rgba(255, 255, 255, 0) 80% /* Transparent at the edges */
     );
     z-index: -1; /* Place it behind all other content */
     pointer-events: none; /* Ensure it doesn't block interactions */
