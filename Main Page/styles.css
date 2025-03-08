@@ -522,18 +522,49 @@ footer {
 /* Black rectangle */
 .black-rectangle {
     position: absolute;
-    bottom: 0; /* Position at the bottom of the container */
-    left: 50%; /* Center the rectangle */
-    transform: translateX(-50%); /* Center the rectangle */
-    width: 0; /* Start with no width */
-    height: 20px; /* Height of the black rectangle */
-    background-color: #000; /* Black color */
-    transition: width 0.5s ease; /* Smooth expansion */
-    z-index: 1; /* Ensure it appears above other elements */
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 20px;
+    background-color: #000;
+    transition: width 0.5s ease;
+    z-index: 1;
+    overflow: visible; /* Allow the light to overflow */
 }
 
-/* Expand the black rectangle when the cards are fully displayed */
+.purple-light {
+    position: absolute;
+    bottom: 100%; /* Position the light above the black bar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 0;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(128, 0, 128, 0.8) 0%, /* Purple color with opacity */
+        rgba(128, 0, 128, 0) 80% /* Fade out */
+    );
+    transition: height 0.5s ease, opacity 0.5s ease;
+    opacity: 0; /* Start hidden */
+    pointer-events: none; /* Ensure it doesn't block interactions */
+    animation: flicker 1s infinite; /* Apply the flicker animation */
+}
+
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8; /* Slight flicker */
+    }
+}
+
 .problem-stack.cards-displayed ~ .black-rectangle {
-    width: 80%; /* Expand to 80% of the container width */
+    width: 60%; /* Adjust this value to make the bar less wide */
 }
 
+.problem-stack.cards-displayed ~ .black-rectangle .purple-light {
+    height: 300px; /* Height of the light beam */
+    opacity: 1; /* Make the light visible */
+}

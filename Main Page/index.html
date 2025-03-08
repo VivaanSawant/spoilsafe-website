@@ -83,7 +83,9 @@
                 <div class="card-image2"></div>
             </div>
         </div>
-        <div class="black-rectangle"></div>
+        <div class="black-rectangle">
+            <div class="purple-light"></div>
+        </div>
     </section>
 
 <section class="how-it-works">
@@ -152,14 +154,15 @@
         const scrollY = window.scrollY;
         const viewportHeight = window.innerHeight;
 
-        // Adjusted threshold for collapsing the black rectangle earlier
-        const collapseThreshold = 0.4; // Adjust this value to control when the rectangle collapses
+        // Adjustable thresholds
+        const expandThreshold = viewportHeight / 3; // Adjust this value to control when the rectangle expands
+        const collapseThreshold = 0.3; // Adjust this value to control when the rectangle collapses
 
         // Check if the problem section is in view
-        if (scrollY > sectionTop - viewportHeight / 2 && scrollY < sectionTop + sectionHeight * collapseThreshold) {
+        if (scrollY > sectionTop - expandThreshold && scrollY < sectionTop + sectionHeight * collapseThreshold) {
             // Section is in view
             problemStack.classList.add('cards-displayed');
-            blackRectangle.style.width = '80%'; // Expand the black rectangle
+            blackRectangle.style.width = '60%'; // Match the CSS width value
         } else {
             // Section is out of view or scrolled past the collapse threshold
             problemStack.classList.remove('cards-displayed');
