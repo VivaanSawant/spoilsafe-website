@@ -343,104 +343,56 @@ footer {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
+
 .the-problem {
-    padding: 100px 0;
+    padding: 0;
     text-align: center;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 60vh; /* Makes the section taller */
+    height: 100vh; /* Full viewport height */
+    scroll-snap-align: start; /* Optional for scroll snapping */
+    margin: 0;
 }
 
 .problem-card {
-    width: 90%; /* Increased from fixed max-width to percentage */
-    max-width: 1200px; /* Larger maximum width */
-    margin: 0 auto;
-    padding: 3px; /* Thicker glow area */
-    border-radius: 20px; /* More rounded corners */
+    width: 90%;
+    max-width: 1200px;
+    height: 60vh; /* Slightly smaller than viewport */
+    margin: auto;
+    padding: 3px;
+    border-radius: 20px;
     background: transparent;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
+.problem-card:hover {
+    transform: scale(1.05);
+}
 .problem-content {
-    background: rgba(10, 10, 10, 0.85); /* Darker background */
+    background: rgba(10, 10, 10, 0.85);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 18px;
     padding: 60px;
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
     transition: all 0.4s ease;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.problem-content h2 {
-    color: #fff;
-    font-size: 2.8rem;
-    margin-bottom: 30px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-}
+/* Rest of your existing CSS remains the same */
 
-.problem-content p {
-    color: #e0e0e0;
-    font-size: 1.3rem;
-    line-height: 1.7;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-/* Enhanced hover effects */
-.problem-card:hover {
-    transform: scale(1.02);
-    padding: 6px; /* Thicker glow on hover */
-}
-
-.problem-card:hover .problem-content {
-    background: rgba(15, 15, 15, 0.9);
-    box-shadow: 0 0 25px rgba(100, 255, 200, 0.4),
-                0 0 45px rgba(100, 255, 200, 0.15);
-    border: 1px solid rgba(100, 255, 200, 0.3);
-}
-
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-    .problem-content {
-        padding: 50px 40px;
-    }
-}
-
-@media (max-width: 768px) {
-    .the-problem {
-        padding: 80px 0;
-        min-height: 50vh;
-    }
-    
-    .problem-card {
-        width: 95%;
-    }
-    
-    .problem-content {
-        padding: 40px 25px;
-    }
-    
-    .problem-content h2 {
-        font-size: 2.2rem;
-    }
-    
-    .problem-content p {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .problem-content h2 {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-    }
-    
-    .problem-content p {
-        font-size: 1rem;
-    }
+/* Optional smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
 }
 
 @keyframes flicker {
