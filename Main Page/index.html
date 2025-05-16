@@ -6,6 +6,13 @@
     <title>SpoilSafe - Smart Food Freshness Tracking</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Optional: Add transition for smooth effect */
+        body.white-background {
+          background-color: white;
+          transition: background-color 0.3s ease;
+        }
+      </style>
 </head>
 <body>
     <button id="header-button1" class="header-button1" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">⌂</button>
@@ -69,24 +76,13 @@
     </header>
 
     <section class="the-problem">
-        <div class="problem-stack">
-            <div class="problem-card problem-title-card">
-                <h2>The Problem</h2>
-            </div>
-            <div class="problem-card problem-text-card">
-                <p>Every year, millions of tons of food go to waste due to spoilage, costing businesses and consumers billions of dollars. Inconsistent storage conditions, lack of real-time monitoring, and poor visibility into food freshness contribute to this massive issue.</p>
-            </div>
-            <div class="problem-card left-card">
-                <div class="card-image"></div>
-            </div>
-            <div class="problem-card right-card">
-                <div class="card-image2"></div>
-            </div>
+    <div class="problem-card">
+        <div class="problem-content">
+            <h2>The Problem</h2>
+            <p>Every year, millions of tons of food go to waste due to spoilage, costing businesses and consumers billions of dollars. Inconsistent storage conditions, lack of real-time monitoring, and poor visibility into food freshness contribute to this massive issue.</p>
         </div>
-        <div class="black-rectangle">
-            <div class="purple-light"></div>
-        </div>
-    </section>
+    </div>
+</section>
 
 <section class="how-it-works">
     <h2>How It Works</h2>
@@ -144,6 +140,20 @@
 </footer>
 
 <script>
+
+const gradientSection = document.getElementById('gradient-background');
+    const body = document.body;
+
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
+      const threshold = gradientSection.offsetHeight * 0.4;
+
+      if (scrollPosition > threshold) {
+        body.classList.add('white-background');
+      } else {
+        body.classList.remove('white-background');
+      }
+    });
 
     window.addEventListener('scroll', function () {
         const problemSection = document.querySelector('.the-problem');
