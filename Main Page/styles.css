@@ -395,6 +395,81 @@ html {
     scroll-behavior: smooth;
 }
 
+.core-capabilities {
+    background-color: #000;
+    color: #fff;
+    padding: 80px 20px;
+}
+
+.capabilities-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.core-capabilities h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 600;
+}
+
+.capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.capability-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.capability-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.capability-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.capability-card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .capabilities-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .core-capabilities h2 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    
+    .capability-card {
+        padding: 25px;
+    }
+    
+    .capability-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .capability-card p {
+        font-size: 1rem;
+    }
+}
+
 @keyframes flicker {
     0%, 100% {
         opacity: 1;
