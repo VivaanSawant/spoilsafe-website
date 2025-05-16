@@ -343,105 +343,248 @@ footer {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
+
 .the-problem {
-    padding: 100px 0;
+    padding: 0;
     text-align: center;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 60vh; /* Makes the section taller */
+    height: 100vh; /* Full viewport height */
+    scroll-snap-align: start; /* Optional for scroll snapping */
+    margin: 0;
 }
 
 .problem-card {
-    width: 90%; /* Increased from fixed max-width to percentage */
-    max-width: 1200px; /* Larger maximum width */
-    margin: 0 auto;
-    padding: 3px; /* Thicker glow area */
-    border-radius: 20px; /* More rounded corners */
+    width: 90%;
+    max-width: 1200px;
+    height: 60vh; /* Slightly smaller than viewport */
+    margin: auto;
+    padding: 3px;
+    border-radius: 20px;
     background: transparent;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
+.problem-card:hover {
+    transform: scale(1.05);
+}
 .problem-content {
-    background: rgba(10, 10, 10, 0.85); /* Darker background */
+    background: rgba(10, 10, 10, 0.85);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 18px;
     padding: 60px;
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
     transition: all 0.4s ease;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.problem-content h2 {
+/* Rest of your existing CSS remains the same */
+
+/* Optional smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+.core-capabilities {
+    background-color: #000;
     color: #fff;
-    font-size: 2.8rem;
-    margin-bottom: 30px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
+    padding: 80px 20px;
 }
 
-.problem-content p {
-    color: #e0e0e0;
-    font-size: 1.3rem;
-    line-height: 1.7;
-    max-width: 900px;
+.capabilities-container {
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Enhanced hover effects */
-.problem-card:hover {
-    transform: scale(1.02);
-    padding: 6px; /* Thicker glow on hover */
+.core-capabilities h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 600;
 }
 
-.problem-card:hover .problem-content {
-    background: rgba(15, 15, 15, 0.9);
-    box-shadow: 0 0 25px rgba(100, 255, 200, 0.4),
-                0 0 45px rgba(100, 255, 200, 0.15);
-    border: 1px solid rgba(100, 255, 200, 0.3);
+.capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.capability-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.capability-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.capability-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.capability-card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(100, 255, 200, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(100, 255, 200, 0.2);
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    stroke: #64ffc8;
+    transition: all 0.3s ease;
+}
+
+.capability-card:hover .card-icon {
+    background: rgba(100, 255, 200, 0.2);
+    box-shadow: 0 0 15px rgba(100, 255, 200, 0.4);
+    transform: scale(1.1);
+}
+
+.capability-card:hover .icon {
+    stroke: #fff;
+    filter: drop-shadow(0 0 5px rgba(100, 255, 200, 0.8));
+}
+
+/* Adjust card content spacing to accommodate icon */
+.capability-card {
+    position: relative;
+    padding-top: 60px;
+}
+
+.card-icon {
+    position: absolute;
+    top: -25px;
+    left: 30px;
 }
 
 /* Responsive adjustments */
-@media (max-width: 1200px) {
-    .problem-content {
-        padding: 50px 40px;
-    }
-}
-
 @media (max-width: 768px) {
-    .the-problem {
-        padding: 80px 0;
-        min-height: 50vh;
+    .capabilities-grid {
+        grid-template-columns: 1fr;
     }
     
-    .problem-card {
-        width: 95%;
+    .core-capabilities h2 {
+        font-size: 2rem;
+        margin-bottom: 40px;
     }
     
-    .problem-content {
-        padding: 40px 25px;
+    .capability-card {
+        padding: 25px;
     }
     
-    .problem-content h2 {
-        font-size: 2.2rem;
+    .capability-card h3 {
+        font-size: 1.3rem;
     }
     
-    .problem-content p {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .problem-content h2 {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-    }
-    
-    .problem-content p {
+    .capability-card p {
         font-size: 1rem;
     }
 }
+
+
+/* Floating CTA Styles */
+.floating-cta {
+    position: relative;
+    width: 100%;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.floating-cta.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cta-card {
+    background: #000;
+    width: 60%;
+    max-width: 1000px;
+    min-height: 450px;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-content {
+    text-align: center;
+    max-width: 700px;
+}
+
+.cta-content h3 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.cta-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Matching original button styles */
+.floating-button {
+    background: linear-gradient(45deg, #6a1b9a, #8e24aa); /* Purple gradient */
+    color: #ffffff;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+}
+
+.floating-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(45deg, #4a148c, #7b1fa2); /* Darker gradient on hover */
+}
+
 
 @keyframes flicker {
     0%, 100% {
