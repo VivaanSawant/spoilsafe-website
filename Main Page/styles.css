@@ -446,6 +446,49 @@ html {
     font-size: 1.1rem;
 }
 
+.card-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(100, 255, 200, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(100, 255, 200, 0.2);
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    stroke: #64ffc8;
+    transition: all 0.3s ease;
+}
+
+.capability-card:hover .card-icon {
+    background: rgba(100, 255, 200, 0.2);
+    box-shadow: 0 0 15px rgba(100, 255, 200, 0.4);
+    transform: scale(1.1);
+}
+
+.capability-card:hover .icon {
+    stroke: #fff;
+    filter: drop-shadow(0 0 5px rgba(100, 255, 200, 0.8));
+}
+
+/* Adjust card content spacing to accommodate icon */
+.capability-card {
+    position: relative;
+    padding-top: 60px;
+}
+
+.card-icon {
+    position: absolute;
+    top: -25px;
+    left: 30px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .capabilities-grid {
@@ -469,6 +512,80 @@ html {
         font-size: 1rem;
     }
 }
+
+
+/* Floating CTA Styles */
+.floating-cta {
+    position: relative;
+    width: 100%;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.floating-cta.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cta-card {
+    background: #000;
+    width: 90%;
+    max-width: 1000px;
+    min-height: 180px;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-content {
+    text-align: center;
+    max-width: 700px;
+}
+
+.cta-content h3 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.cta-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Matching original button styles */
+.floating-button {
+    background: linear-gradient(135deg, #00ffcc 0%, #00ccff 100%);
+    color: #000;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+}
+
+.floating-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 255, 204, 0.5);
+    background: linear-gradient(135deg, #00ffcc 0%, #00ccff 70%);
+}
+
 
 @keyframes flicker {
     0%, 100% {
