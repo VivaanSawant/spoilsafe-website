@@ -12,23 +12,26 @@
           background-color: white;
           transition: background-color 0.3s ease;
         }
+        
         /* Banana Animation Styles */
         .problem-section-with-banana {
             position: relative;
-            height: 100vh; /* Make section taller to allow for more scroll */
+            height: 100vh;
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             overflow: hidden;
         }
-
+        
         .banana-animation-container {
             position: sticky;
             top: 0;
             height: 100vh;
             display: flex;
             align-items: center;
-            padding: 0 5%;
+            padding: 5vh 5%;
+            box-sizing: border-box;
+            min-height: 600px;
         }
-
+        
         .banana-side {
             flex: 1;
             display: flex;
@@ -36,7 +39,101 @@
             justify-content: center;
             position: relative;
         }
-
+        
+        .banana-image-container {
+            position: relative;
+            width: 500px;
+            height: 300px;
+            max-width: 90%;
+            will-change: contents;
+        }
+        
+        /* Improve image switching performance */
+        .banana-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: none;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        
+        .banana-image.active {
+            opacity: 1;
+        }
+        
+        .problem-text-side {
+            flex: 1;
+            padding: 0 40px;
+            color: white;
+        }
+        
+        .problem-text-side h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .problem-text-side p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .spoilage-indicator {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .spoilage-level {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .spoilage-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            background-color: #4ecdc4;
+        }
+        
+        .spoilage-label {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4ecdc4, #ff6b6b);
+            transition: width 0.3s ease;
+            border-radius: 4px;
+            width: 0%;
+        }
+        
         /* Restart button styles */
         .restart-animation-btn {
             position: absolute;
@@ -57,137 +154,162 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             z-index: 10;
         }
-
+        
         .restart-animation-btn:hover {
             transform: translateX(-50%) translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
-
+        
         .restart-animation-btn.show {
             opacity: 1;
             visibility: visible;
         }
-
-        .banana-image-container {
-            position: relative;
-            width: 500px;
-            height: 300px;
-            max-width: 90%;
-            will-change: contents;
-        }
-
-        .banana-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            opacity: 0;
-            transition: none;
-            backface-visibility: hidden;
-            /* transform: translateZ(0); Force hardware acceleration */
-        }
-
-        .banana-image.active {
-            opacity: 1;
-        }
-
-        .problem-text-side {
-            flex: 1;
-            padding: 0 40px;
-            color: white;
-        }
-
-        .problem-text-side h2 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .problem-text-side p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            opacity: 0.9;
-        }
-
-        .spoilage-indicator {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .spoilage-level {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .spoilage-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 10px;
-            transition: all 0.3s ease;
-            background-color: #4ecdc4;
-        }
-
-        .spoilage-label {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 20px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #4ecdc4, #ff6b6b);
-            transition: width 0.3s ease;
-            border-radius: 4px;
-            width: 0%;
-        }
-
+        
         /* Responsive Design */
+        
+        /* Medium screens */
+        @media (max-width: 1024px) {
+            .banana-animation-container {
+                padding: 3vh 4%;
+                min-height: 500px;
+            }
+            
+            .banana-image-container {
+                width: 400px;
+                height: 250px;
+            }
+            
+            .problem-text-side h2 {
+                font-size: 2.5rem;
+            }
+            
+            .problem-text-side p {
+                font-size: 1.1rem;
+            }
+            
+            .problem-text-side {
+                padding: 0 30px;
+            }
+        }
+        
+        /* Small screens and tablets */
         @media (max-width: 768px) {
             .banana-animation-container {
                 flex-direction: column;
-                padding: 20px;
+                padding: 2vh 4%;
+                min-height: 600px;
+                justify-content: center;
+                gap: 2rem;
             }
-
+        
             .banana-side, .problem-text-side {
                 flex: none;
                 width: 100%;
             }
-
+        
             .banana-image-container {
-                width: 350px;
-                height: 200px;
-                margin-bottom: 40px;
+                width: 300px;
+                height: 180px;
+                margin: 0 auto;
             }
-
+        
             .problem-text-side {
-                padding: 0 20px;
+                padding: 0;
+                text-align: center;
             }
-
+        
             .problem-text-side h2 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            
+            .problem-text-side p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
+            .restart-animation-btn {
+                top: -50px;
+                font-size: 14px;
+                padding: 10px 20px;
             }
         }
-      </style>
+        
+        /* Very small screens */
+        @media (max-width: 480px) {
+            .banana-animation-container {
+                padding: 1vh 3%;
+                min-height: 500px;
+                gap: 1.5rem;
+            }
+            
+            .banana-image-container {
+                width: 250px;
+                height: 150px;
+            }
+            
+            .problem-text-side h2 {
+                font-size: 1.8rem;
+            }
+            
+            .problem-text-side p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+            
+            .spoilage-indicator {
+                padding: 15px;
+            }
+            
+            .restart-animation-btn {
+                top: -45px;
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+        }
+        
+        /* Handle very wide screens */
+        @media (min-width: 1400px) {
+            .banana-animation-container {
+                padding: 8vh 10%;
+            }
+            
+            .banana-image-container {
+                width: 600px;
+                height: 360px;
+            }
+            
+            .problem-text-side h2 {
+                font-size: 3.5rem;
+            }
+            
+            .problem-text-side p {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Ensure text stays visible on all screen sizes */
+        @media (max-height: 600px) {
+            .banana-animation-container {
+                min-height: 100vh;
+                padding: 1vh 3%;
+            }
+            
+            .problem-text-side h2 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+            
+            .problem-text-side p {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+            
+            .spoilage-indicator {
+                padding: 12px;
+            }
+        }
+        </style>
 </head>
 <body>
     <button id="header-button1" class="header-button1" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">⌂</button>
