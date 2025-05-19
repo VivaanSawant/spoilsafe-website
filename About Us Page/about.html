@@ -67,12 +67,124 @@
             </div>
         </header>
             <!--NO TOUCHY ABOVE THIS LINE-->
-        <section>
-            <!--PUT ACTUAL CODE HERE (You might have to delete sections)-->
-        </section>
-        
-        <script>
-            //JAVASCRIPT CODE HERE
-        </script>
-    </body>
-</html>
+                    </header>
+            
+                    <section class="about-section">
+                        <div class="about-container">
+                            <h1>About SpoilSafe</h1>
+                            <div class="about-content">
+                                <p>SpoilSafe was founded in 2023 by a team of Carnegie Mellon students who shared a common vision: to dramatically reduce food waste through our innovative technology.</p>
+                                
+                                <p>Our journey began when our founders witnessed firsthand the staggering amount of food wasted in restaurants, grocery stores, and households due to improper storage and lack of real-time freshness monitoring. Motivated by this problem, we developed a smart sensor system that tracks temperature, humidity, and other environmental factors that affect food freshness.</p>
+                                
+                                <p>Today, SpoilSafe works with restaurants, grocery chains, food distributors, and individual consumers to provide real-time food freshness monitoring. Our AI-powered analytics help predict optimal storage conditions and alert users before food spoils, ultimately saving money and reducing environmental impact.</p>
+                                
+                                <p>We're a diverse group of innovators committed to transforming how the world manages food freshness and ripeness.</p>
+                            </div>
+                        </div>
+                    </section>
+            
+                    <section class="sponsors-section">
+                        <h2>Our Sponsors</h2>
+                        <div class="sponsors-slider-container">
+                            <div class="sponsors-track">
+                                <!-- Each sponsor logo will be duplicated for the continuous effect -->
+                                <div class="sponsor">
+                                    <img src="/Users/troymcbride/Documents/GitHub/spoilsafe-website/About Us Page/Sponsors/build18.png" alt="Build18" />
+                                </div>
+                                <div class="sponsor">
+                                    <img src="/Users/troymcbride/Documents/GitHub/spoilsafe-website/About Us Page/Sponsors/ProjectOlympus.png" alt="Project Olympus" />
+                                </div>
+                                <div class="sponsor">
+                                    <img src="/Users/troymcbride/Documents/GitHub/spoilsafe-website/About Us Page/Sponsors/Swartz.png" alt="Swartz" />
+                                </div>
+                                <div class="sponsor">
+                                    <img src="/api/placeholder/180/100" alt="Sponsor 4" />
+                                </div>
+                                <div class="sponsor">
+                                    <img src="/api/placeholder/180/100" alt="Sponsor 5" />
+                                </div>
+                                <div class="sponsor">
+                                    <img src="/api/placeholder/180/100" alt="Sponsor 6" />
+                                </div>
+                                
+                                <!-- Duplicate sponsors for continuous scrolling effect -->
+                                <div class="sponsor">
+                                    <img src="/api/placeholder/180/100" alt="Sponsor 1" />
+                                </div>
+                                <div class="sponsor">
+                                    <img src="/api/placeholder/180/100" alt="Sponsor 2" />
+                                </div>
+                                <div class="sponsor">
+                                    <img src="/api/placeholder/180/100" alt="Sponsor 3" />
+                                </div>
+                                <div class="sponsor">
+                                    <img src="/api/placeholder/180/100" alt="Sponsor 4" />
+                                </div>
+                                <div class="sponsor">
+                                    <img src="/api/placeholder/180/100" alt="Sponsor 5" />
+                                </div>
+                                <div class="sponsor">
+                                    <img src="/api/placeholder/180/100" alt="Sponsor 6" />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                        </div>
+                    </section>
+            
+                    <footer>
+                        <p>&copy; 2025 SpoilSafe. All rights reserved.</p>
+                    </footer>
+                    
+                    <script>
+                        // Function to handle sponsor slider animation
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const track = document.querySelector('.sponsors-track');
+                            
+                            // Create a true clone of the first set to ensure we have duplicates
+                            const firstSponsors = Array.from(track.querySelectorAll('.sponsor')).slice(0, 6);
+                            
+                            // Remove any existing duplicates to start fresh
+                            while (track.children.length > 6) {
+                                track.removeChild(track.lastChild);
+                            }
+                            
+                            // Add one set of clones
+                            firstSponsors.forEach(sponsor => {
+                                const clone = sponsor.cloneNode(true);
+                                track.appendChild(clone);
+                            });
+                            
+                            // Calculate the exact width of the first set
+                            let setWidth = 0;
+                            firstSponsors.forEach(sponsor => {
+                                const style = window.getComputedStyle(sponsor);
+                                const marginLeft = parseFloat(style.marginLeft);
+                                const marginRight = parseFloat(style.marginRight);
+                                setWidth += sponsor.offsetWidth + marginLeft + marginRight;
+                            });
+                            
+                            // Set initial position
+                            let position = 0;
+                            const speed = 0.7; // Pixels per frame
+                            
+                            // Animation loop for continuous scrolling
+                            function animate() {
+                                position -= speed;
+                                
+                                // When the first set is completely off-screen, reset position
+                                if (position <= -setWidth) {
+                                    position = 0;
+                                }
+                                
+                                track.style.transform = `translateX(${position}px)`;
+                                requestAnimationFrame(animate);
+                            }
+                            
+                            // Start the animation
+                            animate();
+                        });
+            </script>
+        </body>
+    </html>
