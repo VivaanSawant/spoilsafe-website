@@ -191,6 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function checkVisibility() {
         const rect = floatingCTA.getBoundingClientRect();
         const isVisible = (rect.top <= window.innerHeight * 0.5);
+
         
         if (isVisible) {
             floatingCTA.classList.add('visible');
