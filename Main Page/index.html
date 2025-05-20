@@ -7,14 +7,205 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Global and body styles */
-        body.white-background {
+        /* Updated Floating CTA styling with blue gradient */
+    .floating-cta {
+        width: 100%;
+        max-width: 100%;
+        margin: 60px 0;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+        padding: 0;
+    }
+
+    .floating-cta.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .cta-card {
+        background: #151515; /* Dark center */
+        overflow: hidden;
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        margin: 0 auto;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Animated blue gradient border/background */
+    .cta-card::before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        background: linear-gradient(135deg, 
+            #45c8d0, 
+            #3b8da0,
+            #2e7a9c,
+            #59c1d6,
+            #45c8d0
+        );
+        background-size: 400% 400%;
+        z-index: -1;
+        border-radius: 25px;
+        animation: gradientMove 8s ease infinite, pulseSize 4s ease-in-out infinite;
+    }
+
+    .cta-content {
+        padding: 40px;
+        position: relative;
+        z-index: 2;
+        background: #151515; /* Dark background */
+        border-radius: 19px;
+    }
+
+    .cta-content h3 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-align: center;
+        background: linear-gradient(45deg, 
+            #f8b9b5, /* Soft pink */
+            #4ecdc4, /* Teal */
+            #45b7d1  /* Blue */
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .cta-content p {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 30px;
+        text-align: center;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+    }
+
+    .floating-button {
+        display: block;
+        margin: 0 auto;
+        padding: 15px 40px;
+        font-size: 1.2rem;
+        background: #45c8d0; /* Teal/blue */
+        border: none;
+        border-radius: 50px;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(69, 200, 208, 0.5); /* Glow effect */
+        animation: buttonGlow 3s infinite;
+    }
+
+    .floating-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 30px rgba(69, 200, 208, 0.7);
+    }
+
+    .floating-button:active {
+        transform: translateY(1px);
+    }
+
+    /* Animations */
+    @keyframes gradientMove {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    @keyframes pulseSize {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.03);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes buttonGlow {
+        0% {
+            box-shadow: 0 0 15px rgba(69, 200, 208, 0.5);
+        }
+        50% {
+            box-shadow: 0 0 25px rgba(69, 200, 208, 0.8);
+        }
+        100% {
+            box-shadow: 0 0 15px rgba(69, 200, 208, 0.5);
+        }
+    }
+
+    @keyframes pulse {
+        0% {
+            opacity: 0.7;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.85;
+            transform: scale(1.01);
+        }
+        100% {
+            opacity: 0.7;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes borderRotate {
+        0% {
+            background-position: 0% 0%;
+        }
+        100% {
+            background-position: 300% 0%;
+        }
+    }
+
+    /* Responsive adjustments for CTA */
+    @media (max-width: 768px) {
+        .cta-content {
+            padding: 30px 20px;
+        }
+        
+        .cta-content h3 {
+            font-size: 1.8rem;
+        }
+        
+        .cta-content p {
+            font-size: 1rem;
+        }
+        
+        .floating-button {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+        }
+    }
+
+    /* Global and body styles */
+    body.white-background {
         background-color: white;
         transition: background-color 0.3s ease;
-        }
+    }
 
-        /* Banana Problem Section */
-        .problem-section-with-banana {
+    /* Banana Problem Section */
+    .problem-section-with-banana {
         position: relative;
         background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
         min-height: 100vh;
@@ -22,9 +213,9 @@
         overflow: visible;
         padding: 5vh 5%;
         box-sizing: border-box;
-        }
+    }
 
-        .banana-animation-container {
+    .banana-animation-container {
         position: sticky;
         top: 0;
         display: flex;
@@ -33,25 +224,25 @@
         box-sizing: border-box;
         min-height: 100vh;
         height: auto;
-        }
+    }
 
-        .banana-side {
+    .banana-side {
         flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
-        }
+    }
 
-        .banana-image-container {
+    .banana-image-container {
         position: relative;
         width: 500px;
         height: 300px;
         max-width: 90%;
         will-change: contents;
-        }
+    }
 
-        .banana-image {
+    .banana-image {
         position: absolute;
         top: 0;
         left: 0;
@@ -62,23 +253,23 @@
         transition: none;
         backface-visibility: hidden;
         transform: translateZ(0);
-        }
+    }
 
-        .banana-image.active {
+    .banana-image.active {
         opacity: 1;
-        }
+    }
 
-        /* Problem Text Side */
-        .problem-text-side {
+    /* Problem Text Side */
+    .problem-text-side {
         flex: 1;
         padding: 60px 40px;
         color: white;
         overflow-wrap: break-word;
         word-wrap: break-word;
         min-width: 0;
-        }
+    }
 
-        .problem-text-side h2 {
+    .problem-text-side h2 {
         font-size: clamp(1.8rem, 5vw, 3rem);
         line-height: 1.2;
         font-weight: 700;
@@ -89,65 +280,65 @@
         -webkit-text-fill-color: transparent;
         color: transparent;
         word-wrap: break-word;
-        }
+    }
 
-        .problem-text-side p {
+    .problem-text-side p {
         font-size: clamp(1rem, 3vw, 1.2rem);
         line-height: 1.6;
         margin-bottom: 25px;
         opacity: 0.9;
         overflow-wrap: break-word;
         word-wrap: break-word;
-        }
+    }
 
-        /* Spoilage Indicator */
-        .spoilage-indicator {
+    /* Spoilage Indicator */
+    .spoilage-indicator {
         background: rgba(255, 255, 255, 0.1);
         border-radius: 15px;
         padding: 20px;
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.2);
-        }
+    }
 
-        .spoilage-level {
+    .spoilage-level {
         display: flex;
         align-items: center;
         margin-bottom: 15px;
-        }
+    }
 
-        .spoilage-dot {
+    .spoilage-dot {
         width: 12px;
         height: 12px;
         border-radius: 50%;
         margin-right: 10px;
         transition: all 0.3s ease;
         background-color: #4ecdc4;
-        }
+    }
 
-        .spoilage-label {
+    .spoilage-label {
         font-weight: 600;
         font-size: 1.1rem;
-        }
+    }
 
-        .progress-bar {
+    .progress-bar {
         width: 100%;
         height: 8px;
         background: rgba(255, 255, 255, 0.2);
         border-radius: 4px;
         overflow: hidden;
         margin-top: 20px;
-        }
+    }
 
-        .progress-fill {
+    .progress-fill {
         height: 100%;
         background: linear-gradient(90deg, #4ecdc4, #ff6b6b);
         transition: width 0.3s ease;
         border-radius: 4px;
         width: 0%;
-        }
+    }
 
-        /* Restart Button */
-        .restart-animation-btn {
+    /* Restart Button */
+    .restart-animation-btn {
         position: absolute;
         top: -60px;
         left: 50%;
@@ -165,34 +356,34 @@
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         z-index: 10;
-        }
+    }
 
-        .restart-animation-btn:hover {
+    .restart-animation-btn:hover {
         transform: translateX(-50%) translateY(-2px);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
+    }
 
-        .restart-animation-btn.show {
+    .restart-animation-btn.show {
         opacity: 1;
         visibility: visible;
-        }
+    }
 
-        /* Responsive Design */
-        @media (max-width: 1400px) {
+    /* Responsive Design */
+    @media (max-width: 1400px) {
         .banana-image-container { width: 600px; height: 360px; }
         .problem-text-side h2 { font-size: 3.5rem; }
         .problem-text-side p { font-size: 1.3rem; }
-        }
+    }
 
-        @media (max-width: 1024px) {
+    @media (max-width: 1024px) {
         .banana-animation-container { padding: 3vh 4%; min-height: 500px; }
         .banana-image-container { width: 400px; height: 250px; }
         .problem-text-side h2 { font-size: 2.5rem; }
         .problem-text-side p { font-size: 1.1rem; line-height: 1.7; }
         .problem-text-side { padding: 0 30px; }
-        }
+    }
 
-        @media (max-width: 768px) {
+    @media (max-width: 768px) {
         /* Override container to avoid extra blank space */
         .problem-section-with-banana {
             padding-bottom: 5vh;
@@ -236,9 +427,9 @@
             display: block;
             margin: 10px auto 20px;
         }
-        }
+    }
 
-        @media (max-width: 480px) {
+    @media (max-width: 480px) {
         .banana-animation-container { padding: 2vh 3%; gap: 1rem; }
         .banana-image-container { width: clamp(180px, 50vw, 250px); aspect-ratio: 500/300; height: auto; }
         .problem-text-side { padding: 0 15px; }
@@ -247,17 +438,17 @@
         #spoilage-description { font-size: 0.8rem; line-height: 1.45; }
         .spoilage-indicator { padding: 15px; }
         .spoilage-label { font-size: 1rem; }
-        }
+    }
 
-        @media (max-height: 600px) {
+    @media (max-height: 600px) {
         .banana-animation-container { padding-top: 2vh; padding-bottom: 2vh; }
         .problem-text-side h2 { font-size: clamp(1.4rem, 3vh, 1.8rem); margin-bottom: 10px; }
         .problem-text-side p { font-size: clamp(0.8rem, 2.5vh, 1rem); line-height: 1.5; margin-bottom: 10px; }
         #spoilage-description { font-size: clamp(0.7rem, 2.2vh, 0.9rem); line-height: 1.4; }
         .spoilage-indicator { padding: 12px; }
-        }
+    }
 
-        @media (max-width: 580px) and (max-height: 450px) {
+    @media (max-width: 580px) and (max-height: 450px) {
         .banana-animation-container { gap: 0.5rem; padding: 1vh 10px; }
         .banana-image-container { width: clamp(120px, 25vh, 150px); aspect-ratio: 500/300; margin-bottom: 5px; }
         .problem-text-side { padding: 0 10px; }
@@ -266,7 +457,7 @@
         .spoilage-indicator { padding: 8px; margin-top: 8px; }
         .spoilage-label { font-size: 0.75rem; }
         #spoilage-description { font-size: clamp(0.6rem, 1.8vh, 0.7rem); line-height: 1.25; }
-        }
+    }
     </style>
 </head>
 <body>
@@ -465,8 +656,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function checkVisibility() {
         const rect = floatingCTA.getBoundingClientRect();
-        const isVisible = (rect.top <= window.innerHeight * 0.5);
-
+        const isVisible = (rect.top <= window.innerHeight * 0.8); // Trigger earlier for better effect
         
         if (isVisible) {
             floatingCTA.classList.add('visible');
@@ -475,7 +665,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     window.addEventListener('scroll', checkVisibility);
-    checkVisibility(); // Check on load in case already visible
+    
+    // Check on load in case already visible
+    setTimeout(checkVisibility, 500); // Small delay for dramatic effect
 });
 const gradientSection = document.getElementById('gradient-background');
     const body = document.body;
