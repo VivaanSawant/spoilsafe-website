@@ -7,12 +7,458 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Optional: Add transition for smooth effect */
-        body.white-background {
-          background-color: white;
-          transition: background-color 0.3s ease;
+        /* Updated Floating CTA styling with blue gradient */
+    .floating-cta {
+        width: 100%;
+        max-width: 100%;
+        margin: 60px 0;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+        padding: 0;
+    }
+
+    .floating-cta.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .cta-card {
+        background: #151515; /* Dark center */
+        overflow: hidden;
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        margin: 0 auto;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Animated blue gradient border/background */
+    .cta-card::before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        background: linear-gradient(135deg, 
+            #45c8d0, 
+            #3b8da0,
+            #2e7a9c,
+            #59c1d6,
+            #45c8d0
+        );
+        background-size: 400% 400%;
+        z-index: -1;
+        border-radius: 25px;
+        animation: gradientMove 8s ease infinite, pulseSize 4s ease-in-out infinite;
+    }
+
+    .cta-content {
+        padding: 40px;
+        position: relative;
+        z-index: 2;
+        background: #151515; /* Dark background */
+        border-radius: 19px;
+    }
+
+    .cta-content h3 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-align: center;
+        background: linear-gradient(45deg, 
+            #f8b9b5, /* Soft pink */
+            #4ecdc4, /* Teal */
+            #45b7d1  /* Blue */
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .cta-content p {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 30px;
+        text-align: center;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+    }
+
+    .floating-button {
+        display: block;
+        margin: 0 auto;
+        padding: 15px 40px;
+        font-size: 1.2rem;
+        background: #45c8d0; /* Teal/blue */
+        border: none;
+        border-radius: 50px;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(69, 200, 208, 0.5); /* Glow effect */
+        animation: buttonGlow 3s infinite;
+    }
+
+    .floating-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 30px rgba(69, 200, 208, 0.7);
+    }
+
+    .floating-button:active {
+        transform: translateY(1px);
+    }
+
+    /* Animations */
+    @keyframes gradientMove {
+        0% {
+            background-position: 0% 50%;
         }
-      </style>
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    @keyframes pulseSize {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.03);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes buttonGlow {
+        0% {
+            box-shadow: 0 0 15px rgba(69, 200, 208, 0.5);
+        }
+        50% {
+            box-shadow: 0 0 25px rgba(69, 200, 208, 0.8);
+        }
+        100% {
+            box-shadow: 0 0 15px rgba(69, 200, 208, 0.5);
+        }
+    }
+
+    @keyframes pulse {
+        0% {
+            opacity: 0.7;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.85;
+            transform: scale(1.01);
+        }
+        100% {
+            opacity: 0.7;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes borderRotate {
+        0% {
+            background-position: 0% 0%;
+        }
+        100% {
+            background-position: 300% 0%;
+        }
+    }
+
+    /* Responsive adjustments for CTA */
+    @media (max-width: 768px) {
+        .cta-content {
+            padding: 30px 20px;
+        }
+        
+        .cta-content h3 {
+            font-size: 1.8rem;
+        }
+        
+        .cta-content p {
+            font-size: 1rem;
+        }
+        
+        .floating-button {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+        }
+    }
+
+    /* Global and body styles */
+    body.white-background {
+        background-color: white;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Banana Problem Section */
+    .problem-section-with-banana {
+        position: relative;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        min-height: 100vh;
+        height: auto;
+        overflow: visible;
+        padding: 5vh 5%;
+        box-sizing: border-box;
+    }
+
+    .banana-animation-container {
+        position: sticky;
+        top: 0;
+        display: flex;
+        align-items: center;
+        padding: 5vh 5%;
+        box-sizing: border-box;
+        min-height: 100vh;
+        height: auto;
+    }
+
+    .banana-side {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .banana-image-container {
+        position: relative;
+        width: 500px;
+        height: 300px;
+        max-width: 90%;
+        will-change: contents;
+    }
+
+    .banana-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        opacity: 0;
+        transition: none;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+    }
+
+    .banana-image.active {
+        opacity: 1;
+    }
+
+    /* Problem Text Side */
+    .problem-text-side {
+        flex: 1;
+        padding: 60px 40px;
+        color: white;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        min-width: 0;
+    }
+
+    .problem-text-side h2 {
+        font-size: clamp(1.8rem, 5vw, 3rem);
+        line-height: 1.2;
+        font-weight: 700;
+        margin-bottom: 30px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        word-wrap: break-word;
+    }
+
+    .problem-text-side p {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        line-height: 1.6;
+        margin-bottom: 25px;
+        opacity: 0.9;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    /* Spoilage Indicator */
+    .spoilage-indicator {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 20px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .spoilage-level {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .spoilage-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+        background-color: #4ecdc4;
+    }
+
+    .spoilage-label {
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-top: 20px;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #4ecdc4, #ff6b6b);
+        transition: width 0.3s ease;
+        border-radius: 4px;
+        width: 0%;
+    }
+
+    /* Restart Button */
+    .restart-animation-btn {
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
+
+    .restart-animation-btn:hover {
+        transform: translateX(-50%) translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .restart-animation-btn.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1400px) {
+        .banana-image-container { width: 600px; height: 360px; }
+        .problem-text-side h2 { font-size: 3.5rem; }
+        .problem-text-side p { font-size: 1.3rem; }
+    }
+
+    @media (max-width: 1024px) {
+        .banana-animation-container { padding: 3vh 4%; min-height: 500px; }
+        .banana-image-container { width: 400px; height: 250px; }
+        .problem-text-side h2 { font-size: 2.5rem; }
+        .problem-text-side p { font-size: 1.1rem; line-height: 1.7; }
+        .problem-text-side { padding: 0 30px; }
+    }
+
+    @media (max-width: 768px) {
+        /* Override container to avoid extra blank space */
+        .problem-section-with-banana {
+            padding-bottom: 5vh;
+            min-height: auto;
+        }
+        /* Switch off sticky and let normal scrolling */
+        .banana-animation-container {
+            position: relative;
+            align-items: center;
+            flex-direction: column;
+            padding: 3vh 4%;
+            height: auto;
+            min-height: auto;
+            overflow: visible;
+            gap: 1.5rem;
+        }
+        .banana-side, .problem-text-side {
+            flex: none;
+            width: 100%;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .banana-image-container {
+            width: 300px;
+            height: 180px;
+            margin: 0 auto;
+        }
+        .problem-text-side {
+            padding: 20px;
+            text-align: center;
+        }
+        .problem-text-side h2 { font-size: 1.8rem; margin-bottom: 15px; }
+        .problem-text-side p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; }
+
+        /* Reposition restart button below the image and center it without overlap */
+        .restart-animation-btn {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            display: block;
+            margin: 10px auto 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .banana-animation-container { padding: 2vh 3%; gap: 1rem; }
+        .banana-image-container { width: clamp(180px, 50vw, 250px); aspect-ratio: 500/300; height: auto; }
+        .problem-text-side { padding: 0 15px; }
+        .problem-text-side h2 { font-size: 1.6rem; margin-bottom: 10px; }
+        .problem-text-side p { font-size: 0.85rem; line-height: 1.55; margin-bottom: 10px; }
+        #spoilage-description { font-size: 0.8rem; line-height: 1.45; }
+        .spoilage-indicator { padding: 15px; }
+        .spoilage-label { font-size: 1rem; }
+    }
+
+    @media (max-height: 600px) {
+        .banana-animation-container { padding-top: 2vh; padding-bottom: 2vh; }
+        .problem-text-side h2 { font-size: clamp(1.4rem, 3vh, 1.8rem); margin-bottom: 10px; }
+        .problem-text-side p { font-size: clamp(0.8rem, 2.5vh, 1rem); line-height: 1.5; margin-bottom: 10px; }
+        #spoilage-description { font-size: clamp(0.7rem, 2.2vh, 0.9rem); line-height: 1.4; }
+        .spoilage-indicator { padding: 12px; }
+    }
+
+    @media (max-width: 580px) and (max-height: 450px) {
+        .banana-animation-container { gap: 0.5rem; padding: 1vh 10px; }
+        .banana-image-container { width: clamp(120px, 25vh, 150px); aspect-ratio: 500/300; margin-bottom: 5px; }
+        .problem-text-side { padding: 0 10px; }
+        .problem-text-side h2 { font-size: clamp(1.1rem, 2.5vh, 1.3rem); margin-bottom: 5px; }
+        .problem-text-side p { font-size: clamp(0.65rem, 2vh, 0.75rem); line-height: 1.35; margin-bottom: 5px; }
+        .spoilage-indicator { padding: 8px; margin-top: 8px; }
+        .spoilage-label { font-size: 0.75rem; }
+        #spoilage-description { font-size: clamp(0.6rem, 1.8vh, 0.7rem); line-height: 1.25; }
+    }
+    </style>
 </head>
 <body>
     <button id="header-button1" class="header-button1" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">⌂</button>
@@ -75,14 +521,34 @@
         <button class="cta2-button" onclick="window.location.href='../Product Page/product.html'";>Learn More</button>
     </header>
 
-    <section class="the-problem">
-    <div class="problem-card">
-        <div class="problem-content">
-            <h2>The Problem</h2> <!--INCLUDE IMAGE GALLERY THAT SLIDES AND SHIT BRO THAT WOULD BE SO TUFF-->
-            <p>Every year, millions of tons of food go to waste due to spoilage, costing businesses and consumers billions of dollars. Inconsistent storage conditions, lack of real-time monitoring, and poor visibility into food freshness contribute to this massive issue.</p>
+    <!-- Updated Problem Section with Banana Animation -->
+    <section class="problem-section-with-banana">
+        <div class="banana-animation-container">
+            <div class="banana-side">
+                <div class="banana-image-container">
+                </div>
+            </div>
+            
+            <div class="problem-text-side">
+                <h2>The Problem</h2>
+                <p>Every year, millions of tons of food go to waste due to spoilage, costing businesses and consumers billions of dollars.</p>
+                <p>Watch as this banana spoils over time - just like the food in your pantry, the signs of deterioration are often invisible until it's too late.</p>
+                
+                <div class="spoilage-indicator">
+                    <div class="spoilage-level">
+                        <div class="spoilage-dot" id="spoilage-dot"></div>
+                        <span class="spoilage-label" id="spoilage-label">Fresh</span>
+                    </div>
+                    <p id="spoilage-description">Perfect condition - this is when food quality and nutrition are at their peak.</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 30px;">Inconsistent storage conditions, lack of real-time monitoring, and poor visibility into food freshness contribute to this massive issue. SpoilSafe provides the solution.</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <section class="core-capabilities">
     <div class="capabilities-container">
@@ -190,8 +656,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function checkVisibility() {
         const rect = floatingCTA.getBoundingClientRect();
-        const isVisible = (rect.top <= window.innerHeight * 0.5);
-
+        const isVisible = (rect.top <= window.innerHeight * 0.8); // Trigger earlier for better effect
         
         if (isVisible) {
             floatingCTA.classList.add('visible');
@@ -200,7 +665,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     window.addEventListener('scroll', checkVisibility);
-    checkVisibility(); // Check on load in case already visible
+    
+    // Check on load in case already visible
+    setTimeout(checkVisibility, 500); // Small delay for dramatic effect
 });
 const gradientSection = document.getElementById('gradient-background');
     const body = document.body;
@@ -361,6 +828,194 @@ const gradientSection = document.getElementById('gradient-background');
 
     // Start the typing effect
     typeText();
+
+    // Banana Animation Script
+    // Banana Animation Script with Precise Scroll Lock
+    // Banana Animation Script with Natural Scroll Behavior
+    // Banana Animation Script - Fixed Natural Scrolling
+    // Banana Animation Script - Simplified and Fixed
+    // Banana Animation Script - with Restart Button
+class BananaAnimation {
+    constructor() {
+        this.bananaImages = [];
+        this.currentImage = 0;
+        this.totalImages = 30;
+        this.section = document.querySelector('.problem-section-with-banana');
+        this.container = document.querySelector('.banana-image-container');
+        this.spoilageDot = document.getElementById('spoilage-dot');
+        this.spoilageLabel = document.getElementById('spoilage-label');
+        this.spoilageDescription = document.getElementById('spoilage-description');
+        this.progressFill = document.getElementById('progress-fill');
+        
+        // Animation state
+        this.scrollAccumulator = 0;
+        this.scrollThreshold = 120;
+        this.animationCompleted = false;
+        this.animationEnabled = true; // Allow first time
+        this.restartBtn = null;
+        
+        this.spoilageStages = [
+            { label: 'Fresh', color: '#4ecdc4', description: 'Perfect condition - food quality and nutrition are at their peak.' },
+            { label: 'Good', color: '#45b7d1', description: 'Still excellent quality with minor changes starting to appear.' },
+            { label: 'Fair', color: '#96ceb4', description: 'Noticeable changes but still safe to consume.' },
+            { label: 'Declining', color: '#feca57', description: 'Quality is decreasing - consume soon to avoid waste.' },
+            { label: 'Poor', color: '#ff9ff3', description: 'Significant deterioration - time to use or discard.' },
+            { label: 'Bad', color: '#ff6b6b', description: 'Past optimal consumption - likely to cause waste.' },
+            { label: 'Spoiled', color: '#ee5a6f', description: 'Completely spoiled - this is what we help you prevent.' }
+        ];
+        
+        this.init();
+    }
+    
+    init() {
+        this.loadImages();
+        this.createRestartButton();
+        this.bindScrollEvent();
+    }
+    
+    createRestartButton() {
+        this.restartBtn = document.createElement('button');
+        this.restartBtn.className = 'restart-animation-btn';
+        this.restartBtn.textContent = '↻ Watch Again';
+        this.restartBtn.addEventListener('click', () => {
+            this.restartAnimation();
+        });
+        this.container.appendChild(this.restartBtn);
+    }
+    
+    loadImages() {
+        for (let i = 0; i < this.totalImages; i++) {
+            const img = document.createElement('img');
+            img.src = `images/banana-spoilage/processed_${i + 1}.png`;
+            img.alt = `Banana spoilage stage ${i + 1}`;
+            img.className = 'banana-image';
+            img.id = `banana-image-${i}`;
+            
+            if (i === 0) img.classList.add('active');
+            
+            this.container.appendChild(img);
+            this.bananaImages.push(img);
+        }
+    }
+    
+    bindScrollEvent() {
+        window.addEventListener('wheel', (e) => {
+            const rect = this.section.getBoundingClientRect();
+            const isInSection = rect.top <= 0 && rect.bottom > 0;
+            
+            // Only allow animation if enabled and not completed
+            if (!this.animationEnabled) return;
+            
+            if (isInSection) {
+                const direction = e.deltaY > 0 ? 1 : -1;
+                
+                // Allow normal scroll at boundaries
+                if (direction < 0 && this.currentImage === 0) {
+                    return; // Normal scroll up
+                }
+                if (direction > 0 && this.currentImage === this.totalImages - 1) {
+                    return; // Normal scroll down
+                }
+                
+                // Block scroll and accumulate
+                e.preventDefault();
+                this.scrollAccumulator += Math.abs(e.deltaY);
+                
+                // Change frame only when threshold is met
+                if (this.scrollAccumulator >= this.scrollThreshold) {
+                    this.changeFrame(direction);
+                    this.scrollAccumulator = 0;
+                }
+            }
+        }, { passive: false });
+        
+        // Keyboard support
+        window.addEventListener('keydown', (e) => {
+            if (!this.animationEnabled) return;
+            
+            const rect = this.section.getBoundingClientRect();
+            const isInSection = rect.top <= 0 && rect.bottom > 0;
+            
+            if (!isInSection) return;
+            
+            if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', ' '].includes(e.key)) {
+                const direction = (['ArrowDown', 'PageDown', ' '].includes(e.key)) ? 1 : -1;
+                
+                if (direction < 0 && this.currentImage === 0) return;
+                if (direction > 0 && this.currentImage === this.totalImages - 1) return;
+                
+                e.preventDefault();
+                this.changeFrame(direction);
+            }
+        });
+    }
+    
+    changeFrame(direction) {
+        const newImage = Math.max(0, Math.min(this.totalImages - 1, this.currentImage + direction));
+        
+        if (newImage !== this.currentImage) {
+            this.currentImage = newImage;
+            this.updateImageDisplay();
+            this.updateSpoilageIndicator(this.currentImage / (this.totalImages - 1));
+            
+            // Check if animation is completed
+            if (this.currentImage === this.totalImages - 1) {
+                this.completeAnimation();
+            }
+        }
+    }
+    
+    completeAnimation() {
+        this.animationCompleted = true;
+        this.animationEnabled = false;
+        
+        // Show restart button with delay
+        setTimeout(() => {
+            this.restartBtn.classList.add('show');
+        }, 1000);
+        
+        console.log('Animation completed! Restart button shown.');
+    }
+    
+    restartAnimation() {
+        // Reset animation state
+        this.animationCompleted = false;
+        this.animationEnabled = true;
+        this.currentImage = 0;
+        this.scrollAccumulator = 0;
+        
+        // Hide restart button
+        this.restartBtn.classList.remove('show');
+        
+        // Reset to first image
+        this.updateImageDisplay();
+        this.updateSpoilageIndicator(0);
+        
+        // Scroll to the top of the section to start fresh
+        this.section.scrollIntoView({ behavior: 'smooth' });
+        
+        console.log('Animation restarted!');
+    }
+    
+    updateImageDisplay() {
+        this.bananaImages.forEach((img, index) => {
+            img.classList.toggle('active', index === this.currentImage);
+        });
+    }
+    
+    updateSpoilageIndicator(progress) {
+        const stageIndex = Math.floor(progress * (this.spoilageStages.length - 1));
+        const stage = this.spoilageStages[stageIndex] || this.spoilageStages[0];
+        
+        this.spoilageDot.style.backgroundColor = stage.color;
+        this.spoilageLabel.textContent = stage.label;
+        this.spoilageDescription.textContent = stage.description;
+        this.progressFill.style.width = `${progress * 100}%`;
+    }
+}
+
+// Initialize the banana animation
+const bananaAnimation = new BananaAnimation();
 </script>
 
 </body>
