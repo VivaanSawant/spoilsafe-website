@@ -523,7 +523,7 @@ html {
 
 
 .filler-section {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     min-height: 220vh; /* Adjust this value to make it taller */
     padding: 5vh 5% 20vh; /* Extra padding at bottom to prevent cutoff */
     position: relative;
@@ -531,7 +531,7 @@ html {
 }
 
 .problem-section-with-banana {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     min-height: 300vh; /* Adjust this value to make it taller */
     padding: 5vh 5% 100vh; /* Extra padding at bottom to prevent cutoff */
     position: relative;
@@ -563,7 +563,7 @@ html {
 /* Keep your existing banana animation styles */
 
 .floatingEnd {
-    background-color: #ffffff;
+    background-color: #000000;
     color: #fff;
     padding: 80px 20px;
             z-index: 30;
