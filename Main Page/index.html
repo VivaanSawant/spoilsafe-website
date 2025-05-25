@@ -834,7 +834,7 @@ const gradientSection = document.getElementById('gradient-background');
     // Banana Animation Script - Fixed Natural Scrolling
     // Banana Animation Script - Simplified and Fixed
     // Banana Animation Script - with Restart Button
-    class BananaAnimation {
+class BananaAnimation {
     constructor() {
         this.bananaImages = [];
         this.currentImage = 0;
@@ -847,10 +847,12 @@ const gradientSection = document.getElementById('gradient-background');
         this.progressFill = document.getElementById('progress-fill');
         
         // Animation state
+        this.isAnimating = false;
         this.animationCompleted = false;
         this.restartBtn = null;
         this.lastScrollPosition = 0;
         this.scrollDirection = 1;
+        this.sectionHeight = window.innerHeight;
         
         this.spoilageStages = [
             { label: 'Fresh', color: '#4ecdc4', description: 'Perfect condition - food quality and nutrition are at their peak.' },
@@ -869,6 +871,15 @@ const gradientSection = document.getElementById('gradient-background');
         this.loadImages();
         this.createRestartButton();
         this.bindScrollEvent();
+        this.setupSection();
+    }
+    
+    setupSection() {
+        // Set section height to viewport height
+        this.section.style.height = `${this.sectionHeight}px`;
+        this.section.style.position = 'sticky';
+        this.section.style.top = '0';
+        this.section.style.overflow = 'hidden';
     }
     
     createRestartButton() {
@@ -897,59 +908,62 @@ const gradientSection = document.getElementById('gradient-background');
     }
     
     bindScrollEvent() {
-        window.addEventListener('scroll', () => {
-            this.handleScroll();
-        }, { passive: true });
+        let lastKnownScrollPosition = 0;
+        let ticking = false;
         
-        // Touch support for mobile
-        window.addEventListener('touchmove', () => {
-            this.handleScroll();
-        }, { passive: true });
+        window.addEventListener('scroll', () => {
+            lastKnownScrollPosition = window.scrollY;
+            
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.handleScroll(lastKnownScrollPosition);
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
     }
     
-    handleScroll() {
-        const scrollPosition = window.scrollY;
+    handleScroll(scrollPosition) {
         const sectionTop = this.section.offsetTop;
-        const sectionHeight = this.section.offsetHeight;
-        const viewportHeight = window.innerHeight;
+        const sectionBottom = sectionTop + this.sectionHeight;
+        const isInSection = scrollPosition >= sectionTop && scrollPosition < sectionBottom;
         
-        // Calculate scroll progress through the section (0 to 1)
-        let progress = (scrollPosition - sectionTop + viewportHeight * 0.3) / 
-                      (sectionHeight * 0.7);
-        
-        progress = Math.max(0, Math.min(1, progress)); // Clamp between 0 and 1
-        
-        // Determine scroll direction
-        this.scrollDirection = scrollPosition > this.lastScrollPosition ? 1 : -1;
-        this.lastScrollPosition = scrollPosition;
-        
-        // Update animation based on scroll progress
-        this.updateAnimation(progress);
+        if (isInSection && !this.animationCompleted) {
+            // Calculate progress through the sticky section (0 to 1)
+            const progress = (scrollPosition - sectionTop) / this.sectionHeight;
+            
+            // Update animation based on scroll progress
+            this.updateAnimation(progress);
+            
+            // Prevent scrolling past until animation completes
+            if (progress >= 1 && this.currentImage === this.totalImages - 1) {
+                this.completeAnimation();
+            }
+        }
     }
     
     updateAnimation(progress) {
         // Calculate which image to show based on scroll progress
-        const targetImage = Math.floor(progress * (this.totalImages - 1));
+        const targetImage = Math.min(
+            this.totalImages - 1,
+            Math.floor(progress * this.totalImages)
+        );
         
         // Only update if we're moving to a new image
         if (targetImage !== this.currentImage) {
             this.currentImage = targetImage;
             this.updateImageDisplay();
             this.updateSpoilageIndicator(progress);
-            
-            // Check if animation is completed
-            if (this.currentImage === this.totalImages - 1) {
-                this.completeAnimation();
-            } else if (this.animationCompleted) {
-                // Reset completed state if scrolling back up
-                this.animationCompleted = false;
-                this.restartBtn.classList.remove('show');
-            }
         }
     }
     
     completeAnimation() {
         this.animationCompleted = true;
+        
+        // Remove sticky positioning to allow scrolling past
+        this.section.style.position = 'relative';
+        this.section.style.height = 'auto';
         
         // Show restart button with delay
         setTimeout(() => {
@@ -958,15 +972,24 @@ const gradientSection = document.getElementById('gradient-background');
     }
     
     restartAnimation() {
-        // Scroll to the top of the section
-        window.scrollTo({
-            top: this.section.offsetTop - 50,
-            behavior: 'smooth'
-        });
-        
         // Reset animation state
         this.animationCompleted = false;
+        this.currentImage = 0;
+        this.updateImageDisplay();
+        this.updateSpoilageIndicator(0);
+        
+        // Reset section styling
+        this.section.style.position = 'sticky';
+        this.section.style.height = `${this.sectionHeight}px`;
+        
+        // Hide restart button
         this.restartBtn.classList.remove('show');
+        
+        // Scroll to the top of the section
+        window.scrollTo({
+            top: this.section.offsetTop,
+            behavior: 'smooth'
+        });
     }
     
     updateImageDisplay() {
