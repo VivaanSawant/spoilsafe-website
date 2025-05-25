@@ -524,7 +524,7 @@ html {
 
 .filler-section {
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    min-height: 140vh; /* Adjust this value to make it taller */
+    min-height: 220vh; /* Adjust this value to make it taller */
     padding: 5vh 5% 20vh; /* Extra padding at bottom to prevent cutoff */
     position: relative;
     z-index: -1;

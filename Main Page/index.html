@@ -877,7 +877,6 @@ class BananaAnimation {
     
     init() {
         this.loadImages();
-        this.createRestartButton();
         this.calculateDimensions();
         this.bindScrollEvent();
         window.addEventListener('resize', this.calculateDimensions.bind(this));
@@ -962,7 +961,7 @@ class BananaAnimation {
             }
             
             // Check if animation is complete
-            if (scrollProgress >= 1 && !this.animationCompleted) {
+            if (scrollProgress >= 1.01 && !this.animationCompleted) {
                 this.animationCompleted = true;
                 this.animationContainer.classList.remove('sticky');
                 setTimeout(() => {
@@ -1019,6 +1018,17 @@ class BananaAnimation {
         this.spoilageLabel.textContent = stage.label;
         this.spoilageDescription.textContent = stage.description;
         this.progressFill.style.width = `${progress * 100}%`;
+
+        if (stageIndex === this.spoilageStages.length - 1) {
+                if (!this.restartBtn) {
+                    this.createRestartButton();
+                }
+                setTimeout(() => {
+                    this.restartBtn.classList.add('show');
+                }, 500);
+            } else if (this.restartBtn) {
+                this.restartBtn.classList.remove('show');
+            }
     }
 }
 
