@@ -942,8 +942,18 @@ class BananaAnimation {
             }
             
             // Calculate progress through animation (0 to 1)
-            const scrollProgress = (scrollY - this.startOffset) / (this.endOffset - this.startOffset);
-            const frame = Math.min(this.totalImages - 1, Math.floor(scrollProgress * this.totalImages));
+            let scrollProgress = (scrollY - this.startOffset) / (this.endOffset - this.startOffset);
+            
+            // Force completion at 95% scroll
+            if (scrollProgress >= 0.95) {
+                scrollProgress = 1; // Jump to 100% when at 95% scroll
+            }
+            
+            // Calculate frame - ensure we reach the last frame
+            const frame = Math.min(
+                this.totalImages - 1, // Maximum frame index
+                Math.floor(scrollProgress * this.totalImages)
+            );
             
             if (frame !== this.currentImage) {
                 this.currentImage = frame;
@@ -964,8 +974,14 @@ class BananaAnimation {
             // Scrolled above the section - reset animation
             this.resetAnimation();
         }
-        
+        else if (scrollY > this.endOffset && !this.animationCompleted) {
+            // Force completion if scrolled past without reaching threshold
+            this.currentImage = this.totalImages - 1;
+            this.updateImageDisplay();
+            this.updateSpoilageIndicator(1);
+        }
     }
+
     
     resetAnimation() {
         this.isAnimating = false;
@@ -973,19 +989,6 @@ class BananaAnimation {
         this.currentImage = 0;
         this.updateImageDisplay();
         this.updateSpoilageIndicator(0);
-    }
-    
-    completeAnimation() {
-        this.isAnimating = false;
-        this.animationCompleted = true;
-        this.animationContainer.classList.remove('sticky');
-        this.currentImage = this.totalImages - 1;
-        this.updateImageDisplay();
-        this.updateSpoilageIndicator(1);
-        
-        setTimeout(() => {
-            this.restartBtn.classList.add('show');
-        }, 500);
     }
     
     restartAnimation() {
