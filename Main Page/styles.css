@@ -531,7 +531,7 @@ html {
 }
 
 .problem-section-with-banana {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     min-height: 300vh; /* Adjust this value to make it taller */
     padding: 5vh 5% 100vh; /* Extra padding at bottom to prevent cutoff */
     position: relative;
