@@ -834,7 +834,7 @@ const gradientSection = document.getElementById('gradient-background');
     // Banana Animation Script - Fixed Natural Scrolling
     // Banana Animation Script - Simplified and Fixed
     // Banana Animation Script - with Restart Button
-class BananaAnimation {
+    class BananaAnimation {
     constructor() {
         this.bananaImages = [];
         this.currentImage = 0;
@@ -847,11 +847,10 @@ class BananaAnimation {
         this.progressFill = document.getElementById('progress-fill');
         
         // Animation state
-        this.scrollAccumulator = 0;
-        this.scrollThreshold = 120;
         this.animationCompleted = false;
-        this.animationEnabled = true; // Allow first time
         this.restartBtn = null;
+        this.lastScrollPosition = 0;
+        this.scrollDirection = 1;
         
         this.spoilageStages = [
             { label: 'Fresh', color: '#4ecdc4', description: 'Perfect condition - food quality and nutrition are at their peak.' },
@@ -898,102 +897,76 @@ class BananaAnimation {
     }
     
     bindScrollEvent() {
-        window.addEventListener('wheel', (e) => {
-            const rect = this.section.getBoundingClientRect();
-            const isInSection = rect.top <= 0 && rect.bottom > 0;
-            
-            // Only allow animation if enabled and not completed
-            if (!this.animationEnabled) return;
-            
-            if (isInSection) {
-                const direction = e.deltaY > 0 ? 1 : -1;
-                
-                // Allow normal scroll at boundaries
-                if (direction < 0 && this.currentImage === 0) {
-                    return; // Normal scroll up
-                }
-                if (direction > 0 && this.currentImage === this.totalImages - 1) {
-                    return; // Normal scroll down
-                }
-                
-                // Block scroll and accumulate
-                e.preventDefault();
-                this.scrollAccumulator += Math.abs(e.deltaY);
-                
-                // Change frame only when threshold is met
-                if (this.scrollAccumulator >= this.scrollThreshold) {
-                    this.changeFrame(direction);
-                    this.scrollAccumulator = 0;
-                }
-            }
-        }, { passive: false });
+        window.addEventListener('scroll', () => {
+            this.handleScroll();
+        }, { passive: true });
         
-        // Keyboard support
-        window.addEventListener('keydown', (e) => {
-            if (!this.animationEnabled) return;
-            
-            const rect = this.section.getBoundingClientRect();
-            const isInSection = rect.top <= 0 && rect.bottom > 0;
-            
-            if (!isInSection) return;
-            
-            if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', ' '].includes(e.key)) {
-                const direction = (['ArrowDown', 'PageDown', ' '].includes(e.key)) ? 1 : -1;
-                
-                if (direction < 0 && this.currentImage === 0) return;
-                if (direction > 0 && this.currentImage === this.totalImages - 1) return;
-                
-                e.preventDefault();
-                this.changeFrame(direction);
-            }
-        });
+        // Touch support for mobile
+        window.addEventListener('touchmove', () => {
+            this.handleScroll();
+        }, { passive: true });
     }
     
-    changeFrame(direction) {
-        const newImage = Math.max(0, Math.min(this.totalImages - 1, this.currentImage + direction));
+    handleScroll() {
+        const scrollPosition = window.scrollY;
+        const sectionTop = this.section.offsetTop;
+        const sectionHeight = this.section.offsetHeight;
+        const viewportHeight = window.innerHeight;
         
-        if (newImage !== this.currentImage) {
-            this.currentImage = newImage;
+        // Calculate scroll progress through the section (0 to 1)
+        let progress = (scrollPosition - sectionTop + viewportHeight * 0.3) / 
+                      (sectionHeight * 0.7);
+        
+        progress = Math.max(0, Math.min(1, progress)); // Clamp between 0 and 1
+        
+        // Determine scroll direction
+        this.scrollDirection = scrollPosition > this.lastScrollPosition ? 1 : -1;
+        this.lastScrollPosition = scrollPosition;
+        
+        // Update animation based on scroll progress
+        this.updateAnimation(progress);
+    }
+    
+    updateAnimation(progress) {
+        // Calculate which image to show based on scroll progress
+        const targetImage = Math.floor(progress * (this.totalImages - 1));
+        
+        // Only update if we're moving to a new image
+        if (targetImage !== this.currentImage) {
+            this.currentImage = targetImage;
             this.updateImageDisplay();
-            this.updateSpoilageIndicator(this.currentImage / (this.totalImages - 1));
+            this.updateSpoilageIndicator(progress);
             
             // Check if animation is completed
             if (this.currentImage === this.totalImages - 1) {
                 this.completeAnimation();
+            } else if (this.animationCompleted) {
+                // Reset completed state if scrolling back up
+                this.animationCompleted = false;
+                this.restartBtn.classList.remove('show');
             }
         }
     }
     
     completeAnimation() {
         this.animationCompleted = true;
-        this.animationEnabled = false;
         
         // Show restart button with delay
         setTimeout(() => {
             this.restartBtn.classList.add('show');
         }, 1000);
-        
-        console.log('Animation completed! Restart button shown.');
     }
     
     restartAnimation() {
+        // Scroll to the top of the section
+        window.scrollTo({
+            top: this.section.offsetTop - 50,
+            behavior: 'smooth'
+        });
+        
         // Reset animation state
         this.animationCompleted = false;
-        this.animationEnabled = true;
-        this.currentImage = 0;
-        this.scrollAccumulator = 0;
-        
-        // Hide restart button
         this.restartBtn.classList.remove('show');
-        
-        // Reset to first image
-        this.updateImageDisplay();
-        this.updateSpoilageIndicator(0);
-        
-        // Scroll to the top of the section to start fresh
-        this.section.scrollIntoView({ behavior: 'smooth' });
-        
-        console.log('Animation restarted!');
     }
     
     updateImageDisplay() {
@@ -1012,6 +985,7 @@ class BananaAnimation {
         this.progressFill.style.width = `${progress * 100}%`;
     }
 }
+
 
 // Initialize the banana animation
 const bananaAnimation = new BananaAnimation();
