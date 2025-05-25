@@ -355,7 +355,7 @@
         visibility: hidden;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        z-index: 10;
+        z-index: 31;
     }
 
     .restart-animation-btn:hover {
@@ -895,7 +895,10 @@ class BananaAnimation {
         this.restartBtn.className = 'restart-animation-btn';
         this.restartBtn.textContent = '↻ Watch Again';
         this.restartBtn.addEventListener('click', () => {
-            this.restartAnimation();
+            window.scrollTo({
+                top: this.startOffset,
+                behavior: 'smooth'
+            });
         });
         this.container.appendChild(this.restartBtn);
     }
