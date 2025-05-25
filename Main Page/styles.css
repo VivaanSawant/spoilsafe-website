@@ -395,15 +395,22 @@ html {
     scroll-behavior: smooth;
 }
 
+
 .core-capabilities {
     background-color: #000;
     color: #fff;
     padding: 80px 20px;
+            z-index: 30;
+                    position: relative;
+
 }
 
 .capabilities-container {
     max-width: 1200px;
+    z-index: 1;
     margin: 0 auto;
+        z-index: 31;
+        position: relative;
 }
 
 .core-capabilities h2 {
@@ -514,6 +521,55 @@ html {
 }
 
 
+
+.filler-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    min-height: 100vh; /* Adjust this value to make it taller */
+    padding: 5vh 5% 20vh; /* Extra padding at bottom to prevent cutoff */
+    position: relative;
+    z-index: -1;
+}
+
+.problem-section-with-banana {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    min-height: 300vh; /* Adjust this value to make it taller */
+    padding: 5vh 5% 100vh; /* Extra padding at bottom to prevent cutoff */
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure the sticky container fills the viewport */
+.banana-animation-container.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Make the text content area taller to match */
+.problem-text-side {
+    min-height: 100vh;
+    padding-bottom: 50vh; /* Extra space for scrolling */
+        z-index: 1;
+}
+
+/* Keep your existing banana animation styles */
+
+.floatingEnd {
+    background-color: #ffffff;
+    color: #fff;
+    padding: 80px 20px;
+            z-index: 30;
+                    position: relative;
+
+}
 /* Floating CTA Styles */
 .floating-cta {
     position: relative;
