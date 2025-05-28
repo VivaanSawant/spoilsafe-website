@@ -1026,7 +1026,7 @@ class BananaAnimation {
 
         if (stageIndex === this.spoilageStages.length - 1) {
                 if (!this.restartBtn) {
-                    this.createRestartButton();
+                    //this.createRestartButton(); <-- IS THIS NECESSARY??
                 }
                 setTimeout(() => {
                     this.restartBtn.classList.add('show');
