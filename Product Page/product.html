@@ -73,7 +73,14 @@
         <div class="scroll-indicator">
             <div class="scroll-disc"></div>
         </div>
+
     </section>
+       <section class="white-section">
+    <h2>What is SpoilSafe?</h2>
+    <div class="description" id="typewriter"></div>
+    </section>
+
+  </section>
 
     <!-- Vision Steps -->
     <section class="vision-steps">
@@ -126,7 +133,20 @@
     <script src="vision.js"></script>
         
         <script>
-            //JAVASCRIPT CODE HERE
+            const text = `SpoilSafe is a smart sensor system designed to revolutionize how we monitor food freshness. By tracking gas concentrations and key environmental factors like temperature and humidity, SpoilSafe can detect early signs of spoilage. Our goal is to prevent food waste at the source — whether in homes, restaurants, or large-scale supply chains — by delivering actionable insights before spoilage happens.`;
+
+    const el = document.getElementById("typewriter");
+    let i = 0;
+
+    function typeNextChar() {
+      if (i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeNextChar, 15); // adjust speed here (lower = faster)
+      }
+    }
+
+    typeNextChar();
         </script>
     </body>
 </html>

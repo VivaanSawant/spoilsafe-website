@@ -17,6 +17,51 @@ body {
     overflow-x: hidden;
 }
 
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .white-section {
+      background-color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .white-section h2 {
+      font-size: 40px;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    .description {
+      font-size: 20px;
+      color: #444;
+      max-width: 900px;
+      margin: 0 auto;
+      min-height: 120px;
+      text-align: left;
+      display: inline-block;
+      position: relative;
+    }
+
+    .description::after {
+      content: "";
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background-color: black;
+      animation: blink-caret 0.75s step-end infinite;
+      position: absolute;
+    }
+
+    @keyframes blink-caret {
+      from, to { opacity: 0 }
+      50% { opacity: 1 }
+    }
+
+
 #gradient-background {
     position: fixed;
     top: 0;
