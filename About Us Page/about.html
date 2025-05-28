@@ -67,31 +67,42 @@
             </div>
         </header>
             <!--NO TOUCHY ABOVE THIS LINE-->
-                    </header>
-            
-                    <section class="about-section">
-                        <div class="about-container">
-                            <h1>About SpoilSafe</h1>
-                            <div class="about-content">
-                                <p>SpoilSafe was founded in 2023 by a team of Carnegie Mellon students who shared a common vision: to dramatically reduce food waste through our innovative technology.</p>
-                                
-                                <p>Our journey began when our founders witnessed firsthand the staggering amount of food wasted in restaurants, grocery stores, and households due to improper storage and lack of real-time freshness monitoring. Motivated by this problem, we developed a smart sensor system that tracks temperature, humidity, and other environmental factors that affect food freshness.</p>
-                                
-                                <p>Today, SpoilSafe works with restaurants, grocery chains, food distributors, and individual consumers to provide real-time food freshness monitoring. Our AI-powered analytics help predict optimal storage conditions and alert users before food spoils, ultimately saving money and reducing environmental impact.</p>
-                                
-                                <p>We're a diverse group of innovators committed to transforming how the world manages food freshness and ripeness.</p>
-                            </div>
-                            <div class="about-content">
-                            <h2>Why Us?</h2>
+            <!-- Hero Section with large "ABOUT US" -->
+            <section class="hero-section">
+                <h1 class="hero-title">ABOUT US</h1>
+                <p class="hero-subtitle">Discover the story behind SpoilSafe</p>
+                <div class="scroll-indicator" onclick="document.querySelector('.content-section').scrollIntoView({behavior: 'smooth'})">
+                    <span>Scroll to learn more</span>
+                    <div class="scroll-arrow"></div>
+                </div>
+            </section>
 
-                            <p>We create our Spoilsafe sensors using cutting-edge proprietary technology that provides real-time spoilage tracking down to the minute.</p>
+            <!-- Main Content -->
+            <section class="content-section fade-in-section">
+                <h2 class="section-header">Our Story</h2>
+                <div class="section-content">
+                    <p>SpoilSafe was founded in 2023 by a team of Carnegie Mellon students who shared a common vision: to dramatically reduce food waste through our innovative technology.</p>
+                    
+                    <p>Our journey began when our founders witnessed firsthand the staggering amount of food wasted in restaurants, grocery stores, and households due to improper storage and lack of real-time freshness monitoring. Motivated by this problem, we developed a smart sensor system that tracks temperature, humidity, and other environmental factors that affect food freshness.</p>
+                    
+                    <p>Today, SpoilSafe works with restaurants, grocery chains, food distributors, and individual consumers to provide real-time food freshness monitoring. Our AI-powered analytics help predict optimal storage conditions and alert users before food spoils, ultimately saving money and reducing environmental impact.</p>
+                    
+                    <p>We're a diverse group of innovators committed to transforming how the world manages food freshness and ripeness.</p>
+                </div>
+            </section>
 
-                            </div>
-                        </div>
-                    </section>
-            
-                    <section class="sponsors-section">
-                        <h2>Our Sponsors</h2>
+            <section class="content-section fade-in-section">
+                <h2 class="section-header">Why Choose Us?</h2>
+                <div class="section-content">
+                    <p>We create our SpoilSafe sensors using cutting-edge proprietary technology that provides real-time spoilage tracking down to the minute.</p>
+                    
+                    <p>Our innovative approach combines advanced IoT sensors with machine learning algorithms to deliver unprecedented accuracy in food freshness monitoring. Unlike traditional methods that rely on expiration dates or visual inspection, our system continuously monitors the actual conditions that affect food quality.</p>
+                    
+                    <p>With partnerships across the food industry and backing from leading technology accelerators, we're positioned to revolutionize how food freshness is managed worldwide.</p>
+                </div>
+            </section>
+            <section class="sponsors-section fade-in-section">
+                <h2 class="section-header">Our Sponsors</h2>
                         <div class="sponsors-slider-container">
                             <div class="sponsors-track">
                                 <!-- Each sponsor logo will be duplicated for the continuous effect -->
@@ -191,6 +202,45 @@
                             // Start the animation
                             animate();
                         });
+            </script>
+            <script>
+                // Intersection Observer for fade-in animations
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe all fade-in sections
+                document.querySelectorAll('.fade-in-section').forEach(section => {
+                    observer.observe(section);
+                });
+
+                // Smooth scroll for hero scroll indicator
+                document.querySelector('.scroll-indicator').addEventListener('click', () => {
+                    document.querySelector('.content-section').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+
+                // Add some parallax effect to hero section
+                window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset;
+                    const hero = document.querySelector('.hero-section');
+                    const rate = scrolled * -0.5;
+                    
+                    if (hero) {
+                        hero.style.transform = `translateY(${rate}px)`;
+                    }
+                });
             </script>
         </body>
     </html>
