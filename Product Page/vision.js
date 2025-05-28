@@ -1,9 +1,8 @@
-// vision.js - Scroll-triggered animations for SpoilSafe Vision Page
 document.addEventListener('DOMContentLoaded', () => {
     // Register GSAP ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animate hero elements on load
+    // Hero animations
     gsap.from('.hero-title', {
         duration: 1.5,
         y: -50,
@@ -19,13 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: 'power2.out'
     });
 
-    // Scroll-triggered animations for steps
+    // Step animations
     const steps = gsap.utils.toArray('.step');
     
     steps.forEach((step, i) => {
         const disc = step.querySelector('.step-disc');
-        
-        // Step fade-in + slide-up animation
+        const title = step.querySelector('.step-title');
+        const bullets = step.querySelectorAll('.bullet');
+
+        // Step container animation
         gsap.to(step, {
             opacity: 1,
             y: 0,
@@ -37,7 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Disc rotation and glow intensity
+        // Title animation (slide in + glow)
+        gsap.to(title, {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            scrollTrigger: {
+                trigger: step,
+                start: "top 80%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        // Disc rotation and glow
         gsap.to(disc, {
             rotationY: 180,
             duration: 1.5,
@@ -49,21 +62,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Pulsing ring effect (different timing per disc)
-        gsap.to(disc, {
-            scale: 1.05,
-            boxShadow: `0 0 30px rgba(0, 247, 255, 0.5)`,
-            duration: 2,
-            repeat: -1,
-            yoyo: true,
-            delay: i * 0.3
+        // Bullet checkmarks (sequential animation)
+        bullets.forEach((bullet, j) => {
+            ScrollTrigger.create({
+                trigger: bullet,
+                start: "top 80%",
+                onEnter: () => bullet.classList.add('active'),
+                once: true
+            });
         });
 
-        // Color shift for final disc
+        // Final disc color shift
         if (i === 2) {
             gsap.to(disc, {
                 borderColor: '#00ff95',
-                boxShadow: `0 0 20px rgba(0, 255, 149, 0.4)`,
+                boxShadow: '0 0 20px rgba(0, 255, 149, 0.4)',
                 scrollTrigger: {
                     trigger: step,
                     start: "top 70%",
@@ -82,21 +95,5 @@ document.addEventListener('DOMContentLoaded', () => {
             end: "bottom top",
             scrub: 1
         }
-    });
-
-    // Hover effects for step titles
-    document.querySelectorAll('.step-title').forEach(title => {
-        title.addEventListener('mouseenter', () => {
-            gsap.to(title, {
-                textShadow: '0 0 15px var(--glow-primary)',
-                duration: 0.3
-            });
-        });
-        title.addEventListener('mouseleave', () => {
-            gsap.to(title, {
-                textShadow: 'none',
-                duration: 0.3
-            });
-        });
     });
 });
