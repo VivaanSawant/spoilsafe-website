@@ -252,16 +252,7 @@ body {
     transform: translateY(0);
 }
 
-.step:nth-child(odd) .step-content {
-    order: 1;
-    text-align: right;
-}
-
-.step:nth-child(even) .step-content {
-    order: 2;
-    text-align: left;
-}
-
+/* Right-aligned discs for all steps */
 .step-disc {
     width: 200px;
     height: 200px;
@@ -303,6 +294,8 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    opacity: 0;
+    transform: translateX(-30px);
 }
 
 .step-description {
@@ -310,6 +303,42 @@ body {
     line-height: 1.6;
     max-width: 500px;
     opacity: 0.8;
+    padding-left: 0;
+    list-style: none;
+}
+
+.step-description li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+.bullet {
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid var(--glow-primary);
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.bullet::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 0.6rem;
+    height: 0.6rem;
+    background-color: var(--glow-primary);
+    border-radius: 1px;
+    transition: transform 0.3s ease;
+}
+
+.bullet.active::after {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 /* Animations */
@@ -336,18 +365,21 @@ body {
 
     .step {
         flex-direction: column;
-        text-align: center !important;
+        text-align: center;
     }
 
     .step-content {
-        order: 1 !important;
-        text-align: center !important;
         margin-bottom: 3rem;
+        text-align: center;
     }
 
     .step-disc {
         width: 150px;
         height: 150px;
         order: 2;
+    }
+
+    .step-description {
+        text-align: left;
     }
 }
