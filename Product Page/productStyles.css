@@ -1,8 +1,10 @@
 /* Purple Theme CSS */
 
 :root {
-    --glow-primary: #d500f9;
-    --glow-secondary: #9c27b0;
+    --glow-primary: #8e24aa;
+    --glow-secondary: #b14c7a;
+    --accent-dark: #7b1fa2;
+    --accent-light: #c15a66;
     --bg-dark: #1a001f;
     --bg-darker: #0d0010;
 }
@@ -17,15 +19,17 @@ body {
     overflow-x: hidden;
 }
 
-
-
 #gradient-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(circle at 0% 0%, rgba(88, 0, 88, 0.4), rgba(155, 0, 155, 0) 80%);
+    background: radial-gradient(
+        circle at 0% 0%,
+        rgba(142, 36, 170, 0.2),
+        rgba(193, 90, 102, 0.05) 80%
+    );
     z-index: -1;
     pointer-events: none;
     transition: background-position 0.1s ease;
@@ -76,7 +80,7 @@ body {
     top: 10px;
     right: 10px;
     padding: 10px 20px;
-    background: linear-gradient(45deg, #8e24aa, #d500f9);
+    background: linear-gradient(45deg, var(--glow-primary), var(--glow-secondary));
     color: #ffffff;
     border: none;
     border-radius: 50px;
@@ -87,9 +91,9 @@ body {
 }
 
 .header-buttonR:hover {
-    background: linear-gradient(45deg, #6a1b9a, #c2185b);
+    background: linear-gradient(45deg, var(--accent-dark), var(--accent-light));
     transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(177, 76, 122, 0.3);
 }
 
 .logo-path {
@@ -161,11 +165,11 @@ body {
     font-size: 4rem;
     font-weight: 700;
     margin: 0;
-    background: linear-gradient(to right, var(--glow-primary), var(--glow-secondary));
+    background: linear-gradient(to right, var(--glow-primary), var(--accent-light));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 0 10px rgba(213, 0, 249, 0.3);
+    text-shadow: 0 0 10px rgba(142, 36, 170, 0.3);
 }
 
 .hero-subtitle {
@@ -188,9 +192,9 @@ body {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: rgba(213, 0, 249, 0.2);
+    background: rgba(142, 36, 170, 0.2);
     border: 1px solid var(--glow-primary);
-    box-shadow: 0 0 10px rgba(213, 0, 249, 0.5);
+    box-shadow: 0 0 10px rgba(177, 76, 122, 0.4);
     animation: float 2s ease-in-out infinite;
 }
 
@@ -206,12 +210,23 @@ body {
     justify-content: space-between;
     margin-bottom: 10vh;
     position: relative;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    opacity: 0.01;
+    transform: translateY(20px);
+    transition: all 0.2s ease-out;
 }
 
 .step.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.step-content {
+    opacity: 0.01;
+    transform: translateY(10px);
+    transition: all 0.2s ease-out;
+}
+
+.step.active .step-content {
     opacity: 1;
     transform: translateY(0);
 }
@@ -220,30 +235,51 @@ body {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: radial-gradient(circle at center, #2a0033 30%, #1a001f 70%);
-    border: 2px solid var(--glow-primary);
-    box-shadow: 0 0 20px rgba(213, 0, 249, 0.3), inset 0 0 10px rgba(213, 0, 249, 0.2);
+    background: radial-gradient(circle at center, var(--accent-dark) 30%, var(--bg-dark) 70%);
+    border: 2px solid var(--glow-secondary);
+    box-shadow: 
+        0 0 30px rgba(177, 76, 122, 0.4),
+        0 0 60px rgba(142, 36, 170, 0.3),
+        inset 0 0 20px rgba(142, 36, 170, 0.4);
     position: relative;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    opacity: 0.01;
+    transform: translateY(10px) scale(0.98);
+    transition: all 0.2s ease-out;
+}
+
+.step.active .step-disc {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 .step-disc::before {
     content: "";
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
     border-radius: 50%;
-    border: 1px solid rgba(213, 0, 249, 0.3);
+    border: 2px solid rgba(177, 76, 122, 0.3);
     animation: pulse 3s infinite;
+    box-shadow: 
+        0 0 20px rgba(177, 76, 122, 0.3),
+        inset 0 0 20px rgba(142, 36, 170, 0.3);
+}
+
+.step-disc:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 0 40px rgba(177, 76, 122, 0.5),
+        0 0 80px rgba(142, 36, 170, 0.4),
+        inset 0 0 30px rgba(142, 36, 170, 0.5);
 }
 
 .step-label {
     font-family: 'Orbitron', sans-serif;
     font-size: 0.9rem;
     letter-spacing: 2px;
-    color: var(--glow-primary);
+    color: var(--accent-light);
     display: block;
     margin-bottom: 0.5rem;
 }
@@ -309,9 +345,21 @@ body {
 }
 
 @keyframes pulse {
-    0% { opacity: 0.5; transform: scale(1); }
-    50% { opacity: 0.2; transform: scale(1.05); }
-    100% { opacity: 0.5; transform: scale(1); }
+    0% { 
+        opacity: 0.5; 
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(177, 76, 122, 0.3);
+    }
+    50% { 
+        opacity: 0.2; 
+        transform: scale(1.1);
+        box-shadow: 0 0 40px rgba(177, 76, 122, 0.4);
+    }
+    100% { 
+        opacity: 0.5; 
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(177, 76, 122, 0.3);
+    }
 }
 
 @media (max-width: 768px) {
@@ -333,68 +381,98 @@ body {
     }
 }
 
-
-
-
-
-
-
-
-
-
 /* WHITE SECTION BELOW */
 
-
-
-
-
-
-
-
 body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-    }
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-dark);
+}
 
-    .white-section {
-      background-color: white;
-        padding: 80px 20px;
-        text-align: center;
-        min-height: 100vh; /* Full viewport height */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+.white-section {
+    background: transparent;
+    padding: 80px 20px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
 
-    .white-section h2 {
-      font-size: 40px;
-      margin-bottom: 30px;
-      color: #222;
-    }
+.white-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 0% 0%, rgba(142, 36, 170, 0.2), rgba(106, 27, 154, 0) 80%);
+    pointer-events: none;
+}
 
-    .description {
-      font-size: 20px;
-      color: #444;
-      max-width: 900px;
-      margin: 0 auto;
-      min-height: 120px;
-      text-align: left;
-      display: inline-block;
-      position: relative;
-    }
+.white-section h2 {
+    font-size: 60px;
+    margin-bottom: 40px;
+    color: #ffffff;
+    background: linear-gradient(to right, var(--glow-primary), var(--accent-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 15px rgba(142, 36, 170, 0.4);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+}
 
-    .description::after {
-      content: "";
-      display: inline-block;
-      width: 2px;
-      height: 1em;
-      background-color: black;
-      animation: blink-caret 0.75s step-end infinite;
-      position: absolute;
-    }
+.description {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 120px;
+    text-align: left;
+    display: inline-block;
+    position: relative;
+    line-height: 1.8;
+    padding: 20px 40px 20px 20px;
+    background: transparent;
+    opacity: 0.01;
+    transform: translateY(10px);
+}
 
-    @keyframes blink-caret {
-      from, to { opacity: 0 }
-      50% { opacity: 1 }
+.description.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.2s ease-out;
+}
+
+.description::after {
+    content: "|";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--glow-primary);
+    font-weight: bold;
+    animation: blink-caret 0.75s step-end infinite;
+    height: 1.2em;
+    line-height: 1.2em;
+}
+
+@keyframes blink-caret {
+    from, to { opacity: 0 }
+    50% { opacity: 1 }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
