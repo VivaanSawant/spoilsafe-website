@@ -106,6 +106,135 @@ body {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
+/* Hero section with large "ABOUT US" text */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    background: linear-gradient(135deg, rgba(37, 0, 37, 0.3), rgba(0, 0, 0, 0.8));
+}
+
+.hero-title {
+    font-size: clamp(4rem, 12vw, 12rem);
+    font-weight: 700;
+    background: linear-gradient(45deg, #9c27b0, #00ffcc, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin: 0;
+    animation: heroFadeIn 2s ease-out;
+    text-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    opacity: 0.8;
+    text-align: center;
+    animation: heroFadeIn 2s ease-out 0.5s both;
+}
+
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Content sections */
+.content-section {
+    min-height: 100vh;
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-header {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    text-align: center;
+    background: linear-gradient(45deg, #9c27b0, #00ffcc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    width: 100%;
+}
+
+.section-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.section-content p {
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    opacity: 0.9;
+    text-align: justify;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+.scroll-indicator span {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.scroll-arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid #00ffcc;
+    border-bottom: 2px solid #00ffcc;
+    transform: rotate(45deg);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
 
 .logo-path {
     fill: none;
@@ -152,14 +281,16 @@ body {
 /* New styles for About Us page */
 
 .about-section {
-    padding: 120px 20px 60px 20px;
+    min-height: 100vh;
+    padding: 80px 20px;
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .about-container {
-    max-width: 800px;
-    margin: 0 auto;
 }
 
 .about-content {
@@ -168,9 +299,9 @@ body {
 }
 
 .about-content p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
 }
 
 h1 {
@@ -233,12 +364,14 @@ h2 {
     height: auto;
     max-height: 100px;
     object-fit: contain;
-    opacity: 1;
+    filter: grayscale(100%) brightness(1.5); /* Makes logos white */
+    opacity: 0.7;
     transition: all 0.3s ease;
 }
 
 .sponsor img:hover {
-    transform: scale(1.05);
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
 }
 
 /* Team section */
