@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bullets.forEach((bullet, j) => {
             ScrollTrigger.create({
                 trigger: bullet,
-                start: "top 80%",
+                start: "top 60%",
                 onEnter: () => bullet.classList.add('active'),
                 once: true
             });
