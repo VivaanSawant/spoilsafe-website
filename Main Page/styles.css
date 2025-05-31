@@ -6,6 +6,8 @@ body {
     background-color: #121212;
     color: #ffffff;
     scroll-behavior: smooth;
+    min-height: 100%;
+    overflow-x: hidden;
 }
 
 header {
@@ -393,6 +395,8 @@ footer {
 /* Optional smooth scroll behavior */
 html {
     scroll-behavior: smooth;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 

@@ -1056,6 +1056,15 @@ class BananaAnimation {
 document.addEventListener('DOMContentLoaded', () => {
     const bananaAnimation = new BananaAnimation();
 });
+
+function setViewportHeight() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+// Initialize and update on resize
+setViewportHeight();
+window.addEventListener('resize', setViewportHeight);
+window.addEventListener('orientationchange', setViewportHeight);
 </script>
 
 </body>
