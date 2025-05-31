@@ -102,6 +102,22 @@ header h3 {
    /* text-align: left; /* Align text to the left */
 /*}*/ 
 
+/* Add to your existing styles */
+.pulse-animation {
+    animation: pulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+/* Make icons slightly larger on hover */
+.capability-card:hover .icon {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
 h2 {
     font-size: 1.5rem;
     color: #ffffff;
@@ -480,8 +496,8 @@ html {
 }
 
 .card-icon {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background: rgba(100, 255, 200, 0.1);
     border-radius: 12px;
     display: flex;
