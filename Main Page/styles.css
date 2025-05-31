@@ -543,11 +543,19 @@ html {
 }
 
 .problem-section-with-banana {
-        background-color: #2d2d2d;
+    background-color: #2d2d2d;
     min-height: 300vh; /* Adjust this value to make it taller */
     padding: 5vh 5% 100vh; /* Extra padding at bottom to prevent cutoff */
     position: relative;
     z-index: 1;
+    position: relative;
+    width: 100vw;
+    height: 100vh; /* Fallback */
+    height: calc(var(--vh, 1vh) * 100); /* Dynamic mobile viewport */
+    min-height: -webkit-fill-available; /* Mobile Safari fix */
+    overflow: hidden;
+    z-index: 1;
+    background: #1a0f1f;
 }
 
 /* Ensure the sticky container fills the viewport */
