@@ -10,10 +10,18 @@ body {
     overflow-x: hidden;
 }
 
+:root {
+    --vh: 1vh; /* Fallback */
+}
+
 header {
     text-align: center;
     padding: 50px 20px;
     animation: fadeIn 1s ease-in-out;
+    height: 100vh; /* Fallback for older browsers */
+    height: calc(var(--vh, 1vh) * 100); /* Dynamic height */
+    min-height: -webkit-fill-available; /* Fix for mobile Safari */
+    
 }
 /* Make the text bigger and fill the page */
 header h2 {
