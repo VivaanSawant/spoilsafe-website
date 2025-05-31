@@ -10,6 +10,7 @@ body {
     overflow-x: hidden;
 }
 
+
 :root {
     --vh: 1vh; /* Fallback */
 }
@@ -64,6 +65,19 @@ header h3 {
     100% {
         background-position: 100% 50%;
     }
+}
+
+.diagonal-divider {
+  position: relative;
+  height: 80px;
+  background: linear-gradient(
+    to bottom right,
+    transparent 49.5%,
+    #1F1A2E 50%,
+    #1F1A2E 100%
+  );
+  margin-top: -1px; /* Ensures no gap */
+  z-index: 2;
 }
 
 .logo-path {
@@ -535,7 +549,7 @@ html {
 
 
 .filler-section {
-        background-color: #2d2d2d;
+    background-color: #1F1A2E;
     min-height: 220vh; /* Adjust this value to make it taller */
     padding: 5vh 5% 20vh; /* Extra padding at bottom to prevent cutoff */
     position: relative;
@@ -543,7 +557,7 @@ html {
 }
 
 .problem-section-with-banana {
-    background-color: #2d2d2d;
+    background-color: #1F1A2E;
     min-height: 300vh; /* Adjust this value to make it taller */
     padding: 5vh 5% 100vh; /* Extra padding at bottom to prevent cutoff */
     position: relative;

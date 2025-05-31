@@ -175,14 +175,14 @@
 
         /* Global and body styles */
         body.white-background {
-            background-color: white;
+            background: #1F1A2E;
             transition: background-color 0.3s ease;
         }
 
         /* Problem Section with consistent dark background */
         .problem-section-with-banana {
             position: relative;
-            background: #1a0f1f;
+            background: #1F1A2E;
             min-height: 100vh;
             height: auto;
             overflow: visible;
@@ -191,7 +191,7 @@
         }
 
         .filler-section {
-            background: #1a0f1f;
+            background: #1F1A2E;
             min-height: 220vh;
             padding: 5vh 5% 20vh;
             position: relative;
@@ -528,6 +528,9 @@
         <button class="cta2-button" onclick="window.location.href='../Product Page/product.html'";>Learn More</button>
     </header>
 
+    <div class="diagonal-divider"></div>
+
+
     <!-- Updated Problem Section with Banana Animation -->
     <section class="problem-section-with-banana">
         <div class="banana-animation-container">
@@ -700,9 +703,9 @@ const gradientSection = document.getElementById('gradient-background');
       const threshold = gradientSection.offsetHeight * 0.4;
 
       if (scrollPosition > threshold) {
-        body.classList.add('white-background');
+        //body.classList.add('white-background');
       } else {
-        body.classList.remove('white-background');
+        //body.classList.remove('white-background');
       }
     });
     
