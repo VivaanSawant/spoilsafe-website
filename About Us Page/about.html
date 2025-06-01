@@ -122,22 +122,17 @@
                                 
                                 <!-- Duplicate sponsors for continuous scrolling effect -->
                                 <div class="sponsor">
-                                    <img src="/api/placeholder/180/100" alt="Sponsor 1" />
+                                    <img src="../About Us Page/Sponsors/build18.png" alt="Sponsor 1" />
                                 </div>
                                 <div class="sponsor">
-                                    <img src="/api/placeholder/180/100" alt="Sponsor 2" />
+                                    <img src="../About Us Page/Sponsors/ProjectOlympus.png" alt="Sponsor 2" />
                                 </div>
                                 <div class="sponsor">
-                                    <img src="/api/placeholder/180/100" alt="Sponsor 3" />
+                                    <img src="../About Us Page/Sponsors/Swartz.png" alt="Sponsor 3" />
                                 </div>
                                 <div class="sponsor">
-                                    <img src="/api/placeholder/180/100" alt="Sponsor 4" />
+                                    <img src="../About Us Page/Sponsors/Nucor.png" alt="Sponsor 4" />
                                 </div>
-                                <div class="sponsor">
-                                    <img src="/api/placeholder/180/100" alt="Sponsor 5" />
-                                </div>
-                                <div class="sponsor">
-                                    <img src="/api/placeholder/180/100" alt="Sponsor 6" />
                                 </div>
                             </div>
                         </div>
@@ -169,42 +164,49 @@
 
                     
                     <script>
-                        // Function to handle sponsor slider animation
+                        // Fixed Sponsors slider functionality
                         document.addEventListener('DOMContentLoaded', function() {
                             const track = document.querySelector('.sponsors-track');
                             
-                            // Create a true clone of the first set to ensure we have duplicates
-                            const firstSponsors = Array.from(track.querySelectorAll('.sponsor')).slice(0, 6);
+                            if (!track) return; // Safety check
                             
-                            // Remove any existing duplicates to start fresh
-                            while (track.children.length > 6) {
-                                track.removeChild(track.lastChild);
+                            const originalSponsors = Array.from(track.querySelectorAll('.sponsor'));
+                            
+                            // Clear any existing clones
+                            track.innerHTML = '';
+                            
+                            // Re-add original sponsors
+                            originalSponsors.forEach(sponsor => {
+                                track.appendChild(sponsor);
+                            });
+                            
+                            // Create multiple sets of clones for seamless looping
+                            // We'll create 3 full sets (original + 2 clones) for smooth infinite scroll
+                            for (let i = 0; i < 2; i++) {
+                                originalSponsors.forEach(sponsor => {
+                                    const clone = sponsor.cloneNode(true);
+                                    track.appendChild(clone);
+                                });
                             }
                             
-                            // Add one set of clones
-                            firstSponsors.forEach(sponsor => {
-                                const clone = sponsor.cloneNode(true);
-                                track.appendChild(clone);
-                            });
-                            
-                            // Calculate the exact width of the first set
+                            // Calculate the width of one complete set (4 sponsors)
                             let setWidth = 0;
-                            firstSponsors.forEach(sponsor => {
+                            for (let i = 0; i < originalSponsors.length; i++) {
+                                const sponsor = track.children[i];
                                 const style = window.getComputedStyle(sponsor);
-                                const marginLeft = parseFloat(style.marginLeft);
-                                const marginRight = parseFloat(style.marginRight);
+                                const marginLeft = parseFloat(style.marginLeft) || 0;
+                                const marginRight = parseFloat(style.marginRight) || 0;
                                 setWidth += sponsor.offsetWidth + marginLeft + marginRight;
-                            });
+                            }
                             
-                            // Set initial position
                             let position = 0;
-                            const speed = 0.7; // Pixels per frame
+                            const speed = 0.7; // Adjust speed as needed
                             
-                            // Animation loop for continuous scrolling
                             function animate() {
                                 position -= speed;
                                 
-                                // When the first set is completely off-screen, reset position
+                                // When we've scrolled past one complete set, reset position
+                                // This creates the seamless loop effect
                                 if (position <= -setWidth) {
                                     position = 0;
                                 }
