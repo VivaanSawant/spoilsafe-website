@@ -157,14 +157,16 @@ body {
 }
 
 .hero-title {
-    font-family: 'Orbitron', sans-serif;
     font-size: clamp(4rem, 12vw, 12rem);
     font-weight: 700;
-    margin: 0;
-    background: linear-gradient(to right, var(--glow-primary), var(--glow-secondary));
+    background: linear-gradient(45deg, #9c27b0, #00ffcc, #ffffff);
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin: 0;
+    animation: heroFadeIn 2s ease-out;
     text-shadow: 0 0 10px rgba(213, 0, 249, 0.3);
 }
 
