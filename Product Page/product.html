@@ -70,8 +70,10 @@
         <section class="hero">
         <h1 class="hero-title">OUR VISION</h1>
         <p class="hero-subtitle">Building the future of food preservation before spoilage begins.</p>
-        <div class="scroll-indicator">
-            <div class="scroll-disc"></div>
+        <div class="scroll-indicator" onclick="document.querySelector('.white-section').scrollIntoView({behavior: 'smooth'})">
+                    <span>Scroll to learn more</span>
+                    <div class="scroll-arrow"></div>
+                </div>
         </div>
 
     </section>
@@ -193,6 +195,13 @@
     }
 
     typeNextChar();
+    document.querySelector('.scroll-indicator').addEventListener('click', () => {
+                    document.querySelector('.content-section').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+
         </script>
     </body>
 </html>
