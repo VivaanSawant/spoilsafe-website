@@ -160,11 +160,11 @@ body {
 }
 
 .hero-subtitle {
-    font-family: 'Exo', sans-serif;
-    font-weight: 300;
     font-size: 1.5rem;
-    margin: 1rem 0 3rem;
-    opacity: 0.9;
+    margin-top: 2rem;
+    opacity: 0.8;
+    text-align: center;
+    animation: heroFadeIn 2s ease-out 0.5s both;
 }
 
 /* Scroll indicator */
