@@ -573,6 +573,112 @@ html {
     position: relative;
     z-index: -1;
 }
+.big-problem-section {
+    /* background: #1a0f1f; */
+    padding: 80px 20px;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.big-problem-section h1 {
+    font-size: clamp(4rem, 8vw, 8rem);
+    line-height: 1.2;
+    font-weight: 700;
+    margin: 0 0 40px 0;
+    background: linear-gradient(90deg, rgba(142, 36, 170, 0.8), rgba(229, 0, 74, 0.8));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow: 0 0 30px rgba(142, 36, 170, 0.3);
+    animation: gradientMove 3s ease-in-out infinite;
+    background-size: 200% 200%;
+}
+
+.main-subtitle {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+    margin-bottom: 60px;
+    line-height: 1.4;
+}
+.call-to-action-subtitle{
+    font-size: clamp(1rem, 3vw, 2rem);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+    margin-bottom: 60px;
+    line-height: 1.4;
+}
+
+.problem-stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.problem-stat {
+    flex: 1;
+    min-width: 280px;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.problem-stat:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(142, 36, 170, 0.3);
+    box-shadow: 0 15px 30px rgba(142, 36, 170, 0.2);
+}
+
+.problem-stat h3 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    background: linear-gradient(90deg, rgba(142, 36, 170, 0.8), rgba(229, 0, 74, 0.8));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    line-height: 1.2;
+}
+
+.problem-stat p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .problem-stats-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .problem-stat {
+        min-width: 100%;
+        padding: 30px 25px;
+    }
+    
+    .big-problem-section {
+        padding: 60px 15px;
+    }
+}
 
 .problem-section-with-banana {
     background-color: #1F1A2E;
