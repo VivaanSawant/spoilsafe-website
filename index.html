@@ -529,29 +529,29 @@
         <button class="cta2-button" onclick="window.location.href='Product Page/product.html'";>Learn More</button>
     </header>
     <div class='big-problem-section'>
-        <h1>$1 Trillion</h1>
+        <h1 class="scroll-float-trillion">$1 Trillion</h1>
         
-        <div class="main-subtitle">
+        <div class="main-subtitle scroll-float">
             of global food waste annually.
         </div>
         
         <div class="problem-stats-container">
             
-            <div class="problem-stat">
+            <div class="problem-stat scroll-float">
                 <h3>450 Million</h3> 
                 <p>tons of pre-consumer food are lost within the global retail and hospitality sectors annually.  </p>
             </div>
             
-            <div class="problem-stat">
+            <div class="problem-stat scroll-float">
                 <h3>$1,400</h3> 
                 <p>of food waste within each household annually.</p> 
             </div>
             
-            <div class="problem-stat">
+            <div class="problem-stat scroll-float">
                 <h3>1/3</h3> 
                 <p>of all food produced is wasted.</p> 
             </div>
-            <div class="call-to-action-subtitle">
+            <div class="call-to-action-subtitle scroll-float">
                 It's time to stop being part of <b>the problem.</b>
             </div>
         </div>
@@ -602,20 +602,20 @@
                 </defs>
             </svg>
             
-            <h2>What You Get</h2>
+            <h2 class="scroll-float">What You Get</h2>
             
             <div class="photo-container">
-                <div class="square-photo">
+                <div class="square-photo scroll-float-image">
                     <img src="device-exploded.png" alt="Exploded device" />
                 </div>
-                <div class="square-photo">
+                <div class="square-photo scroll-float-image">
                     <img src="device-in-strawberries.png" alt="Device in strawberries" />
                 </div>
             </div>
             
             <div class="capabilities-grid">
         <!-- Capability 1: Real-Time Monitoring -->
-        <div class="capability-card">
+        <div class="capability-card scroll-float">
             <div class="card-icon">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                     <!-- Dashboard with live wave -->
@@ -632,7 +632,7 @@
         </div>
         
         <!-- Capability 2: Smart Alerts -->
-        <div class="capability-card">
+        <div class="capability-card scroll-float">
             <div class="card-icon">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                     <!-- AI brain with notification -->
@@ -648,7 +648,7 @@
         </div>
         
         <!-- Capability 3: Adaptive Storage -->
-        <div class="capability-card">
+        <div class="capability-card scroll-float">
             <div class="card-icon">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                     <!-- Smart fridge with adaptive settings -->
@@ -665,7 +665,7 @@
         </div>
         
         <!-- Capability 4: Security -->
-        <div class="capability-card">
+        <div class="capability-card scroll-float">
             <div class="card-icon">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
         <!-- Shield with centered lock -->
@@ -680,7 +680,7 @@
         </div>
         
         <!-- Capability 5: Adaptable Hardware -->
-        <div class="capability-card">
+        <div class="capability-card scroll-float">
             <div class="card-icon">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                     <!-- Modular device with connectors -->
@@ -698,7 +698,7 @@
         </div>
         
         <!-- Capability 6: Scalable -->
-        <div class="capability-card">
+        <div class="capability-card scroll-float">
             <div class="card-icon">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                     <!-- Network nodes with growth arrow -->
@@ -1220,7 +1220,32 @@ class BananaAnimation {
 // Initialize the banana animation
 document.addEventListener('DOMContentLoaded', () => {
     const bananaAnimation = new BananaAnimation();
+    initScrollAnimations();
 });
+
+// Scroll-triggered animations
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add a small delay before triggering animation for smoother feel
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, 100);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all elements with scroll-float classes
+    document.querySelectorAll('.scroll-float, .scroll-float-image, .scroll-float-trillion').forEach(el => {
+        observer.observe(el);
+    });
+}
 
 function setViewportHeight() {
     let vh = window.innerHeight * 0.01;
