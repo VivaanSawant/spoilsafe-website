@@ -349,6 +349,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             z-index: 31;
+            pointer-events: auto;
         }
 
         .restart-animation-btn:hover {
@@ -869,6 +870,8 @@ const gradientSection = document.getElementById('gradient-background');
         const problemSection = document.querySelector('.the-problem');
         const problemStack = document.querySelector('.problem-stack');
         const blackRectangle = document.querySelector('.black-rectangle');
+        if (!problemSection || !problemStack || !blackRectangle) return;
+
         const sectionTop = problemSection.offsetTop;
         const sectionHeight = problemSection.offsetHeight;
         const scrollY = window.scrollY;
@@ -897,6 +900,7 @@ const gradientSection = document.getElementById('gradient-background');
         const problemTextCard = document.querySelector('.problem-text-card');
         const leftCard = document.querySelector('.left-card');
         const rightCard = document.querySelector('.right-card');
+        if (!problemSection || !problemTitleCard || !problemTextCard || !leftCard || !rightCard) return;
 
         const sectionTop = problemSection.offsetTop;
         const sectionHeight = problemSection.offsetHeight;
@@ -1052,6 +1056,7 @@ class BananaAnimation {
     
     init() {
         this.loadImages();
+        this.createRestartButton();
         this.calculateDimensions();
         this.bindScrollEvent();
         window.addEventListener('resize', this.calculateDimensions.bind(this));
@@ -1142,9 +1147,11 @@ class BananaAnimation {
             if (scrollProgress >= 1.01 && !this.animationCompleted) {
                 this.animationCompleted = true;
                 this.animationContainer.classList.remove('sticky');
-                setTimeout(() => {
-                    this.restartBtn.classList.add('show');
-                }, 500);
+                if (this.restartBtn) {
+                    setTimeout(() => {
+                        this.restartBtn.classList.add('show');
+                    }, 500);
+                }
             }
         } 
         else if (scrollY < this.startOffset && this.isAnimating) {
@@ -1198,15 +1205,15 @@ class BananaAnimation {
         this.progressFill.style.width = `${progress * 100}%`;
 
         if (stageIndex === this.spoilageStages.length - 1) {
-                if (!this.restartBtn) {
-                    //this.createRestartButton(); <-- IS THIS NECESSARY??
-                }
-                setTimeout(() => {
-                    this.restartBtn.classList.add('show');
-                }, 500);
-            } else if (this.restartBtn) {
-                this.restartBtn.classList.remove('show');
-            }
+    if (this.restartBtn) {
+        setTimeout(() => {
+            this.restartBtn.classList.add('show');
+        }, 500);
+    }
+}
+    else if (this.restartBtn) {
+    this.restartBtn.classList.remove('show');
+}
     }
 }
 

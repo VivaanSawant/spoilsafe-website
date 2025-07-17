@@ -428,8 +428,6 @@ footer {
     align-items: center;
 }
 
-/* Rest of your existing CSS remains the same */
-
 /* Optional smooth scroll behavior */
 html {
     scroll-behavior: smooth;
