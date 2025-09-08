@@ -106,6 +106,9 @@
         /* Core Capabilities Icon Update */
         .capability-card .icon {
             stroke: url(#gradient);
+            position: relative;        /* ensures a containing block */
+            overflow: hidden;          /* clips icon/glow when it scales */
+            /* overflow: clip;          /* modern alternative if you prefer */
         }
 
         /* Add this SVG gradient definition to your header section */
@@ -131,6 +134,9 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(142, 36, 170, 0.2);
+            overflow: hidden;          /* you already added this — keep it */
+            contain: paint;            /* confines painting (glow) to this box */
+            transform-origin: center;  /* prevents scaling from “pushing” out */
         }
 
         .card-icon .icon {
@@ -467,6 +473,23 @@
             padding: 20px;
             background-color: #1a0f1f;
         }
+        /* --- Normalize card layout and icon spacing --- */
+        .capability-card {
+        display: grid;
+        grid-auto-rows: max-content;
+        align-content: start;
+        gap: 0px;              /* consistent spacing between icon, h3, p */
+        padding: 40px;          /* your card padding */
+        }
+
+        /* Keep the icon in flow; nudge down with margin instead of top */
+        .capability-card .card-icon {
+        position: static;       /* reset the relative/top hack */
+        top: auto;              /* ensure no offset remains */
+        margin: 0px 0 10px;    /* push down a bit; adjust first value to taste */
+        align-self: start;      /* left-align with heading text; use center if you prefer */
+        }
+
     </style>
 </head>
 <body>
