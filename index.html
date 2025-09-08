@@ -106,6 +106,9 @@
         /* Core Capabilities Icon Update */
         .capability-card .icon {
             stroke: url(#gradient);
+            position: relative;        /* ensures a containing block */
+            overflow: hidden;          /* clips icon/glow when it scales */
+            /* overflow: clip;          /* modern alternative if you prefer */
         }
 
         /* Add this SVG gradient definition to your header section */
@@ -131,6 +134,9 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(142, 36, 170, 0.2);
+            overflow: hidden;          /* you already added this — keep it */
+            contain: paint;            /* confines painting (glow) to this box */
+            transform-origin: center;  /* prevents scaling from “pushing” out */
         }
 
         .card-icon .icon {
@@ -336,7 +342,7 @@
             top: -60px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background: linear-gradient(90deg, rgba(142, 36, 170, 0.8), rgba(229, 0, 74, 0.8));
             color: white;
             border: none;
             padding: 12px 24px;
@@ -349,6 +355,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             z-index: 31;
+            pointer-events: auto;
         }
 
         .restart-animation-btn:hover {
@@ -466,6 +473,23 @@
             padding: 20px;
             background-color: #1a0f1f;
         }
+        /* --- Normalize card layout and icon spacing --- */
+        .capability-card {
+        display: grid;
+        grid-auto-rows: max-content;
+        align-content: start;
+        gap: 0px;              /* consistent spacing between icon, h3, p */
+        padding: 40px;          /* your card padding */
+        }
+
+        /* Keep the icon in flow; nudge down with margin instead of top */
+        .capability-card .card-icon {
+        position: static;       /* reset the relative/top hack */
+        top: auto;              /* ensure no offset remains */
+        margin: 0px 0 10px;    /* push down a bit; adjust first value to taste */
+        align-self: start;      /* left-align with heading text; use center if you prefer */
+        }
+
     </style>
 </head>
 <body>
@@ -527,9 +551,36 @@
         <button class="cta-button floating-button" onclick="window.scrollTo({ top: 850, behavior: 'smooth' });" style="margin-right: 20px;">Get Started ↓</button>
         <button class="cta2-button" onclick="window.location.href='Product Page/product.html'";>Learn More</button>
     </header>
+    <div class='big-problem-section'>
+        <h1 class="scroll-float-trillion">$1 Trillion</h1>
+        
+        <div class="main-subtitle scroll-float">
+            of global food waste annually.
+        </div>
+        
+        <div class="problem-stats-container">
+            
+            <div class="problem-stat scroll-float">
+                <h3>450 Million</h3> 
+                <p>tons of pre-consumer food are lost within the global retail and hospitality sectors annually.  </p>
+            </div>
+            
+            <div class="problem-stat scroll-float">
+                <h3>$1,400</h3> 
+                <p>of food waste within each household annually.</p> 
+            </div>
+            
+            <div class="problem-stat scroll-float">
+                <h3>1/3</h3> 
+                <p>of all food produced is wasted.</p> 
+            </div>
+            <div class="call-to-action-subtitle scroll-float">
+                It's time to stop being part of <b>the problem.</b>
+            </div>
+        </div>
+    </div>
 
     <div class="diagonal-divider"></div>
-
 
     <!-- Updated Problem Section with Banana Animation -->
     <section class="problem-section-with-banana">
@@ -541,7 +592,7 @@
             
             <div class="problem-text-side">
                 <h2>The Problem</h2>
-                <p>Every year, millions of tons of food go to waste due to spoilage, costing businesses and consumers billions of dollars.</p>
+                <p>Much like this banana, the food we eat wastes away before our very eyes every day. Most of it, though, is much harder to detect. <b>We can help fix that.</b></p>
                 
                 <div class="spoilage-indicator">
                     <div class="spoilage-level">
@@ -562,123 +613,212 @@
         
     </section>
 
-<section class="core-capabilities">
-    <div class="capabilities-container">
-        <!-- Add gradient definition -->
-        <svg class="gradient-def">
-            <defs>
-                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color: #8e24aa" />
-                    <stop offset="100%" style="stop-color: #b14c7a" />
-                </linearGradient>
-            </defs>
-        </svg>
+    <section class="core-capabilities">
+        <div class="capabilities-container">
+            <!-- Add gradient definition -->
+            <svg class="gradient-def">
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color: #8e24aa" />
+                        <stop offset="100%" style="stop-color: #b14c7a" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            
+            <h2 class="scroll-float">What You Get</h2>
+            
+            <div class="photo-container">
+                <div class="square-photo scroll-float-image">
+                    <img src="device-exploded.png" alt="Exploded device" />
+                </div>
+                <div class="square-photo scroll-float-image">
+                    <img src="device-in-strawberries.png" alt="Device in strawberries" />
+                </div>
+            </div>
+            
+            <div class="capabilities-grid">
+        <!-- Capability 1: Real-Time Monitoring -->
+        <div class="capability-card scroll-float">
+            <div class="card-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Dashboard with live wave -->
+                    <rect x="3" y="3" width="18" height="14" rx="2"></rect>
+                    <path d="M8 21h8m-4-4v4"></path>
+                    <!-- Live wave indicator -->
+                    <path d="M7 10h2v4H7z" class="pulse-animation"/>
+                    <path d="M11 8h2v6h-2z" class="pulse-animation" style="animation-delay: 0.2s"/>
+                    <path d="M15 11h2v3h-2z" class="pulse-animation" style="animation-delay: 0.4s"/>
+                </svg>
+            </div>
+            <h3>Real-Time Freshness Monitoring</h3>
+            <p>Track temperature, humidity, and gas levels around food to detect spoilage risk before it happens.</p>
+        </div>
         
-        <h2>What You Get</h2>
+        <!-- Capability 2: Smart Alerts -->
+        <div class="capability-card scroll-float">
+            <div class="card-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- AI brain with notification -->
+                    <path d="M12 4a8 8 0 0 1 7 7 8 8 0 0 1-7 7 8 8 0 0 1-7-7 8 8 0 0 1 7-7z"/>
+                    <path d="M12 12v3"/>
+                    <circle cx="12" cy="8" r="1" fill="currentColor"/>
+                    <!-- Prediction curve -->
+                    <path d="M5 15l2-2 2 2 2-2 2 2 2-2 2 2" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <h3>Smart Alerts & Predictions</h3>
+            <p>Get AI-powered alerts and shelf-life predictions, so you know exactly when food is at risk of spoiling.</p>
+        </div>
         
-        <div class="capabilities-grid">
-    <!-- Capability 1: Real-Time Monitoring -->
-    <div class="capability-card">
-        <div class="card-icon">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Dashboard with live wave -->
-                <rect x="3" y="3" width="18" height="14" rx="2"></rect>
-                <path d="M8 21h8m-4-4v4"></path>
-                <!-- Live wave indicator -->
-                <path d="M7 10h2v4H7z" class="pulse-animation"/>
-                <path d="M11 8h2v6h-2z" class="pulse-animation" style="animation-delay: 0.2s"/>
-                <path d="M15 11h2v3h-2z" class="pulse-animation" style="animation-delay: 0.4s"/>
-            </svg>
+        <!-- Capability 3: Adaptive Storage -->
+        <div class="capability-card scroll-float">
+            <div class="card-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Smart fridge with adaptive settings -->
+                    <rect x="4" y="4" width="16" height="16" rx="1"/>
+                    <path d="M8 4v16"/>
+                    <path d="M16 4v16"/>
+                    <!-- Adaptive waves -->
+                    <path d="M5 10h3m11 0h-3M5 14h3m11 0h-3" stroke-width="1.5"/>
+                    <circle cx="12" cy="8" r="1" fill="currentColor"/>
+                </svg>
+            </div>
+            <h3>Adaptive Storage Insights</h3>
+            <p>Our system learns from your storage environment to recommend conditions that extend freshness and reduce waste.</p>
         </div>
-        <h3>Real-Time Freshness Monitoring</h3>
-        <p>Track temperature, humidity, and gas levels around food to detect spoilage risk before it happens.</p>
-    </div>
+        
+        <!-- Capability 4: Security -->
+        <div class="capability-card scroll-float">
+            <div class="card-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Shield with centered lock -->
+        <path d="M12 2c5 2 8 5 8 10 0 5-3 9-8 11-5-2-8-6-8-11 0-5 3-8 8-10z"/>
+        <rect x="9" y="10" width="6" height="5" rx="1"/>
+        <path d="M12 13v1"/>
+        <circle cx="12" cy="9" r="1" fill="currentColor"/>
+    </svg>
+            </div>
+            <h3>Secure</h3>
+            <p>Built with robust security protocols to keep your data safe.</p>
+        </div>
+        
+        <!-- Capability 5: Adaptable Hardware -->
+        <div class="capability-card scroll-float">
+            <div class="card-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Modular device with connectors -->
+                    <rect x="5" y="5" width="14" height="14" rx="1"/>
+                    <path d="M9 5v14m6-14v14"/>
+                    <!-- Connection points -->
+                    <circle cx="5" cy="9" r="1" fill="currentColor"/>
+                    <circle cx="5" cy="15" r="1" fill="currentColor"/>
+                    <circle cx="19" cy="9" r="1" fill="currentColor"/>
+                    <circle cx="19" cy="15" r="1" fill="currentColor"/>
+                </svg>
+            </div>
+            <h3>Adaptable Hardware</h3>
+            <p>Easily utilize sensors in containers, fridges, or trucks—no technical expertise required.</p>
+        </div>
+        
+        <!-- Capability 6: Scalable -->
+        <div class="capability-card scroll-float">
+            <div class="card-icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Network nodes with growth arrow -->
+                    <circle cx="12" cy="6" r="2"/>
+                    <circle cx="6" cy="12" r="2"/>
+                    <circle cx="18" cy="12" r="2"/>
+                    <circle cx="12" cy="18" r="2"/>
+                    <path d="M12 8v4m-4 0h8m-8 4l4-4m0 4l-4-4"/>
+                </svg>
+            </div>
+            <h3>Scalable</h3>
+            <p>From home kitchens to restaurant chains, SpoilSafe scales to meet your food freshness monitoring needs.</p>
+        </div>
     
-    <!-- Capability 2: Smart Alerts -->
-    <div class="capability-card">
-        <div class="card-icon">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <!-- AI brain with notification -->
-                <path d="M12 4a8 8 0 0 1 7 7 8 8 0 0 1-7 7 8 8 0 0 1-7-7 8 8 0 0 1 7-7z"/>
-                <path d="M12 12v3"/>
-                <circle cx="12" cy="8" r="1" fill="currentColor"/>
-                <!-- Prediction curve -->
-                <path d="M5 15l2-2 2 2 2-2 2 2 2-2 2 2" stroke-width="1.5"/>
-            </svg>
+            </div>
         </div>
-        <h3>Smart Alerts & Predictions</h3>
-        <p>Get AI-powered alerts and shelf-life predictions, so you know exactly when food is at risk of spoiling.</p>
-    </div>
+    </section>
     
-    <!-- Capability 3: Adaptive Storage -->
-    <div class="capability-card">
-        <div class="card-icon">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Smart fridge with adaptive settings -->
-                <rect x="4" y="4" width="16" height="16" rx="1"/>
-                <path d="M8 4v16"/>
-                <path d="M16 4v16"/>
-                <!-- Adaptive waves -->
-                <path d="M5 10h3m11 0h-3M5 14h3m11 0h-3" stroke-width="1.5"/>
-                <circle cx="12" cy="8" r="1" fill="currentColor"/>
-            </svg>
-        </div>
-        <h3>Adaptive Storage Insights</h3>
-        <p>Our system learns from your storage environment to recommend conditions that extend freshness and reduce waste.</p>
-    </div>
+    <style>
+    /* Photo container styling */
+    .photo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        margin: 60px 0;
+        width: 100%;
+        flex-wrap: wrap;
+    }
     
-    <!-- Capability 4: Security -->
-    <div class="capability-card">
-        <div class="card-icon">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Shield with centered lock -->
-    <path d="M12 2c5 2 8 5 8 10 0 5-3 9-8 11-5-2-8-6-8-11 0-5 3-8 8-10z"/>
-    <rect x="9" y="10" width="6" height="5" rx="1"/>
-    <path d="M12 13v1"/>
-    <circle cx="12" cy="9" r="1" fill="currentColor"/>
-</svg>
-        </div>
-        <h3>Secure</h3>
-        <p>Built with robust security protocols to keep your data safe.</p>
-    </div>
+    .square-photo {
+        width: 400px;
+        height: 400px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(142, 36, 170, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+    }
     
-    <!-- Capability 5: Adaptable Hardware -->
-    <div class="capability-card">
-        <div class="card-icon">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Modular device with connectors -->
-                <rect x="5" y="5" width="14" height="14" rx="1"/>
-                <path d="M9 5v14m6-14v14"/>
-                <!-- Connection points -->
-                <circle cx="5" cy="9" r="1" fill="currentColor"/>
-                <circle cx="5" cy="15" r="1" fill="currentColor"/>
-                <circle cx="19" cy="9" r="1" fill="currentColor"/>
-                <circle cx="19" cy="15" r="1" fill="currentColor"/>
-            </svg>
-        </div>
-        <h3>Adaptable Hardware</h3>
-        <p>Easily utilize sensors in containers, fridges, or trucks—no technical expertise required.</p>
-    </div>
+    .square-photo:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        border-color: rgba(142, 36, 170, 0.5);
+    }
     
-    <!-- Capability 6: Scalable -->
-    <div class="capability-card">
-        <div class="card-icon">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Network nodes with growth arrow -->
-                <circle cx="12" cy="6" r="2"/>
-                <circle cx="6" cy="12" r="2"/>
-                <circle cx="18" cy="12" r="2"/>
-                <circle cx="12" cy="18" r="2"/>
-                <path d="M12 8v4m-4 0h8m-8 4l4-4m0 4l-4-4"/>
-            </svg>
-        </div>
-        <h3>Scalable</h3>
-        <p>From home kitchens to restaurant chains, SpoilSafe scales to meet your food freshness monitoring needs.</p>
-    </div>
-
-        </div>
-    </div>
-</section>
+    .square-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .square-photo:hover img {
+        transform: scale(1.05);
+    }
+    
+    /* Placeholder styling if no image is provided */
+    .square-photo:empty::before {
+        content: "Add Your Photo Here";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background: rgba(142, 36, 170, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.2rem;
+        font-weight: 500;
+        border: 2px dashed rgba(142, 36, 170, 0.3);
+        border-radius: 16px;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .square-photo {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .photo-container {
+            margin: 40px 0;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .square-photo {
+            width: 250px;
+            height: 250px;
+        }
+        
+        .square-photo:empty::before {
+            font-size: 1rem;
+        }
+    }
+    </style>
 
 <section class = "floatingEnd">
     <div class="floating-cta" id="floating-cta">
@@ -753,6 +893,8 @@ const gradientSection = document.getElementById('gradient-background');
         const problemSection = document.querySelector('.the-problem');
         const problemStack = document.querySelector('.problem-stack');
         const blackRectangle = document.querySelector('.black-rectangle');
+        if (!problemSection || !problemStack || !blackRectangle) return;
+
         const sectionTop = problemSection.offsetTop;
         const sectionHeight = problemSection.offsetHeight;
         const scrollY = window.scrollY;
@@ -781,6 +923,7 @@ const gradientSection = document.getElementById('gradient-background');
         const problemTextCard = document.querySelector('.problem-text-card');
         const leftCard = document.querySelector('.left-card');
         const rightCard = document.querySelector('.right-card');
+        if (!problemSection || !problemTitleCard || !problemTextCard || !leftCard || !rightCard) return;
 
         const sectionTop = problemSection.offsetTop;
         const sectionHeight = problemSection.offsetHeight;
@@ -936,6 +1079,7 @@ class BananaAnimation {
     
     init() {
         this.loadImages();
+        this.createRestartButton();
         this.calculateDimensions();
         this.bindScrollEvent();
         window.addEventListener('resize', this.calculateDimensions.bind(this));
@@ -1026,9 +1170,11 @@ class BananaAnimation {
             if (scrollProgress >= 1.01 && !this.animationCompleted) {
                 this.animationCompleted = true;
                 this.animationContainer.classList.remove('sticky');
-                setTimeout(() => {
-                    this.restartBtn.classList.add('show');
-                }, 500);
+                if (this.restartBtn) {
+                    setTimeout(() => {
+                        this.restartBtn.classList.add('show');
+                    }, 500);
+                }
             }
         } 
         else if (scrollY < this.startOffset && this.isAnimating) {
@@ -1082,22 +1228,47 @@ class BananaAnimation {
         this.progressFill.style.width = `${progress * 100}%`;
 
         if (stageIndex === this.spoilageStages.length - 1) {
-                if (!this.restartBtn) {
-                    //this.createRestartButton(); <-- IS THIS NECESSARY??
-                }
-                setTimeout(() => {
-                    this.restartBtn.classList.add('show');
-                }, 500);
-            } else if (this.restartBtn) {
-                this.restartBtn.classList.remove('show');
-            }
+    if (this.restartBtn) {
+        setTimeout(() => {
+            this.restartBtn.classList.add('show');
+        }, 500);
+    }
+}
+    else if (this.restartBtn) {
+    this.restartBtn.classList.remove('show');
+}
     }
 }
 
 // Initialize the banana animation
 document.addEventListener('DOMContentLoaded', () => {
     const bananaAnimation = new BananaAnimation();
+    initScrollAnimations();
 });
+
+// Scroll-triggered animations
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add a small delay before triggering animation for smoother feel
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, 100);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all elements with scroll-float classes
+    document.querySelectorAll('.scroll-float, .scroll-float-image, .scroll-float-trillion').forEach(el => {
+        observer.observe(el);
+    });
+}
 
 function setViewportHeight() {
     let vh = window.innerHeight * 0.01;
