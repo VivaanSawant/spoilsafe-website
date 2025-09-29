@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpoilSafe Exploded View</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      background: black;
+    }
+
+    .exploded-section {
+      position: relative;
+      background: black;
+      min-height: 200vh; /* enough scroll space */
+    }
+
+    .exploded-animation-container {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .exploded-image-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .exploded-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: none;
+    }
+
+    .exploded-image.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="exploded-section">
+    <div class="exploded-animation-container">
+      <div class="exploded-image-container" id="exploded-container">
+        <!-- Images will be injected here -->
+      </div>
+    </div>
+  </section>
+
+  <script>
+    class ExplodedAnimation {
+      constructor() {
+        this.totalFrames = 61;
+        this.container = document.getElementById('exploded-container');
+        this.images = [];
+        this.currentFrame = 0;
+        this.section = document.querySelector('.exploded-section');
+        this.startOffset = 0;
+        this.endOffset = 0;
+
+        this.init();
+      }
+
+      init() {
+        this.loadImages();
+        this.calculateOffsets();
+        window.addEventListener('scroll', () => this.handleScroll());
+        window.addEventListener('resize', () => this.calculateOffsets());
+      }
+
+      loadImages() {
+        for (let i = 0; i < this.totalFrames; i++) {
+          const img = document.createElement('img');
+          img.src = `casing_advika_v33_frames/Casing_Advika v33_${String(i + 1).padStart(4, '0')}.jpg`;
+          img.alt = `Exploded Frame ${i + 1}`;
+          img.className = 'exploded-image';
+          if (i === 0) img.classList.add('active');
+          this.container.appendChild(img);
+          this.images.push(img);
+        }
+      }
+
+      calculateOffsets() {
+        this.startOffset = this.section.offsetTop;
+        this.endOffset = this.startOffset + this.section.offsetHeight - window.innerHeight;
+      }
+
+      handleScroll() {
+        const scrollY = window.scrollY;
+        const progress = Math.min(Math.max((scrollY - this.startOffset) / (this.endOffset - this.startOffset), 0), 1);
+        const frameIndex = Math.min(this.totalFrames - 1, Math.floor(progress * this.totalFrames));
+
+        if (frameIndex !== this.currentFrame) {
+          this.images[this.currentFrame].classList.remove('active');
+          this.images[frameIndex].classList.add('active');
+          this.currentFrame = frameIndex;
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      new ExplodedAnimation();
+    });
+  </script>
+</body>
+</html>
