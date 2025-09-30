@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.calculateOffsets();
       window.addEventListener('scroll', () => this.handleScroll());
       window.addEventListener('resize', () => this.calculateOffsets());
-    } 
+    }  
 
     loadImages() {
       for (let i = 0; i < this.totalFrames; i++) {
