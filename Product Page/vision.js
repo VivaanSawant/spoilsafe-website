@@ -1,99 +1,96 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Register GSAP ScrollTrigger plugin
-    gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-    // Hero animations
-    gsap.from('.hero-title', {
-        duration: 1.5,
-        y: -50,
-        opacity: 0,
-        ease: 'power3.out'
+  // Hero animations
+  gsap.from('.hero-title', {
+    duration: 1.5,
+    y: -50,
+    opacity: 0,
+    ease: 'power3.out'
+  });
+
+  gsap.from('.hero-subtitle', {
+    duration: 1.5,
+    y: 30,
+    opacity: 0,
+    delay: 0.3,
+    ease: 'power2.out'
+  });
+
+  // Exploded View Animation
+  class ExplodedAnimation {
+    constructor() {
+      this.totalFrames = 61;
+      this.container = document.getElementById('exploded-container');
+      this.images = [];
+      this.currentFrame = 0;
+      this.section = document.querySelector('.exploded-section');
+      this.startOffset = 0;
+      this.endOffset = 0;
+      this.init();
+    }
+
+    init() {
+      this.loadImages();
+      this.calculateOffsets();
+      window.addEventListener('scroll', () => this.handleScroll());
+      window.addEventListener('resize', () => this.calculateOffsets());
+    }
+
+    loadImages() {
+      for (let i = 0; i < this.totalFrames; i++) {
+        const img = document.createElement('img');
+        img.src = `casing_advika_v33_frames/Casing_Advika v33_${String(i + 1).padStart(4, '0')}.jpg`;
+        img.alt = `Exploded Frame ${i + 1}`;
+        img.className = 'exploded-image';
+        if (i === 0) img.classList.add('active');
+        this.container.appendChild(img);
+        this.images.push(img);
+      }
+    }
+
+    calculateOffsets() {
+      this.startOffset = this.section.offsetTop;
+      this.endOffset = this.startOffset + this.section.offsetHeight - window.innerHeight;
+    }
+
+    handleScroll() {
+      const scrollY = window.scrollY;
+      const progress = Math.min(Math.max((scrollY - this.startOffset) / (this.endOffset - this.startOffset), 0), 1);
+      const frameIndex = Math.min(this.totalFrames - 1, Math.floor(progress * this.totalFrames));
+      if (frameIndex !== this.currentFrame) {
+        this.images[this.currentFrame].classList.remove('active');
+        this.images[frameIndex].classList.add('active');
+        this.currentFrame = frameIndex;
+      }
+    }
+  }
+
+  new ExplodedAnimation();
+
+  // Overlay text animations
+  function setupExplodedText() {
+  const steps = [
+    { id: "#exploded-step1", start: "top center" },
+    { id: "#exploded-step2", start: "top center+=300" },
+    { id: "#exploded-step3", start: "top center+=600" }
+  ];
+
+  steps.forEach((step) => {
+    gsap.to(step.id, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".exploded-section",
+        start: step.start,
+        toggleActions: "play none none none", // fade in only
+        scrub: false
+      }
     });
+  });
+}
 
-    gsap.from('.hero-subtitle', {
-        duration: 1.5,
-        y: 30,
-        opacity: 0,
-        delay: 0.3,
-        ease: 'power2.out'
-    });
 
-    // Step animations
-    const steps = gsap.utils.toArray('.step');
-    
-    steps.forEach((step, i) => {
-        const disc = step.querySelector('.step-disc');
-        const title = step.querySelector('.step-title');
-        const bullets = step.querySelectorAll('.bullet');
-
-        // Step container animation
-        gsap.to(step, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: step,
-                start: "top 70%",
-                toggleActions: "play none none none"
-            }
-        });
-
-        // Title animation (slide in + glow)
-        gsap.to(title, {
-            opacity: 1,
-            x: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: step,
-                start: "top 80%",
-                toggleActions: "play none none none"
-            }
-        });
-
-        // Disc rotation and glow
-        gsap.to(disc, {
-            rotationY: 180,
-            duration: 1.5,
-            scrollTrigger: {
-                trigger: step,
-                start: "top 80%",
-                end: "top 30%",
-                scrub: 0.5
-            }
-        });
-
-        // Bullet checkmarks (sequential animation)
-        bullets.forEach((bullet, j) => {
-            ScrollTrigger.create({
-                trigger: bullet,
-                start: "top 60%",
-                onEnter: () => bullet.classList.add('active'),
-                once: true
-            });
-        });
-
-        // Final disc color shift
-        if (i === 2) {
-            gsap.to(disc, {
-                borderColor: '#00ff95',
-                boxShadow: '0 0 20px rgba(0, 255, 149, 0.4)',
-                scrollTrigger: {
-                    trigger: step,
-                    start: "top 70%",
-                    toggleActions: "play none none none"
-                }
-            });
-        }
-    });
-
-    // Background parallax effect
-    gsap.to('.hero::before', {
-        backgroundPosition: '50% 20%',
-        scrollTrigger: {
-            trigger: '.hero',
-            start: "top top",
-            end: "bottom top",
-            scrub: 1
-        }
-    });
+  setupExplodedText();
 });

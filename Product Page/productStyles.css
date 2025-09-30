@@ -17,6 +17,145 @@ body {
     overflow-x: hidden;
 }
 
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Hero */
+.hero {
+  height: 100vh;
+  background: linear-gradient(to bottom, #111, #222);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+/* White section */
+.white-section {
+  background: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.document-container {
+  display: flex;
+  justify-content: center;
+}
+
+.document-monitor {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  max-width: 600px;
+  background: #f9f9f9;
+  padding: 20px;
+}
+
+/* Exploded Animation Section */
+.exploded-section {
+  position: relative;
+  background: white;
+  min-height: 200vh;
+}
+
+.exploded-animation-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.exploded-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 100vh;
+  overflow: hidden;
+  background: white;
+}
+
+.exploded-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  background: white;
+}
+
+.exploded-image.active {
+  opacity: 1;
+}
+
+/* Exploded Text Overlays */
+.exploded-text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.exploded-text-box {
+  position: absolute;
+  max-width: 320px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 12px;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.exploded-text-box.left {
+  left: 5%;
+}
+
+.exploded-text-box.right {
+  right: 5%;
+}
+
+.exploded-text-box .step-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.exploded-text-box .step-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.exploded-text-box ul {
+  padding-left: 18px;
+}
+
+.exploded-text-box li {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
 
 
 #gradient-background {
@@ -525,4 +664,92 @@ footer {
   height: 3px;
   background: linear-gradient(to right, var(--glow-primary), var(--glow-secondary));
   margin: 15px auto 0;
+}
+/* Exploded text overlay */
+.exploded-step {
+  position: absolute;
+  max-width: 400px;
+  padding: 20px 30px;
+  background: rgba(0, 0, 0, 0.85); /* black background */
+  border: 2px solid var(--glow-primary);
+  border-radius: 12px;
+  color: white;
+  opacity: 0;
+  transform: translateY(30px);
+  box-shadow: 0 0 20px rgba(213, 0, 249, 0.3);
+  font-family: 'Orbitron', sans-serif;
+}
+
+.exploded-step h2 {
+  margin: 0 0 10px;
+  font-size: 2rem;
+  background: linear-gradient(to right, var(--glow-primary), var(--glow-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.exploded-step ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.exploded-step ul li::before {
+  content: "▹ ";
+  color: var(--glow-primary);
+  margin-right: 5px;
+}
+
+/* Placement (2 left, 1 right) */
+#exploded-step1 {
+  left: 5%;
+  top: 20%;
+}
+#exploded-step2 {
+  left: 5%;
+  top: 60%;
+}
+#exploded-step3 {
+  right: 5%;
+  top: 40%;
+}
+
+/* Exploded Animation Section */
+.exploded-section {
+  position: relative;
+  background: white;
+  min-height: 500vh;
+}
+
+.exploded-animation-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exploded-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.exploded-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+}
+
+.exploded-image.active {
+  opacity: 1;
 }
