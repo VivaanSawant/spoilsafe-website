@@ -64,97 +64,7 @@ body, html {
   padding: 20px;
 }
 
-/* Exploded Animation Section */
-.exploded-section {
-  position: relative;
-  background: white;
-  min-height: 200vh;
-}
-
-.exploded-animation-container {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: white;
-}
-
-.exploded-image-container {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  height: 100vh;
-  overflow: hidden;
-  background: white;
-}
-
-.exploded-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  background: white;
-}
-
-.exploded-image.active {
-  opacity: 1;
-}
-
-/* Exploded Text Overlays */
-.exploded-text-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.exploded-text-box {
-  position: absolute;
-  max-width: 320px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 12px;
-  padding: 20px;
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.exploded-text-box.left {
-  left: 5%;
-}
-
-.exploded-text-box.right {
-  right: 5%;
-}
-
-.exploded-text-box .step-label {
-  display: block;
-  font-size: 0.8rem;
-  color: #666;
-  margin-bottom: 6px;
-}
-
-.exploded-text-box .step-title {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #111;
-}
-
-.exploded-text-box ul {
-  padding-left: 18px;
-}
-
-.exploded-text-box li {
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  color: #333;
-}
+/* (Consolidated exploded animation styles moved to bottom section of file) */
 
 
 
@@ -199,8 +109,8 @@ body, html {
 }
 
 .header-button3 {
-    top: 10px;
-    left: 200px;
+  top: 10px;
+  left: 200px; /* Unified spacing */
 }
 
 .header-button1:hover,
@@ -684,6 +594,7 @@ footer {
   margin: 0 0 10px;
   font-size: 2rem;
   background: linear-gradient(to right, var(--glow-primary), var(--glow-secondary));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
