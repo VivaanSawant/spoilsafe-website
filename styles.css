@@ -442,7 +442,7 @@ footer {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed position */
     top: 10px; /* Distance from the top */
-    left: 210px; /* Distance from the left */
+    left: 200px; /* Unified reduced spacing */
     padding: 10px 20px;
     background-color: transparent; /* Purple background */
     color: #ffffff; /* White text */
