@@ -23,29 +23,29 @@ body {
 }
 
 /* Staggered animations for multiple elements - more gradual timing */
-.scroll-float:nth-child(1) { transition-delay: 0.15s; }
+.scroll-float:nth-child(1) { transition-delay: 0.3s; }
 .scroll-float:nth-child(2) { transition-delay: 0.3s; }
-.scroll-float:nth-child(3) { transition-delay: 0.45s; }
+.scroll-float:nth-child(3) { transition-delay: 0.3s; }
 .scroll-float:nth-child(4) { transition-delay: 0.6s; }
-.scroll-float:nth-child(5) { transition-delay: 0.75s; }
-.scroll-float:nth-child(6) { transition-delay: 0.9s; }
+.scroll-float:nth-child(5) { transition-delay: 0.6s; }
+.scroll-float:nth-child(6) { transition-delay: 0.6s; }
 
 /* Special timing for capability cards - all animate together */
 .capabilities-grid .scroll-float {
     transition-delay: 0.15s !important;
-    transition-duration: 1.2s !important;
+    transition-duration: 0.8s !important;
 }
 
 /* "What you get" title matches capability cards */
 .core-capabilities h2.scroll-float {
     transition-delay: 0.15s !important;
-    transition-duration: 1.2s !important;
+    transition-duration: 0.8s !important;
 }
 
 /* Product images match capability cards */
 .scroll-float-image {
     transition-delay: 0.15s !important;
-    transition-duration: 1.2s !important;
+    transition-duration: 0.8s !important;
 }
 
 /* Call-to-action subtitle animates with trillion dollar number */
@@ -57,7 +57,7 @@ body {
 .scroll-float-image {
     opacity: 0;
     transform: translateY(60px) scale(0.95);
-    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .scroll-float-image.visible {
@@ -98,7 +98,7 @@ body {
 .scroll-float-trillion {
     opacity: 0;
     transform: translateY(80px) scale(0.9);
-    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .scroll-float-trillion.visible {
@@ -725,11 +725,18 @@ html {
     transition: all 0.3s ease;
 }
 
+/* Override scroll-float transition delays for immediate hover response */
 .problem-stat:hover {
+    transition-delay: 0s !important;
     transform: translateY(-10px);
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(142, 36, 170, 0.3);
     box-shadow: 0 15px 30px rgba(142, 36, 170, 0.2);
+}
+
+/* Ensure problem-stat elements don't inherit scroll-float delays for hover */
+.problem-stat {
+    transition-delay: 0s !important;
 }
 
 .problem-stat h3 {

@@ -625,11 +625,11 @@
                 </defs>
             </svg>
             
-            <h2 class="scroll-float">What You Get</h2>
+            <h2 class="scroll-float" id="what-you-get-section">What You Get</h2>
             
             <div class="photo-container">
                 <div class="square-photo scroll-float-image">
-                    <img src="device-exploded.png" alt="Exploded device" />
+                    <img src="device_render.png" alt="Device Render" />
                 </div>
                 <div class="square-photo scroll-float-image">
                     <img src="device-in-strawberries.png" alt="Device in strawberries" />
@@ -1059,6 +1059,7 @@ class BananaAnimation {
         // Animation state
         this.isAnimating = false;
         this.animationCompleted = false;
+        this.bananaHidden = false; // Track if banana has been hidden
         this.sectionHeight = 0;
         this.startOffset = 0;
         this.endOffset = 0;
@@ -1139,6 +1140,43 @@ class BananaAnimation {
     }
     
     handleScroll(scrollY) {
+        // Only hide banana after it has completed its animation and reached "What You Get"
+        const whatYouGetSection = document.getElementById('what-you-get-section');
+        
+        if (whatYouGetSection && !this.bananaHidden) {
+            const whatYouGetTop = whatYouGetSection.offsetTop;
+            
+            // Only consider hiding if we're past the banana animation area
+            if (scrollY > this.endOffset + 2000 && scrollY >= whatYouGetTop + 1800) {
+                // Use visibility and opacity instead of display:none to prevent layout jumps
+                this.section.style.visibility = 'hidden';
+                this.section.style.opacity = '0';
+                this.section.style.pointerEvents = 'none';
+                this.bananaHidden = true;
+                return;
+            }
+        }
+        
+        // If banana was hidden but we scrolled back up significantly, show it again
+        if (this.bananaHidden && scrollY < this.startOffset + 3500) {
+            this.bananaHidden = false;
+            this.section.style.visibility = 'visible';
+            this.section.style.opacity = '1';
+            this.section.style.pointerEvents = 'auto';
+        }
+        
+        // Ensure banana is visible if not hidden
+        if (!this.bananaHidden) {
+            this.section.style.visibility = 'visible';
+            this.section.style.opacity = '1';
+            this.section.style.pointerEvents = 'auto';
+        }
+        
+        // Don't process animation if banana is hidden
+        if (this.bananaHidden) {
+            return;
+        }
+        
         // Check if we're in the animation zone
         if (scrollY >= this.startOffset && scrollY <= this.endOffset) {
             if (!this.isAnimating) {
