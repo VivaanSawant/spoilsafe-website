@@ -71,7 +71,6 @@
                             <span class="hero__orb hero__orb--east" aria-hidden="true"></span>
                             <span class="hero__orb hero__orb--central" aria-hidden="true"></span>
                             <span class="hero__orb hero__orb--west" aria-hidden="true"></span>
-                            <span class="hero__visual-cursor" aria-hidden="true"></span>
                             <div class="hero__map-legend">
                                 <span>Cold chain coverage</span>
                                 <span>58 facilities · 312 vehicles</span>
@@ -560,12 +559,12 @@
             if (!textElement) return;
 
             const textBank = [
-                                'distribution ops teams',
-                                'fleet freshness SLAs',
-                                'cold chain analysts',
-                                'retail planning leads',
-                                '3PL command crews',
-                                'multi-site QA teams'
+                'distribution ops teams',
+                'fleet freshness SLAs',
+                'cold chain analysts',
+                'retail planning leads',
+                '3PL command crews',
+                'multi-site QA teams'
             ];
 
             let currentTextIndex = 0;
@@ -574,10 +573,13 @@
             const typingSpeed = 90;
             const deleteSpeed = 45;
             const pauseTime = 1800;
+            const cleanValue = (value) => value.replace(/\u00a0/g, '');
+
+            textElement.textContent = '\u00a0';
 
             const type = () => {
                 const currentText = textBank[currentTextIndex];
-                const currentLength = textElement.textContent.trim().length;
+                const currentLength = cleanValue(textElement.textContent).length;
 
                 if (!isDeleting) {
                     textElement.textContent = currentText.substring(0, currentLength + 1);
@@ -588,10 +590,10 @@
                     }
                     setTimeout(type, typingSpeed);
                 } else {
-                    const nextLength = Math.max(1, currentLength - 1);
+                    const nextLength = Math.max(0, currentLength - 1);
                     const nextText = currentText.substring(0, nextLength);
                     textElement.textContent = nextText === '' ? '\u00a0' : nextText;
-                    if (nextText.trim() === '') {
+                    if (cleanValue(nextText) === '') {
                         isDeleting = false;
                         currentTextIndex = (currentTextIndex + 1) % textBank.length;
                     }
@@ -1030,7 +1032,7 @@
                 this.animationHeight = window.innerHeight * 1.6;
                 this.endOffset = this.startOffset + this.animationHeight;
                 this.section.style.minHeight = `${this.animationHeight}px`;
-                this.section.style.paddingBottom = '22vh';
+                this.section.style.paddingBottom = '35vh';
             }
 
             createRestartButton() {
