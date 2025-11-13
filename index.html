@@ -68,10 +68,10 @@
                             <span class="hero__timestamp" id="hero-timestamp">07:42:18 EST</span>
                         </div>
                         <div class="hero__visual-map">
-                            <span class="hero__map-clock" id="hero-map-clock">07:42:18</span>
                             <span class="hero__orb hero__orb--east" aria-hidden="true"></span>
                             <span class="hero__orb hero__orb--central" aria-hidden="true"></span>
                             <span class="hero__orb hero__orb--west" aria-hidden="true"></span>
+                            <span class="hero__visual-cursor" aria-hidden="true"></span>
                             <div class="hero__map-legend">
                                 <span>Cold chain coverage</span>
                                 <span>58 facilities · 312 vehicles</span>
@@ -560,12 +560,12 @@
             if (!textElement) return;
 
             const textBank = [
-                'distribution command centers',
-                'fleet-wide freshness SLAs',
+                'distribution ops teams',
+                'fleet freshness SLAs',
                 'cold chain operators',
-                'retail replenishment leads',
-                'third-party logistics teams',
-                'multi-site QA leaders'
+                'retail planning leads',
+                '3PL control rooms',
+                'multi-site QA crews'
             ];
 
             let currentTextIndex = 0;
@@ -951,7 +951,6 @@
 
         function initHeroClock() {
             const timestampEl = document.getElementById('hero-timestamp');
-            const mapClockEl = document.getElementById('hero-map-clock');
             if (!timestampEl) return;
 
             const updateClock = () => {
@@ -968,9 +967,6 @@
                 const time = `${parts.find((p) => p.type === 'hour').value}:${parts.find((p) => p.type === 'minute').value}:${parts.find((p) => p.type === 'second').value}`;
                 const zone = parts.find((p) => p.type === 'timeZoneName')?.value ?? 'UTC';
                 timestampEl.textContent = `${time} ${zone}`;
-                if (mapClockEl) {
-                    mapClockEl.textContent = time;
-                }
             };
 
             updateClock();
