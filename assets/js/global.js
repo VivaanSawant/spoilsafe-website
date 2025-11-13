@@ -49,5 +49,40 @@
             }
         });
     }
+
+    const sectionLinks = Array.from(
+        document.querySelectorAll('a[href^="#"][data-nav-section], .nav-links a[href^="#"]')
+    );
+    const sections = sectionLinks
+        .map((link) => {
+            const id = link.getAttribute('href').slice(1);
+            const section = document.getElementById(id);
+            return section ? { link, section } : null;
+        })
+        .filter(Boolean);
+
+    if (sections.length) {
+        const handleActiveLink = () => {
+            const scrollPosition = window.scrollY + nav.offsetHeight + 16;
+            let activeEntry = null;
+
+            sections.forEach(({ link, section }) => {
+                const top = section.offsetTop;
+                const bottom = top + section.offsetHeight;
+
+                if (scrollPosition >= top && scrollPosition < bottom) {
+                    activeEntry = { link };
+                }
+            });
+
+            sectionLinks.forEach(({ classList }) => classList.remove('is-active'));
+            if (activeEntry) {
+                activeEntry.link.classList.add('is-active');
+            }
+        };
+
+        handleActiveLink();
+        window.addEventListener('scroll', handleActiveLink, { passive: true });
+    }
 })();
 
