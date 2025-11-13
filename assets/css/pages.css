@@ -2,11 +2,11 @@
 
 .page-hero {
     padding-block: clamp(5rem, 12vw, 7.5rem);
-    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 70%);
+    background: linear-gradient(180deg, #ffffff 0%, #f2f8f3 70%);
 }
 
 .page-hero--frost {
-    background: linear-gradient(180deg, #f4f7ff 0%, #ffffff 80%);
+    background: linear-gradient(180deg, #f6fbf7 0%, #ffffff 80%);
 }
 
 .page-hero__inner {
@@ -53,7 +53,7 @@
 }
 
 .page-section--muted {
-    background: linear-gradient(180deg, #f7f9ff 0%, #ffffff 100%);
+    background: linear-gradient(180deg, #f4f8f4 0%, #ffffff 100%);
 }
 
 .page-section--narrow {
@@ -89,7 +89,7 @@
     padding: clamp(1.75rem, 4vw, 2.1rem);
     border-radius: var(--radius-lg);
     background: #ffffff;
-    border: 1px solid rgba(217, 226, 241, 0.6);
+    border: 1px solid var(--color-border);
     box-shadow: var(--shadow-sm);
     display: grid;
     gap: 0.75rem;
@@ -135,7 +135,7 @@
     border-radius: 999px;
     background: var(--color-accent);
     margin-top: 0.45rem;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 0 0 4px var(--color-accent-soft);
 }
 
 .eyebrow + .section-heading {
@@ -148,7 +148,7 @@
     gap: 0.35rem;
     padding: 0.4rem 0.75rem;
     border-radius: 999px;
-    background: rgba(37, 99, 235, 0.1);
+    background: var(--color-accent-soft);
     color: var(--color-accent-strong);
     font-size: 0.75rem;
     font-weight: 600;

@@ -1,11 +1,11 @@
 :root {
-    --contact-border: rgba(217, 226, 241, 0.75);
-    --contact-soft: rgba(37, 99, 235, 0.08);
+    --contact-border: rgba(213, 227, 215, 0.85);
+    --contact-soft: rgba(47, 158, 101, 0.16);
 }
 
 .contact-section {
     padding-block: clamp(4.5rem, 12vw, 6.5rem);
-    background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f4faf5 100%);
 }
 
 .contact-grid {
@@ -66,7 +66,7 @@
     padding: 0.8rem 0.95rem;
     border-radius: var(--radius-sm);
     border: 1px solid var(--contact-border);
-    background: rgba(247, 249, 255, 0.8);
+    background: rgba(242, 248, 244, 0.85);
     font-family: inherit;
     font-size: 1rem;
     color: var(--color-text);
@@ -191,7 +191,7 @@
 .response-time {
     padding: 1.25rem;
     border-radius: var(--radius-md);
-    background: rgba(37, 99, 235, 0.1);
+    background: rgba(47, 158, 101, 0.1);
     border: 1px solid var(--contact-soft);
     color: var(--color-text);
 }

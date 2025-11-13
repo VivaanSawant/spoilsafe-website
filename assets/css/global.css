@@ -1,17 +1,20 @@
 :root {
-    --color-background: #f5f7fb;
+    --color-background: #f9fbf8;
     --color-surface: #ffffff;
-    --color-surface-alt: #eef2fb;
-    --color-border: #d9e2f1;
-    --color-text: #172241;
-    --color-text-muted: #54607b;
-    --color-accent: #2563eb;
-    --color-accent-strong: #1d4ed8;
-    --color-accent-soft: rgba(37, 99, 235, 0.12);
-    --color-positive: #16a34a;
-    --shadow-sm: 0 8px 20px rgba(15, 23, 42, 0.08);
-    --shadow-md: 0 18px 40px rgba(15, 23, 42, 0.12);
-    --shadow-lg: 0 28px 60px rgba(15, 23, 42, 0.16);
+    --color-surface-alt: #f1f5f2;
+    --color-border: #dbe8de;
+    --color-border-strong: #c6d8cc;
+    --color-text: #163524;
+    --color-text-muted: #4b6654;
+    --color-accent: #2f9e65;
+    --color-accent-strong: #1c7c4a;
+    --color-accent-soft: rgba(47, 158, 101, 0.14);
+    --color-secondary: #f7b733;
+    --color-secondary-soft: rgba(247, 183, 51, 0.18);
+    --color-positive: #1f8f4f;
+    --shadow-sm: 0 8px 24px rgba(20, 38, 25, 0.06);
+    --shadow-md: 0 18px 44px rgba(20, 38, 25, 0.08);
+    --shadow-lg: 0 26px 64px rgba(20, 38, 25, 0.12);
     --radius-lg: 24px;
     --radius-md: 16px;
     --radius-sm: 12px;
@@ -360,14 +363,14 @@ footer .social-icons a:focus-visible {
 .surface {
     background: var(--color-surface);
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(217, 226, 241, 0.6);
+    border: 1px solid var(--color-border);
     box-shadow: var(--shadow-sm);
 }
 
 .surface-soft {
     background: var(--color-surface-alt);
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(217, 226, 241, 0.45);
+    border: 1px solid var(--color-border-strong);
 }
 
 .chip {
@@ -376,7 +379,7 @@ footer .social-icons a:focus-visible {
     gap: 0.35rem;
     padding: 0.35rem 0.75rem;
     border-radius: 999px;
-    background: rgba(37, 99, 235, 0.08);
+    background: var(--color-accent-soft);
     color: var(--color-accent-strong);
     font-size: 0.8rem;
     font-weight: 600;
