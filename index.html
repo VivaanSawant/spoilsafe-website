@@ -560,12 +560,12 @@
             if (!textElement) return;
 
             const textBank = [
-                'distribution ops teams',
-                'fleet freshness SLAs',
-                'cold chain operators',
-                'retail planning leads',
-                '3PL control rooms',
-                'multi-site QA crews'
+                                'distribution ops teams',
+                                'fleet freshness SLAs',
+                                'cold chain analysts',
+                                'retail planning leads',
+                                '3PL command crews',
+                                'multi-site QA teams'
             ];
 
             let currentTextIndex = 0;
@@ -577,7 +577,7 @@
 
             const type = () => {
                 const currentText = textBank[currentTextIndex];
-                const currentLength = textElement.textContent.length;
+                const currentLength = textElement.textContent.trim().length;
 
                 if (!isDeleting) {
                     textElement.textContent = currentText.substring(0, currentLength + 1);
@@ -588,12 +588,14 @@
                     }
                     setTimeout(type, typingSpeed);
                 } else {
-                    textElement.textContent = currentText.substring(0, currentLength - 1);
-                    if (textElement.textContent === '') {
+                    const nextLength = Math.max(1, currentLength - 1);
+                    const nextText = currentText.substring(0, nextLength);
+                    textElement.textContent = nextText === '' ? '\u00a0' : nextText;
+                    if (nextText.trim() === '') {
                         isDeleting = false;
                         currentTextIndex = (currentTextIndex + 1) % textBank.length;
                     }
-                    setTimeout(type, isDeleting ? deleteSpeed : typingSpeed);
+                    setTimeout(type, deleteSpeed);
                 }
             };
 
