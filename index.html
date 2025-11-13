@@ -235,7 +235,18 @@
                                     </header>
                                     <p>8 of 312 vehicles breached temp bands this shift. Auto mitigation prevented spoilage at 6 sites.</p>
                                 </article>
-                                <article class="dashboard-card">
+                                <article class="dashboard-card dashboard-card--stream" data-distribution-log>
+                                    <header>
+                                        <span class="dashboard-card__label">Live command log</span>
+                                        <span class="dashboard-card__trend">Auto capture</span>
+                                    </header>
+                                    <ul class="dashboard-log" data-command-log>
+                                        <li>07:12 · Dock 4 – humidity vent cycle initiated</li>
+                                        <li>07:18 · Route 12 – ETA synced with retailer HQ</li>
+                                        <li>07:22 · Cold room 2B – purge completed</li>
+                                    </ul>
+                                </article>
+                                <article class="dashboard-card dashboard-card--summary">
                                     <header>
                                         <span class="dashboard-card__label">Intervention queue</span>
                                         <span class="dashboard-card__trend">3 active</span>
@@ -781,6 +792,17 @@
         function initDashboardTelemetry() {
             const randomInRange = (min, max) => Math.random() * (max - min) + min;
             const numberFormatter = new Intl.NumberFormat('en-US');
+            const distributionLogEl = document.querySelector('[data-command-log]');
+            const distributionLogTemplates = [
+                'Dock 4 · humidity vent cycle initiated (auto)',
+                'Cross-dock 7 · new ETA synced with retailer HQ',
+                'Route 18 · cold chain alert acknowledged by driver',
+                'Route 3 · compressor calibration completed',
+                'HQ · dynamic SLA tightened for leafy greens',
+                'Dock 2 · spare dry ice dispatched to loading bay',
+                'Route 11 · continuous monitoring switched to high sensitivity',
+                'Analytics · forecast extended to cover weekend deliveries'
+            ];
 
             const statSpecs = [
                 {
@@ -951,6 +973,23 @@
             updateTransportTelemetry();
             setInterval(updateStatCards, 2400);
             setInterval(updateTransportTelemetry, 1800);
+            if (distributionLogEl) {
+                const appendDistributionLog = () => {
+                    const entry = distributionLogTemplates[Math.floor(Math.random() * distributionLogTemplates.length)];
+                    const now = new Date();
+                    const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                    const item = document.createElement('li');
+                    item.textContent = `${time} · ${entry}`;
+                    distributionLogEl.prepend(item);
+                    const currentItems = Array.from(distributionLogEl.querySelectorAll('li'));
+                    if (currentItems.length > 4) {
+                        currentItems.slice(4).forEach((node) => node.remove());
+                    }
+                };
+
+                appendDistributionLog();
+                setInterval(appendDistributionLog, 2600);
+            }
         }
 
         function initHeroClock() {

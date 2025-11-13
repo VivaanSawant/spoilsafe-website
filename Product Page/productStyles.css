@@ -154,29 +154,34 @@
 
 .exploded-section {
     position: relative;
-    background: #ffffff;
-    min-height: 360vh;
     border-top: 1px solid var(--product-border);
     border-bottom: 1px solid var(--product-border);
+    min-height: 320vh;
+    background: linear-gradient(180deg, #f0faf3 0%, #e7f5ec 45%, #ffffff 100%);
+    padding-bottom: clamp(4rem, 10vw, 6rem);
 }
 
 .exploded-animation-container {
     position: sticky;
-    top: 0;
+    top: clamp(var(--nav-height-desktop, 84px), 6vh, 120px);
     height: 100vh;
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     gap: clamp(1.5rem, 4vw, 2.5rem);
     align-items: center;
     padding: clamp(1.5rem, 5vw, 3rem);
-    background: linear-gradient(180deg, #f2f9f4 0%, #ffffff 100%);
+    background: linear-gradient(180deg, #e9f7ef 0%, #ffffff 80%);
     overflow: hidden;
+    width: min(100%, 1200px);
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 24px 80px rgba(12, 38, 24, 0.14);
 }
 
 .exploded-image-container {
     position: relative;
-    width: min(90vw, 960px);
-    height: min(90vh, 640px);
+    width: min(80vw, 640px);
+    height: min(72vh, 540px);
     justify-self: center;
 }
 
@@ -196,17 +201,18 @@
 .exploded-text-overlay {
     position: relative;
     display: grid;
-    gap: clamp(1rem, 2.5vw, 1.5rem);
+    gap: clamp(1rem, 2.5vw, 1.6rem);
     align-self: stretch;
     pointer-events: auto;
     align-content: center;
+    padding: clamp(0.5rem, 2vw, 1.5rem);
 }
 
 .exploded-step {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(28, 124, 74, 0.2);
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(28, 124, 74, 0.22);
     border-radius: var(--radius-md);
-    padding: clamp(1.3rem, 3vw, 1.6rem);
+    padding: clamp(1.25rem, 3vw, 1.6rem);
     box-shadow: var(--shadow-sm);
     opacity: 0;
     transform: translateY(30px);
@@ -296,6 +302,11 @@
     .exploded-animation-container {
         grid-template-columns: 1fr;
         padding: clamp(1.25rem, 6vw, 2rem);
+        top: var(--nav-height-mobile, 72px);
+    }
+
+    .exploded-image-container {
+        height: min(66vh, 480px);
     }
 }
 
