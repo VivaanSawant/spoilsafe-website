@@ -1,3 +1,75 @@
+.about-hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(1.75rem, 5vw, 3rem);
+    align-items: center;
+    text-align: center;
+}
+
+.about-hero__content {
+    display: grid;
+    gap: clamp(1.2rem, 3vw, 1.8rem);
+    justify-items: center;
+}
+
+.about-hero__panel {
+    display: grid;
+    gap: 1.2rem;
+}
+
+.about-hero__card {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background: linear-gradient(150deg, rgba(47, 158, 101, 0.14), rgba(255, 255, 255, 0.92));
+    padding: clamp(1.4rem, 3vw, 1.8rem);
+    box-shadow: var(--shadow-sm);
+    display: grid;
+    gap: 0.8rem;
+}
+
+.about-hero__label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+.about-hero__card ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    text-align: left;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+}
+
+.about-hero__stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: left;
+}
+
+.about-hero__stats strong {
+    display: block;
+    font-size: 1.8rem;
+    color: var(--color-accent-strong);
+    line-height: 1.1;
+}
+
+.about-hero__stats span {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.about-section-heading {
+    text-align: center;
+    display: grid;
+    gap: 0.75rem;
+    justify-items: center;
+}
+
 .about-story .section-subtitle {
     max-width: 62ch;
 }
@@ -37,6 +109,31 @@
     margin-top: 0.4rem;
 }
 
+.about-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: clamp(1rem, 3vw, 1.5rem);
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.overview-card {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    padding: 1.2rem 1.4rem;
+    background: #ffffff;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.overview-label {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-accent-strong);
+    margin-bottom: 0.6rem;
+}
+
 .team-highlight {
     display: grid;
     gap: clamp(1.2rem, 3vw, 1.6rem);
@@ -50,11 +147,13 @@
 .team-highlight h3 {
     font-size: 2rem;
     margin: 0;
+    text-align: left;
 }
 
 .team-highlight p {
     margin: 0;
     color: var(--color-text-muted);
+    text-align: left;
 }
 
 .team-highlight ul {
@@ -65,6 +164,34 @@
 
 .team-highlight ul li + li {
     margin-top: 0.35rem;
+}
+
+.team-avatar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+}
+
+.team-avatar {
+    border-radius: var(--radius-md);
+    border: 1px dashed rgba(47, 158, 101, 0.35);
+    padding: 0.75rem;
+    text-align: center;
+    color: var(--color-accent-strong);
+    background: rgba(47, 158, 101, 0.08);
+    display: grid;
+    gap: 0.25rem;
+}
+
+.team-avatar span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+}
+
+.team-avatar strong {
+    font-size: 0.95rem;
 }
 
 .badge--note {
@@ -130,9 +257,47 @@
     .about-pillars .info-card {
         padding-top: 1.8rem;
     }
+
+    .about-hero {
+        text-align: left;
+        justify-items: center;
+    }
+
+    .about-hero__content {
+        justify-items: flex-start;
+        text-align: left;
+    }
+
+    .about-hero__panel {
+        width: 100%;
+    }
 }
 
 @media (max-width: 640px) {
+    .about-hero__stats {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-hero__content,
+    .about-section-heading {
+        text-align: center;
+        justify-items: center;
+    }
+
+    .team-highlight {
+        text-align: center;
+    }
+
+    .team-highlight h3,
+    .team-highlight p {
+        text-align: center;
+    }
+
+    .team-avatar-grid {
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+    }
+
     .sponsor-track {
         animation-duration: 28s;
     }

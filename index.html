@@ -31,13 +31,14 @@
         <section class="hero" id="top">
             <div class="layout-max hero__inner">
                 <div class="hero__content">
-                    <p class="eyebrow">Smart freshness tracking</p>
+                    <p class="eyebrow">Predictive cold-chain oversight</p>
                     <h1 class="hero__headline">
-                        Track food freshness with real-time sensors and
-                        <span id="dynamic-text" class="hero__dynamic-text">customer-driven insights</span>
+                        Give every shipment a live freshness heartbeat for
+                        <span id="dynamic-text" class="hero__dynamic-text">distribution command centers</span>
                     </h1>
                     <p class="hero__lead">
-                        Reduce waste, save money, and keep food at peak quality with SpoilSafe’s always-on freshness intelligence.
+                        SpoilSafe unifies real-time sensing and predictive analytics for distributors, transporters, and retailers,
+                        so teams can protect margins and shelf-life before loss hits the balance sheet.
                     </p>
                     <div class="hero__actions">
                         <a class="cta-button" href="#problem">Get Started ↓</a>
@@ -62,27 +63,59 @@
                     <div class="hero__visual-display surface" role="img" aria-label="Animated SpoilSafe telemetry visualization">
                         <div class="hero__visual-glow"></div>
                         <div class="hero__visual-grid"></div>
-                        <div class="hero__visual-pulse"></div>
-                        <div class="hero__visual-readout hero__visual-readout--primary">
-                            <span class="hero__readout-label">Ethylene</span>
-                            <span class="hero__readout-value">3.2&nbsp;ppm</span>
+                        <div class="hero__visual-header">
+                            <span class="hero__tag">Network Monitor · Live</span>
+                            <span class="hero__timestamp" id="hero-timestamp">07:42:18 EST</span>
                         </div>
-                        <div class="hero__visual-readout hero__visual-readout--secondary">
-                            <div>
-                                <span class="hero__readout-label">Temp</span>
-                                <span class="hero__readout-value">38°F</span>
-                            </div>
-                            <div>
-                                <span class="hero__readout-label">Humidity</span>
-                                <span class="hero__readout-value">62%</span>
+                        <div class="hero__visual-map">
+                            <span class="hero__map-clock" id="hero-map-clock">07:42:18</span>
+                            <span class="hero__orb hero__orb--east" aria-hidden="true"></span>
+                            <span class="hero__orb hero__orb--central" aria-hidden="true"></span>
+                            <span class="hero__orb hero__orb--west" aria-hidden="true"></span>
+                            <div class="hero__map-legend">
+                                <span>Cold chain coverage</span>
+                                <span>58 facilities · 312 vehicles</span>
                             </div>
                         </div>
-                        <div class="hero__visual-chart" aria-hidden="true">
-                            <span style="--bar-height: 38%; --bar-delay: 0s;"></span>
-                            <span style="--bar-height: 64%; --bar-delay: 0.08s;"></span>
-                            <span style="--bar-height: 52%; --bar-delay: 0.16s;"></span>
-                            <span style="--bar-height: 78%; --bar-delay: 0.24s;"></span>
-                            <span style="--bar-height: 45%; --bar-delay: 0.32s;"></span>
+                        <div class="hero__visual-kpis">
+                            <div class="hero__visual-readout hero__visual-readout--primary">
+                                <div>
+                                    <span class="hero__readout-label">Ethylene</span>
+                                    <span class="hero__readout-value" data-telemetry="ethylene">3.2 ppm</span>
+                                </div>
+                                <div>
+                                    <span class="hero__readout-label">Intervention window</span>
+                                    <span class="hero__readout-value hero__readout-value--positive" data-telemetry="intervention">+9h</span>
+                                </div>
+                            </div>
+                            <div class="hero__visual-readout hero__visual-readout--secondary">
+                                <div>
+                                    <span class="hero__readout-label">Fleet temp</span>
+                                    <span class="hero__readout-value" data-telemetry="fleetTemp">38°F</span>
+                                </div>
+                                <div>
+                                    <span class="hero__readout-label">Humidity</span>
+                                    <span class="hero__readout-value" data-telemetry="humidity">62%</span>
+                                </div>
+                                <div>
+                                    <span class="hero__readout-label">Spoilage risk</span>
+                                    <span class="hero__readout-value hero__readout-value--alert" data-telemetry="risk">2 routes</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero__visual-stream" aria-live="polite" data-stream-list>
+                            <div class="hero__stream-item">
+                                <span class="hero__stream-label">Route 14 · Reefers</span>
+                                <span class="hero__stream-value hero__stream-value--alert">Spike +2.4°F · Action queued</span>
+                            </div>
+                            <div class="hero__stream-item">
+                                <span class="hero__stream-label">Retail dock · Chicago</span>
+                                <span class="hero__stream-value hero__stream-value--positive">Door left open 00:02 → resolved</span>
+                            </div>
+                            <div class="hero__stream-item">
+                                <span class="hero__stream-label">Distribution center · Dallas</span>
+                                <span class="hero__stream-value hero__stream-value--neutral">Ethylene scrubbers auto-calibrated</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -146,12 +179,231 @@
             <div class="layout-max capabilities-container">
                 <p class="eyebrow">What You Get</p>
                 <h2 class="scroll-float">Freshness intelligence you can act on</h2>
-                <div class="photo-container">
-                    <div class="square-photo scroll-float-image">
-                        <img src="spoiledFood.png" alt="Detecting the difference between fresh and spoiled produce" loading="lazy">
+                <div class="dashboard-preview scroll-float">
+                    <div class="dashboard-preview__header">
+                        <div>
+                            <span class="chip">Command center</span>
+                            <h3>Ops dashboards tuned for your teams</h3>
+                        </div>
+                        <div class="dashboard-preview__views" role="tablist" aria-label="Dashboard views">
+                            <button class="dashboard-preview__view is-active" type="button" data-dashboard="distribution" role="tab" aria-selected="true">Distribution</button>
+                            <button class="dashboard-preview__view" type="button" data-dashboard="transport" role="tab" aria-selected="false">Transport</button>
+                            <button class="dashboard-preview__view" type="button" data-dashboard="retail" role="tab" aria-selected="false">Retail</button>
+                        </div>
                     </div>
-                    <div class="square-photo scroll-float-image">
-                        <img src="spoiledFood2.png" alt="SpoilSafe monitor protecting stored groceries" loading="lazy">
+                    <div class="dashboard-preview__panels">
+                        <section class="dashboard-preview__panel is-active" data-dashboard-panel="distribution" role="tabpanel" aria-label="Distribution dashboard">
+                            <div class="dashboard-preview__map">
+                                <div class="dashboard-preview__routes">
+                                    <span class="route route--healthy" data-route-index="0"></span>
+                                    <span class="route route--warning" data-route-index="1"></span>
+                                    <span class="route route--healthy" data-route-index="2"></span>
+                                </div>
+                                <div class="dashboard-preview__nodes">
+                                    <span class="node node--hq" aria-label="HQ"></span>
+                                    <span class="node node--healthy" aria-label="Cross-dock"></span>
+                                    <span class="node node--warning" aria-label="High risk site"></span>
+                                </div>
+                            </div>
+                            <div class="dashboard-preview__stats-grid" data-dashboard-stats="distribution">
+                                <article class="stat-card stat-card--positive" data-stat="distribution-on-time">
+                                    <span class="stat-card__label">On-time routes</span>
+                                    <span class="stat-card__value" data-stat-value>97%</span>
+                                    <span class="stat-card__progress" aria-hidden="true">
+                                        <span class="stat-card__progress-fill" style="--stat-progress: 97%;"></span>
+                                    </span>
+                                </article>
+                                <article class="stat-card stat-card--alert" data-stat="distribution-risk">
+                                    <span class="stat-card__label">Active risk flags</span>
+                                    <span class="stat-card__value" data-stat-value>4</span>
+                                    <span class="stat-card__progress" aria-hidden="true">
+                                        <span class="stat-card__progress-fill" style="--stat-progress: 48%;"></span>
+                                    </span>
+                                </article>
+                                <article class="stat-card" data-stat="distribution-throughput">
+                                    <span class="stat-card__label">Cases per hour</span>
+                                    <span class="stat-card__value" data-stat-value>1,240</span>
+                                    <span class="stat-card__progress" aria-hidden="true">
+                                        <span class="stat-card__progress-fill" style="--stat-progress: 68%;"></span>
+                                    </span>
+                                </article>
+                            </div>
+                            <div class="dashboard-preview__cards">
+                                <article class="dashboard-card">
+                                    <header>
+                                        <span class="dashboard-card__label">Network SLA</span>
+                                        <span class="dashboard-card__trend is-up">▲ 98.6%</span>
+                                    </header>
+                                    <p>8 of 312 vehicles breached temp bands this shift. Auto mitigation prevented spoilage at 6 sites.</p>
+                                </article>
+                                <article class="dashboard-card">
+                                    <header>
+                                        <span class="dashboard-card__label">Intervention queue</span>
+                                        <span class="dashboard-card__trend">3 active</span>
+                                    </header>
+                                    <ul>
+                                        <li>Route 14 · load re-stack before 08:10</li>
+                                        <li>Cold room 2B · humidity purge · <strong>Completed</strong></li>
+                                        <li>Retail dock 7 · assign QA audit</li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <ul class="dashboard-preview__signals" data-signal-list="distribution">
+                                <li class="signal is-active">
+                                    <span class="signal__dot"></span>
+                                    <span class="signal__label">Cold rooms auto-balanced</span>
+                                </li>
+                                <li class="signal signal--alert">
+                                    <span class="signal__dot"></span>
+                                    <span class="signal__label">Route 7 requires dry ice reload</span>
+                                </li>
+                                <li class="signal signal--info">
+                                    <span class="signal__dot"></span>
+                                    <span class="signal__label">Supplier ETA sync complete</span>
+                                </li>
+                            </ul>
+                        </section>
+                        <section class="dashboard-preview__panel" data-dashboard-panel="transport" role="tabpanel" aria-label="Transport dashboard" hidden>
+                            <div class="dashboard-preview__map dashboard-preview__map--transport">
+                                <div class="dashboard-preview__telemetry">
+                                    <div>
+                                        <span class="telemetry-label">Avg temp</span>
+                                        <span class="telemetry-value" data-transport-telemetry="avgTemp">36.4°F</span>
+                                    </div>
+                                    <div>
+                                        <span class="telemetry-label">Door events</span>
+                                        <span class="telemetry-value" data-transport-telemetry="doorEvents">12</span>
+                                    </div>
+                                    <div>
+                                        <span class="telemetry-label">Spoilage risk</span>
+                                        <span class="telemetry-value telemetry-value--alert" data-transport-telemetry="routeRisk">1 route</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dashboard-preview__stats-grid" data-dashboard-stats="transport">
+                                <article class="stat-card stat-card--positive" data-stat="transport-door">
+                                    <span class="stat-card__label">Door compliance</span>
+                                    <span class="stat-card__value" data-stat-value>92%</span>
+                                    <span class="stat-card__progress" aria-hidden="true">
+                                        <span class="stat-card__progress-fill" style="--stat-progress: 92%;"></span>
+                                    </span>
+                                </article>
+                                <article class="stat-card" data-stat="transport-payload">
+                                    <span class="stat-card__label">Avg payload</span>
+                                    <span class="stat-card__value" data-stat-value>18.4k lbs</span>
+                                    <span class="stat-card__progress" aria-hidden="true">
+                                        <span class="stat-card__progress-fill" style="--stat-progress: 72%;"></span>
+                                    </span>
+                                </article>
+                                <article class="stat-card" data-stat="transport-fuel">
+                                    <span class="stat-card__label">Fuel efficiency</span>
+                                    <span class="stat-card__value" data-stat-value>6.8 mpg</span>
+                                    <span class="stat-card__progress" aria-hidden="true">
+                                        <span class="stat-card__progress-fill" style="--stat-progress: 61%;"></span>
+                                    </span>
+                                </article>
+                            </div>
+                            <div class="dashboard-preview__cards">
+                                <article class="dashboard-card">
+                                    <header>
+                                        <span class="dashboard-card__label">Fleet health</span>
+                                        <span class="dashboard-card__trend is-down">▼ -18% incidents</span>
+                                    </header>
+                                    <p>Predictive alerts trimmed compressor downtime by pre-scheduling maintenance across reefers 4, 9, and 17.</p>
+                                </article>
+                                <article class="dashboard-card">
+                                    <header>
+                                        <span class="dashboard-card__label">Driver insights</span>
+                                        <span class="dashboard-card__trend">Top 3 actions</span>
+                                    </header>
+                                    <ul>
+                                        <li>Pre-cool warnings acknowledged in under 3 minutes.</li>
+                                        <li>Door exception training dropped warm excursions by 62%.</li>
+                                        <li>Geo-fenced handoff alerts removed blind spots at yards.</li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <ul class="dashboard-preview__signals" data-signal-list="transport">
+                                <li class="signal is-active">
+                                    <span class="signal__dot"></span>
+                                    <span class="signal__label">Reefer 22 compressor staged for service</span>
+                                </li>
+                                <li class="signal signal--alert">
+                                    <span class="signal__dot"></span>
+                                    <span class="signal__label">Route 18 door ajar alert at 02:14</span>
+                                </li>
+                                <li class="signal signal--info">
+                                    <span class="signal__dot"></span>
+                                    <span class="signal__label">Fuel optimization playbook synced</span>
+                                </li>
+                            </ul>
+                        </section>
+                        <section class="dashboard-preview__panel" data-dashboard-panel="retail" role="tabpanel" aria-label="Retail dashboard" hidden>
+                            <div class="dashboard-preview__map dashboard-preview__map--retail">
+                                <div class="dashboard-preview__tiles">
+                                    <div class="tile tile--fresh">Produce</div>
+                                    <div class="tile">Prepared</div>
+                                    <div class="tile tile--alert">Seafood</div>
+                                    <div class="tile">Dairy</div>
+                                </div>
+                            </div>
+                            <div class="dashboard-preview__stats-grid" data-dashboard-stats="retail">
+                                <article class="stat-card stat-card--positive" data-stat="retail-freshness">
+                                    <span class="stat-card__label">Timers synced</span>
+                                    <span class="stat-card__value" data-stat-value>94%</span>
+                                    <span class="stat-card__progress" aria-hidden="true">
+                                        <span class="stat-card__progress-fill" style="--stat-progress: 94%;"></span>
+                                    </span>
+                                </article>
+                                <article class="stat-card stat-card--alert" data-stat="retail-shrink">
+                                    <span class="stat-card__label">Shrink forecast</span>
+                                    <span class="stat-card__value" data-stat-value>2.8%</span>
+                                    <span class="stat-card__progress" aria-hidden="true">
+                                        <span class="stat-card__progress-fill" style="--stat-progress: 28%;"></span>
+                                    </span>
+                                </article>
+                                <article class="stat-card" data-stat="retail-planogram">
+                                    <span class="stat-card__label">Planogram adoption</span>
+                                    <span class="stat-card__value" data-stat-value>87%</span>
+                                    <span class="stat-card__progress" aria-hidden="true">
+                                        <span class="stat-card__progress-fill" style="--stat-progress: 87%;"></span>
+                                    </span>
+                                </article>
+                            </div>
+                            <div class="dashboard-preview__cards">
+                                <article class="dashboard-card">
+                                    <header>
+                                        <span class="dashboard-card__label">Store execution</span>
+                                        <span class="dashboard-card__trend">92 stores</span>
+                                    </header>
+                                    <p>Store teams received planograms with freshness timers, reducing shrink by 19% in high-turn categories.</p>
+                                </article>
+                                <article class="dashboard-card">
+                                    <header>
+                                        <span class="dashboard-card__label">Supplier accountability</span>
+                                        <span class="dashboard-card__trend is-up">▲ +11% compliance</span>
+                                    </header>
+                                    <ul>
+                                        <li>Inbound CO₂ logging ensures supplier credits on late loads.</li>
+                                        <li>Shared dashboards keep merchandising and QA aligned.</li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <ul class="dashboard-preview__signals" data-signal-list="retail">
+                                <li class="signal is-active">
+                                    <span class="signal__dot"></span>
+                                    <span class="signal__label">Seafood counter refresh triggered</span>
+                                </li>
+                                <li class="signal signal--info">
+                                    <span class="signal__dot"></span>
+                                    <span class="signal__label">Merchandising brief auto-sent to stores</span>
+                                </li>
+                                <li class="signal signal--alert">
+                                    <span class="signal__dot"></span>
+                                    <span class="signal__label">Dry goods aisle humidity spike watch</span>
+                                </li>
+                            </ul>
+                        </section>
                     </div>
                 </div>
                 <div class="capabilities-grid">
@@ -165,8 +417,8 @@
                                 <path d="M15 11h2v3h-2z" class="pulse-animation" style="animation-delay: 0.4s"/>
                             </svg>
                         </div>
-                        <h3>Real-time monitoring</h3>
-                        <p>Track temperature, humidity, and gas composition continuously—no manual checks required.</p>
+                        <h3>Network-wide monitoring</h3>
+                        <p>Track temperature, humidity, and gas composition across depots, trucks, and stores without manual checks.</p>
                     </article>
                     <article class="capability-card scroll-float">
                         <div class="card-icon">
@@ -178,7 +430,7 @@
                             </svg>
                         </div>
                         <h3>Predictive alerts</h3>
-                        <p>AI forecasts shelf-life and notifies you before food quality dips below your targets.</p>
+                        <p>AI forecasts shelf-life and flags excursions before SKUs hit critical thresholds, routed by role and severity.</p>
                     </article>
                     <article class="capability-card scroll-float">
                         <div class="card-icon">
@@ -191,7 +443,7 @@
                             </svg>
                         </div>
                         <h3>Adaptive insights</h3>
-                        <p>Recommendations evolve with your environment to balance freshness and efficiency.</p>
+                        <p>Recommendations evolve with each environment to balance freshness, labor, and logistics constraints.</p>
                     </article>
                     <article class="capability-card scroll-float">
                         <div class="card-icon">
@@ -203,7 +455,7 @@
                             </svg>
                         </div>
                         <h3>Enterprise-grade security</h3>
-                        <p>Encryption, RBAC, and audit trails keep sensitive operations compliant and protected.</p>
+                        <p>Encryption, RBAC, and audit trails keep sensitive operational data compliant from supplier to storefront.</p>
                     </article>
                     <article class="capability-card scroll-float">
                         <div class="card-icon">
@@ -217,7 +469,7 @@
                             </svg>
                         </div>
                         <h3>Flexible hardware</h3>
-                        <p>Deploy compact sensors in containers, walk-ins, or trucks—installation is plug-and-play.</p>
+                        <p>Deploy compact sensors in containers, walk-ins, and trucks—installation is plug-and-play with industrial resiliency.</p>
                     </article>
                     <article class="capability-card scroll-float">
                         <div class="card-icon">
@@ -230,7 +482,7 @@
                             </svg>
                         </div>
                         <h3>Scalable architecture</h3>
-                        <p>Manage every location from a unified dashboard—whether you run one kitchen or hundreds.</p>
+                        <p>Manage every location from a unified dashboard—aligned with ERP, inventory, and QA workflows for enterprise scale.</p>
                     </article>
                 </div>
             </div>
@@ -240,8 +492,8 @@
             <div class="floating-cta" id="floating-cta">
                 <div class="cta-card surface">
                     <div class="cta-content">
-                        <h3>Ready to transform your freshness strategy?</h3>
-                        <p>Discover how SpoilSafe helps teams cut waste, protect margins, and prove impact with data.</p>
+                        <h3>Ready to align distribution, transport, and retail on freshness?</h3>
+                        <p>Discover how SpoilSafe gives every operator predictive visibility, actionable SOPs, and measurable ROI.</p>
                         <div class="cta-actions">
                             <a class="floating-button" href="Product Page/product.html">Explore the Vision</a>
                         </div>
@@ -276,7 +528,11 @@
             initFloatingCta();
             initDynamicText();
             new BananaAnimation();
+            initDashboardPreview();
             initScrollAnimations();
+            initHeroTelemetry();
+            initDashboardTelemetry();
+            initHeroClock();
             setViewportHeight();
         });
 
@@ -304,12 +560,12 @@
             if (!textElement) return;
 
             const textBank = [
-                'customer-driven insights',
-                'real-time analytics',
-                'smart predictions',
-                'AI-powered solutions',
-                'data-driven decisions',
-                'food safety analytics'
+                'distribution command centers',
+                'fleet-wide freshness SLAs',
+                'cold chain operators',
+                'retail replenishment leads',
+                'third-party logistics teams',
+                'multi-site QA leaders'
             ];
 
             let currentTextIndex = 0;
@@ -364,6 +620,363 @@
                 .forEach((element) => observer.observe(element));
         }
 
+        function initDashboardPreview() {
+            const preview = document.querySelector('.dashboard-preview');
+            if (!preview) return;
+
+            const buttons = preview.querySelectorAll('.dashboard-preview__view');
+            const panels = preview.querySelectorAll('.dashboard-preview__panel');
+
+            buttons.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const target = btn.dataset.dashboard;
+
+                    buttons.forEach((control) => {
+                        const isActive = control === btn;
+                        control.classList.toggle('is-active', isActive);
+                        control.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                    });
+
+                    panels.forEach((panel) => {
+                        const match = panel.dataset.dashboardPanel === target;
+                        panel.classList.toggle('is-active', match);
+                        panel.toggleAttribute('hidden', !match);
+                    });
+                });
+            });
+        }
+
+        function initHeroTelemetry() {
+            const randomInRange = (min, max) => Math.random() * (max - min) + min;
+
+            const telemetrySpecs = [
+                {
+                    selector: '[data-telemetry="ethylene"]',
+                    getValue: () => randomInRange(2.5, 3.9),
+                    format: (value) => `${value.toFixed(1)} ppm`
+                },
+                {
+                    selector: '[data-telemetry="intervention"]',
+                    getValue: () => Math.round(randomInRange(6, 12)),
+                    format: (value) => `+${value}h`,
+                    afterUpdate: (el) => {
+                        el.classList.add('hero__readout-value--positive');
+                    }
+                },
+                {
+                    selector: '[data-telemetry="fleetTemp"]',
+                    getValue: () => randomInRange(36.1, 38.6),
+                    format: (value) => `${value.toFixed(1)}°F`
+                },
+                {
+                    selector: '[data-telemetry="humidity"]',
+                    getValue: () => Math.round(randomInRange(55, 72)),
+                    format: (value) => `${value}%`
+                },
+                {
+                    selector: '[data-telemetry="risk"]',
+                    getValue: () => Math.max(1, Math.round(randomInRange(1, 4))),
+                    format: (value) => `${value} ${value === 1 ? 'route' : 'routes'}`,
+                    afterUpdate: (el, value) => {
+                        el.classList.toggle('hero__readout-value--alert', value >= 3);
+                        el.classList.toggle('hero__readout-value--positive', value === 1);
+                    }
+                }
+            ];
+
+            const streamContainer = document.querySelector('[data-stream-list]');
+            const streamTemplates = [
+                { label: 'Route 9 · Reefers', value: 'Temp corrected to 36.2°F', tone: 'positive' },
+                { label: 'Retail dock · Chicago', value: 'Door sealed in 45s', tone: 'positive' },
+                { label: 'Distribution center · Dallas', value: 'Ethylene scrubbers recalibrated', tone: 'neutral' },
+                { label: 'Route 12 · Fresh', value: 'Warm spike +1.8°F · Crew alerted', tone: 'alert' },
+                { label: '3PL yard · Newark', value: 'Humidity purge complete · 59%', tone: 'neutral' },
+                { label: 'HQ command', value: 'Leafy greens SLA tightened to 6h', tone: 'neutral' },
+                { label: 'Cross-dock · Denver', value: 'Compressor maintenance advanced', tone: 'positive' },
+                { label: 'Route 17 · Seafood', value: 'Sensor heartbeat lost · Investigate', tone: 'alert' }
+            ];
+
+            const routes = Array.from(document.querySelectorAll('.dashboard-preview__routes .route'));
+            const nodes = Array.from(document.querySelectorAll('.dashboard-preview__nodes .node'))
+                .filter((node) => !node.classList.contains('node--hq'));
+            const routeStateClasses = ['route--healthy', 'route--warning', 'route--alert'];
+            const nodeStateClasses = ['node--healthy', 'node--warning', 'node--offline'];
+
+            if (!telemetrySpecs.length && !streamContainer) return;
+
+            const updateMetrics = () => {
+                telemetrySpecs.forEach((spec) => {
+                    const el = document.querySelector(spec.selector);
+                    if (!el) return;
+                    const value = spec.getValue();
+                    el.textContent = spec.format(value);
+                    el.classList.add('is-updating');
+                    el.classList.remove('hero__readout-value--alert', 'hero__readout-value--positive');
+                    if (spec.afterUpdate) {
+                        spec.afterUpdate(el, value);
+                    }
+                    setTimeout(() => el.classList.remove('is-updating'), 620);
+                });
+            };
+
+            const updateMapStates = () => {
+                routes.forEach((route) => {
+                    routeStateClasses.forEach((cls) => route.classList.remove(cls));
+                    const state = routeStateClasses[Math.floor(Math.random() * routeStateClasses.length)];
+                    route.classList.add(state);
+                });
+
+                nodes.forEach((node) => {
+                    nodeStateClasses.forEach((cls) => node.classList.remove(cls));
+                    const state = nodeStateClasses[Math.floor(Math.random() * nodeStateClasses.length)];
+                    node.classList.add(state);
+                });
+            };
+
+            const pushStreamEvent = () => {
+                if (!streamContainer) return;
+
+                const { label, value, tone } = streamTemplates[Math.floor(Math.random() * streamTemplates.length)];
+                const item = document.createElement('div');
+                item.className = 'hero__stream-item is-entering';
+
+                const valueClasses = ['hero__stream-value'];
+                if (tone === 'alert') valueClasses.push('hero__stream-value--alert');
+                else if (tone === 'positive') valueClasses.push('hero__stream-value--positive');
+                else valueClasses.push('hero__stream-value--neutral');
+
+                item.innerHTML = `
+                    <span class="hero__stream-label">${label}</span>
+                    <span class="${valueClasses.join(' ')}">${value}</span>
+                `;
+
+                streamContainer.prepend(item);
+
+                const items = Array.from(streamContainer.querySelectorAll('.hero__stream-item'));
+                if (items.length > 3) {
+                    items.slice(3).forEach((oldItem) => oldItem.remove());
+                }
+
+                setTimeout(() => item.classList.remove('is-entering'), 650);
+            };
+
+            updateMetrics();
+            updateMapStates();
+            pushStreamEvent();
+
+            setInterval(() => {
+                updateMetrics();
+                updateMapStates();
+            }, 1800);
+
+            setInterval(() => {
+                pushStreamEvent();
+            }, 2400);
+        }
+
+        function initDashboardTelemetry() {
+            const randomInRange = (min, max) => Math.random() * (max - min) + min;
+            const numberFormatter = new Intl.NumberFormat('en-US');
+
+            const statSpecs = [
+                {
+                    selector: '[data-stat="distribution-on-time"]',
+                    min: 94,
+                    max: 99,
+                    format: (value) => `${Math.round(value)}%`,
+                    progress: (value) => `${Math.round(value)}%`,
+                    onUpdate: (card, value) => {
+                        card.classList.toggle('stat-card--positive', value >= 95);
+                    }
+                },
+                {
+                    selector: '[data-stat="distribution-risk"]',
+                    min: 2,
+                    max: 6,
+                    step: 1,
+                    format: (value) => Math.round(value),
+                    progress: (value) => `${Math.min(100, Math.round((value / 8) * 100))}%`,
+                    onUpdate: (card, value) => {
+                        card.classList.toggle('stat-card--alert', value >= 4);
+                    }
+                },
+                {
+                    selector: '[data-stat="distribution-throughput"]',
+                    min: 1150,
+                    max: 1380,
+                    format: (value) => numberFormatter.format(Math.round(value)),
+                    progress: (value) => `${Math.min(100, Math.round((value / 1500) * 100))}%`
+                },
+                {
+                    selector: '[data-stat="transport-door"]',
+                    min: 88,
+                    max: 95,
+                    format: (value) => `${Math.round(value)}%`,
+                    progress: (value) => `${Math.round(value)}%`,
+                    onUpdate: (card, value) => {
+                        card.classList.toggle('stat-card--positive', value >= 90);
+                    }
+                },
+                {
+                    selector: '[data-stat="transport-payload"]',
+                    min: 16.8,
+                    max: 19.6,
+                    format: (value) => `${value.toFixed(1)}k lbs`,
+                    progress: (value) => `${Math.min(100, Math.round((value / 22) * 100))}%`
+                },
+                {
+                    selector: '[data-stat="transport-fuel"]',
+                    min: 6.1,
+                    max: 7.4,
+                    format: (value) => `${value.toFixed(1)} mpg`,
+                    progress: (value) => `${Math.min(100, Math.round((value / 9) * 100))}%`
+                },
+                {
+                    selector: '[data-stat="retail-freshness"]',
+                    min: 88,
+                    max: 97,
+                    format: (value) => `${Math.round(value)}%`,
+                    progress: (value) => `${Math.round(value)}%`,
+                    onUpdate: (card, value) => {
+                        card.classList.toggle('stat-card--positive', value >= 92);
+                    }
+                },
+                {
+                    selector: '[data-stat="retail-shrink"]',
+                    min: 2.1,
+                    max: 3.6,
+                    format: (value) => `${value.toFixed(1)}%`,
+                    progress: (value) => `${Math.max(18, Math.min(100, Math.round(100 - value * 18)))}%`,
+                    onUpdate: (card, value) => {
+                        card.classList.toggle('stat-card--alert', value >= 3.1);
+                    }
+                },
+                {
+                    selector: '[data-stat="retail-planogram"]',
+                    min: 80,
+                    max: 93,
+                    format: (value) => `${Math.round(value)}%`,
+                    progress: (value) => `${Math.round(value)}%`,
+                    onUpdate: (card, value) => {
+                        card.classList.toggle('stat-card--positive', value >= 85);
+                    }
+                }
+            ];
+
+            const transportTelemetrySpecs = [
+                {
+                    selector: '[data-transport-telemetry="avgTemp"]',
+                    min: 35.8,
+                    max: 37.8,
+                    format: (value) => `${value.toFixed(1)}°F`
+                },
+                {
+                    selector: '[data-transport-telemetry="doorEvents"]',
+                    min: 6,
+                    max: 18,
+                    format: (value) => Math.round(value)
+                },
+                {
+                    selector: '[data-transport-telemetry="routeRisk"]',
+                    min: 0,
+                    max: 3,
+                    format: (value) => {
+                        const rounded = Math.round(value);
+                        return `${rounded} ${rounded === 1 ? 'route' : 'routes'}`;
+                    },
+                    onUpdate: (el, value) => {
+                        const rounded = Math.round(value);
+                        el.classList.toggle('telemetry-value--alert', rounded >= 2);
+                    }
+                }
+            ];
+
+            const updateStatCards = () => {
+                statSpecs.forEach((spec) => {
+                    const card = document.querySelector(spec.selector);
+                    if (!card) return;
+                    const valueElement = card.querySelector('[data-stat-value]');
+                    const fill = card.querySelector('.stat-card__progress-fill');
+                    if (!valueElement || !fill) return;
+
+                    const value = spec.step
+                        ? Math.round(randomInRange(spec.min, spec.max))
+                        : randomInRange(spec.min, spec.max);
+
+                    card.classList.add('is-updating');
+                    card.classList.remove('stat-card--alert', 'stat-card--positive');
+                    valueElement.textContent = spec.format(value);
+                    fill.style.setProperty('--stat-progress', spec.progress(value));
+                    if (spec.onUpdate) {
+                        spec.onUpdate(card, value);
+                    }
+                    setTimeout(() => card.classList.remove('is-updating'), 520);
+                });
+            };
+
+            const updateTransportTelemetry = () => {
+                transportTelemetrySpecs.forEach((spec) => {
+                    const el = document.querySelector(spec.selector);
+                    if (!el) return;
+                    const value = randomInRange(spec.min, spec.max);
+                    el.textContent = spec.format(value);
+                    el.classList.remove('telemetry-value--alert');
+                    if (spec.onUpdate) {
+                        spec.onUpdate(el, value);
+                    }
+                });
+            };
+
+            const signalLists = document.querySelectorAll('.dashboard-preview__signals');
+            signalLists.forEach((list) => {
+                const items = Array.from(list.querySelectorAll('.signal'));
+                if (!items.length) return;
+                let index = items.findIndex((item) => item.classList.contains('is-active'));
+                if (index < 0) {
+                    items[0].classList.add('is-active');
+                    index = 0;
+                }
+                setInterval(() => {
+                    items[index].classList.remove('is-active');
+                    index = (index + 1) % items.length;
+                    items[index].classList.add('is-active');
+                }, 2600);
+            });
+
+            updateStatCards();
+            updateTransportTelemetry();
+            setInterval(updateStatCards, 2400);
+            setInterval(updateTransportTelemetry, 1800);
+        }
+
+        function initHeroClock() {
+            const timestampEl = document.getElementById('hero-timestamp');
+            const mapClockEl = document.getElementById('hero-map-clock');
+            if (!timestampEl) return;
+
+            const updateClock = () => {
+                const now = new Date();
+                const options = {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false,
+                    timeZoneName: 'short'
+                };
+                const formatter = new Intl.DateTimeFormat('en-US', options);
+                const parts = formatter.formatToParts(now);
+                const time = `${parts.find((p) => p.type === 'hour').value}:${parts.find((p) => p.type === 'minute').value}:${parts.find((p) => p.type === 'second').value}`;
+                const zone = parts.find((p) => p.type === 'timeZoneName')?.value ?? 'UTC';
+                timestampEl.textContent = `${time} ${zone}`;
+                if (mapClockEl) {
+                    mapClockEl.textContent = time;
+                }
+            };
+
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
         function setViewportHeight() {
             const vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -416,9 +1029,10 @@
             calculateDimensions() {
                 this.sectionHeight = this.section.offsetHeight;
                 this.startOffset = this.section.offsetTop;
-                this.animationHeight = window.innerHeight * 2;
+                this.animationHeight = window.innerHeight * 1.6;
                 this.endOffset = this.startOffset + this.animationHeight;
                 this.section.style.minHeight = `${this.animationHeight}px`;
+                this.section.style.paddingBottom = '22vh';
             }
 
             createRestartButton() {
