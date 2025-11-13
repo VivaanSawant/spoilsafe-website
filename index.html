@@ -1082,8 +1082,9 @@
                 const whatYouGetSection = document.getElementById('what-you-get-section');
 
                 if (whatYouGetSection && !this.bananaHidden) {
-                    const whatYouGetTop = whatYouGetSection.offsetTop;
-                    if (scrollY > this.endOffset + 200 && scrollY >= whatYouGetTop + 600) {
+                    const sectionTop = whatYouGetSection.offsetTop;
+                    const sectionBottom = sectionTop + whatYouGetSection.offsetHeight;
+                    if (scrollY + window.innerHeight >= sectionBottom) {
                         this.section.style.visibility = 'hidden';
                         this.section.style.opacity = '0';
                         this.section.style.pointerEvents = 'none';
