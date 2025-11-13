@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SpoilSafe Vision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <link rel="stylesheet" href="assets/css/product.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <nav class="top-nav">
+        <a class="nav-logo" href="index.html">SpoilSafe<span>BETA</span></a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <div class="nav-links" id="primary-navigation">
+            <a href="index.html#problem">Problem</a>
+            <a href="index.html#what-you-get-section">Solution</a>
+            <a class="is-active" href="product.html">Vision</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="contact.html" class="nav-link--cta">Join Waitlist</a>
+        </div>
+        <a class="nav-cta" href="contact.html">Join Waitlist</a>
+    </nav>
+
+    <main>
+        <section class="page-hero page-hero--frost product-hero">
+            <div class="page-hero__inner">
+                <p class="eyebrow">Product vision</p>
+                <h1 class="hero-title">Always-on freshness intelligence for every kitchen</h1>
+                <p class="hero-subtitle">SpoilSafe fuses resilient sensing hardware with predictive software so teams can act on freshness data before product is lost. From walk-ins to mobile fleets, we provide the real-time context decision makers need.</p>
+                <div class="product-hero__actions">
+                    <a class="cta-button" href="contact.html">Request a pilot</a>
+                    <a class="button-secondary" href="about.html">Meet the team</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <div class="layout-max product-summary">
+                <h2 class="section-heading">Designed for the environments that never sleep</h2>
+                <p class="contact-lead">Our modular sensors, edge computing, and cloud intelligence combine to deliver real-time awareness, forecasting, and recommended actions. We ensure the data is trustworthy, secure, and effortless to deploy.</p>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h3>Modular sensing</h3>
+                        <p>Compact multi-sensor modules adapt to containers, walk-ins, or trucks and install in minutes.</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Edge + cloud logic</h3>
+                        <p>Local edge processing filters noise, while the cloud aggregates patterns across locations.</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Guided actions</h3>
+                        <p>Predictive models forecast remaining life and provide clear guidance tailored to each site.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section page-section--surface">
+            <div class="layout-max typewriter-card">
+                <div class="document-header">
+                    <span class="document-title">freshness_report.txt</span>
+                    <div class="document-controls">
+                        <span class="control-dot control-dot--close"></span>
+                        <span class="control-dot control-dot--minimise"></span>
+                        <span class="control-dot control-dot--expand"></span>
+                    </div>
+                </div>
+                <div class="document-body">
+                    <div id="typewriter"></div>
+                </div>
+                <div class="document-footer">
+                    <span class="status-indicator"></span>
+                    <span>Live data stream active — last update 5 sec ago</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="exploded-section">
+            <div class="exploded-animation-container">
+                <div class="exploded-image-container" id="exploded-container"></div>
+                <div class="exploded-text-overlay">
+                    <div class="exploded-step" id="exploded-step1">
+                        <span class="step-label">01 · Perceive</span>
+                        <h2>Detect</h2>
+                        <ul>
+                            <li>Gas, temperature, humidity, and vibration sensing</li>
+                            <li>Adaptive sampling tuned to product sensitivity</li>
+                            <li>Secure edge buffering for offline resilience</li>
+                        </ul>
+                    </div>
+                    <div class="exploded-step" id="exploded-step2">
+                        <span class="step-label">02 · Analyse</span>
+                        <h2>Predict</h2>
+                        <ul>
+                            <li>ML models forecast remaining life and spoilage risk</li>
+                            <li>Scenario testing to surface the most effective intervention</li>
+                            <li>Alerts routed by severity and role</li>
+                        </ul>
+                    </div>
+                    <div class="exploded-step" id="exploded-step3">
+                        <span class="step-label">03 · Evolve</span>
+                        <h2>Adapt</h2>
+                        <ul>
+                            <li>Feedback loops tune alert thresholds per location</li>
+                            <li>APIs feed ERP, inventory, and sustainability reporting</li>
+                            <li>Impact dashboards quantify savings and CO₂e avoided</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="product-footer">
+        <div class="layout-max cta-card">
+            <h3>Bring continuous freshness visibility to your operations</h3>
+            <p>We partner with culinary, facilities, and operations leaders to prove outcomes quickly and scale confidently.</p>
+            <div class="cta-actions">
+                <a class="cta-button" href="contact.html">Start a conversation</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/product-vision.js"></script>
+    <script>
+        const typewriterText = `SpoilSafe is a smart sensor system designed to revolutionize how we monitor food freshness. By tracking gas concentrations and key environmental factors like temperature and humidity, SpoilSafe can detect early signs of spoilage. Our goal is to prevent food waste at the source — whether in homes, restaurants, or large-scale supply chains — by delivering actionable insights before spoilage happens.`;
+        const typewriterEl = document.getElementById('typewriter');
+        let typeIndex = 0;
+
+        function typeNextChar() {
+            if (typeIndex < typewriterText.length) {
+                typewriterEl.textContent += typewriterText.charAt(typeIndex);
+                typeIndex += 1;
+                setTimeout(typeNextChar, 18);
+            }
+        }
+
+        typeNextChar();
+    </script>
+</body>
+</html>
+

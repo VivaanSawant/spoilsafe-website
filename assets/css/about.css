@@ -1,0 +1,145 @@
+.about-story .section-subtitle {
+    max-width: 62ch;
+}
+
+.story-grid {
+    display: grid;
+    gap: clamp(1.2rem, 3vw, 1.8rem);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.story-grid .info-card {
+    align-self: stretch;
+}
+
+.story-grid .info-card p:last-child {
+    margin-bottom: 0;
+}
+
+.about-pillars .info-card {
+    position: relative;
+    padding-top: clamp(2rem, 4vw, 2.4rem);
+    border-top: 4px solid rgba(37, 99, 235, 0.24);
+}
+
+.about-pillars .info-card strong {
+    color: var(--color-accent-strong);
+}
+
+.about-pillars .info-card ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+.about-pillars .info-card ul li + li {
+    margin-top: 0.4rem;
+}
+
+.team-highlight {
+    display: grid;
+    gap: clamp(1.2rem, 3vw, 1.6rem);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.team-highlight .info-card {
+    background: linear-gradient(180deg, rgba(244, 247, 255, 0.85) 0%, #ffffff 70%);
+}
+
+.team-highlight h3 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--color-text);
+}
+
+.team-highlight p {
+    margin: 0;
+    color: var(--color-text-muted);
+}
+
+.team-highlight ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--color-text-muted);
+}
+
+.team-highlight ul li + li {
+    margin-top: 0.35rem;
+}
+
+.badge--note {
+    background: rgba(56, 189, 248, 0.15);
+    color: #0ea5e9;
+}
+
+.sponsors {
+    display: grid;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    text-align: center;
+}
+
+.sponsor-carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(217, 226, 241, 0.75);
+    background: #ffffff;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    box-shadow: var(--shadow-sm);
+}
+
+.sponsor-track {
+    display: flex;
+    gap: clamp(2.5rem, 6vw, 4rem);
+    align-items: center;
+    animation: sponsorMarquee 24s linear infinite;
+    will-change: transform;
+}
+
+.sponsor-item {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: clamp(140px, 14vw, 200px);
+    opacity: 0.75;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.sponsor-item img {
+    max-height: clamp(38px, 5vw, 56px);
+    width: auto;
+    filter: grayscale(100%);
+}
+
+.sponsor-item:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+@keyframes sponsorMarquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 900px) {
+    .about-pillars .info-card {
+        padding-top: 1.8rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .sponsor-track {
+        animation-duration: 28s;
+    }
+
+    .sponsor-item img {
+        max-height: 44px;
+    }
+}
+

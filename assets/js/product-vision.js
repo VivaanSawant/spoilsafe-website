@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+  if (!window.gsap) {
+    console.warn('[ExplodedAnimation] GSAP not loaded.');
+    return;
+  }
+
   gsap.registerPlugin(ScrollTrigger);
 
-  // Hero animations
   gsap.from('.hero-title', {
     duration: 1.5,
     y: -50,
@@ -17,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ease: 'power2.out'
   });
 
-  // Exploded View Animation
   class ExplodedAnimation {
     constructor() {
       this.totalFrames = 61;
@@ -35,17 +38,20 @@ document.addEventListener('DOMContentLoaded', () => {
       this.calculateOffsets();
       window.addEventListener('scroll', () => this.handleScroll());
       window.addEventListener('resize', () => this.calculateOffsets());
-    }  
+    }
 
     loadImages() {
       if (!this.container) {
         console.warn('[ExplodedAnimation] #exploded-container not found; skipping frame load');
         return;
       }
-      const basePath = 'Casing_Advika_v33_frames'; // Correct cased directory name for GitHub Pages
-      for (let i = 0; i < this.totalFrames; i++) {
+
+      const basePath = 'assets/images/product/frames';
+
+      for (let i = 0; i < this.totalFrames; i += 1) {
         const img = document.createElement('img');
-        img.src = `${basePath}/Casing_Advika v33_${String(i + 1).padStart(4, '0')}.jpg`;
+        const frameName = `Casing_Advika v33_${String(i + 1).padStart(4, '0')}.jpg`;
+        img.src = `${basePath}/${frameName}`;
         img.alt = `Exploded Frame ${i + 1}`;
         img.className = 'exploded-image';
         img.loading = 'lazy';
@@ -62,11 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     calculateOffsets() {
+      if (!this.section) return;
       this.startOffset = this.section.offsetTop;
       this.endOffset = this.startOffset + this.section.offsetHeight - window.innerHeight;
     }
 
     handleScroll() {
+      if (!this.section || !this.images.length) return;
       const scrollY = window.scrollY;
       const progress = Math.min(Math.max((scrollY - this.startOffset) / (this.endOffset - this.startOffset), 0), 1);
       const frameIndex = Math.min(this.totalFrames - 1, Math.floor(progress * this.totalFrames));
@@ -80,29 +88,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   new ExplodedAnimation();
 
-  // Overlay text animations
   function setupExplodedText() {
-  const steps = [
-    { id: "#exploded-step1", start: "top center" },
-    { id: "#exploded-step2", start: "top center+=300" },
-    { id: "#exploded-step3", start: "top center+=600" }
-  ];
+    const steps = [
+      { id: '#exploded-step1', start: 'top center' },
+      { id: '#exploded-step2', start: 'top center+=300' },
+      { id: '#exploded-step3', start: 'top center+=600' }
+    ];
 
-  steps.forEach((step) => {
-    gsap.to(step.id, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".exploded-section",
-        start: step.start,
-        toggleActions: "play none none none", // fade in only
-        scrub: false
-      }
+    steps.forEach((step) => {
+      gsap.to(step.id, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: '.exploded-section',
+          start: step.start,
+          toggleActions: 'play none none none',
+          scrub: false
+        }
+      });
     });
-  });
-}
-
+  }
 
   setupExplodedText();
 });
+
