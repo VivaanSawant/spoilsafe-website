@@ -59,11 +59,31 @@
                     </dl>
                 </div>
                 <div class="hero__visual">
-                    <div class="hero__visual-card surface">
-                        <img src="device_render.png" alt="SpoilSafe device render" loading="lazy">
-                    </div>
-                    <div class="hero__visual-card surface hero__visual-card--secondary">
-                        <img src="device-in-strawberries.png" alt="SpoilSafe sensor protecting fresh produce" loading="lazy">
+                    <div class="hero__visual-display surface" role="img" aria-label="Animated SpoilSafe telemetry visualization">
+                        <div class="hero__visual-glow"></div>
+                        <div class="hero__visual-grid"></div>
+                        <div class="hero__visual-pulse"></div>
+                        <div class="hero__visual-readout hero__visual-readout--primary">
+                            <span class="hero__readout-label">Ethylene</span>
+                            <span class="hero__readout-value">3.2&nbsp;ppm</span>
+                        </div>
+                        <div class="hero__visual-readout hero__visual-readout--secondary">
+                            <div>
+                                <span class="hero__readout-label">Temp</span>
+                                <span class="hero__readout-value">38°F</span>
+                            </div>
+                            <div>
+                                <span class="hero__readout-label">Humidity</span>
+                                <span class="hero__readout-value">62%</span>
+                            </div>
+                        </div>
+                        <div class="hero__visual-chart" aria-hidden="true">
+                            <span style="--bar-height: 38%; --bar-delay: 0s;"></span>
+                            <span style="--bar-height: 64%; --bar-delay: 0.08s;"></span>
+                            <span style="--bar-height: 52%; --bar-delay: 0.16s;"></span>
+                            <span style="--bar-height: 78%; --bar-delay: 0.24s;"></span>
+                            <span style="--bar-height: 45%; --bar-delay: 0.32s;"></span>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -183,7 +183,6 @@
     height: 100%;
     object-fit: contain;
     opacity: 0;
-    transition: opacity 0.25s ease;
 }
 
 .exploded-image.active {
@@ -192,14 +191,16 @@
 
 .exploded-text-overlay {
     position: absolute;
-    inset: 0;
+    inset: clamp(1.5rem, 4vw, 2.75rem);
     display: grid;
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: space-between;
+    gap: clamp(1rem, 3vw, 1.75rem);
     pointer-events: none;
 }
 
 .exploded-step {
-    max-width: 320px;
+    max-width: clamp(240px, 32vw, 320px);
     background: rgba(255, 255, 255, 0.92);
     border: 1px solid rgba(28, 124, 74, 0.18);
     border-radius: var(--radius-md);
@@ -252,17 +253,21 @@
 @media (max-width: 1024px) {
     .exploded-text-overlay {
         gap: 1rem;
+        inset: clamp(1rem, 5vw, 2rem);
+        grid-template-columns: 1fr;
+        align-content: center;
     }
 
     #exploded-step1,
     #exploded-step2,
     #exploded-step3 {
         justify-self: center;
-        align-self: auto;
+        align-self: center;
     }
 
     .exploded-step {
-        max-width: 280px;
+        max-width: clamp(240px, 68vw, 320px);
+        margin-inline: auto;
     }
 }
 
@@ -280,7 +285,7 @@
     }
 
     .exploded-step {
-        max-width: 85%;
+        max-width: min(92%, 360px);
         margin-inline: auto;
     }
 }
