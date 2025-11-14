@@ -182,7 +182,7 @@
                     <div class="dashboard-preview__header">
                         <div>
                             <span class="chip">Command center</span>
-                            <h3>Ops dashboards tuned for your teams</h3>
+                            <h3>Command intelligence for cold-chain leaders</h3>
                         </div>
                         <div class="dashboard-preview__views" role="tablist" aria-label="Dashboard views">
                             <button class="dashboard-preview__view is-active" type="button" data-dashboard="distribution" role="tab" aria-selected="true">Distribution</button>
@@ -195,6 +195,7 @@
                             <div class="dashboard-distribution">
                                 <div class="dashboard-distribution__mapblock">
                                     <div class="dashboard-preview__map dashboard-preview__map--distribution">
+                                        <img class="distribution-map__background" data-map-image loading="lazy" src="assets/images/us-map-detailed.svg" alt="Live US coverage map">
                                         <div class="dashboard-preview__routes">
                                             <span class="route route--healthy" data-route-index="0"></span>
                                             <span class="route route--warning" data-route-index="1"></span>
@@ -1148,6 +1149,7 @@
             updateClock();
             setInterval(updateClock, 1000);
         }
+
 
         function setViewportHeight() {
             const vh = window.innerHeight * 0.01;
