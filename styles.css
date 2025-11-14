@@ -919,10 +919,10 @@
     border: 1px solid var(--color-border);
     background: linear-gradient(180deg, rgba(247, 251, 248, 0.82) 0%, rgba(255, 255, 255, 0.96) 70%);
     box-shadow: var(--shadow-md);
-    padding: clamp(1.75rem, 5vw, 2.5rem);
+    padding: clamp(1.75rem, 5vw, 2.3rem);
     max-width: min(100%, 1080px);
     margin: 0 auto;
-    min-height: clamp(60vh, 72vh, 620px);
+    min-height: clamp(52vh, 64vh, 560px);
 }
 
 .dashboard-preview__header {
@@ -971,9 +971,19 @@
 .dashboard-preview__panel {
     display: grid;
     gap: clamp(1.25rem, 3vw, 1.6rem);
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
     transition: opacity 0.3s ease;
+}
+
+@media (min-width: 960px) {
+    .dashboard-preview__panel {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    }
+}
+
+.dashboard-preview__panel--distribution {
+    grid-template-columns: minmax(0, 1fr);
 }
 
 .dashboard-preview__panel:not(.is-active) {
@@ -1148,6 +1158,31 @@
     line-height: 1.4;
 }
 
+@media (max-width: 1024px) {
+    .dashboard-distribution {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-distribution__bottom {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-preview {
+        padding: clamp(1.4rem, 5vw, 2rem);
+    }
+
+    .pricing-list li {
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: flex-start;
+    }
+
+    .pricing-list__price {
+        justify-self: flex-start;
+    }
+}
+
 .dashboard-preview__routes {
     position: absolute;
     inset: 12% 18%;
@@ -1231,6 +1266,218 @@
 .dashboard-preview__cards {
     display: grid;
     gap: clamp(1rem, 3vw, 1.35rem);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.dashboard-distribution {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: clamp(1.2rem, 3vw, 1.8rem);
+    align-items: start;
+    grid-column: 1 / -1;
+}
+
+.dashboard-distribution__mapblock {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.dashboard-preview__map--distribution {
+    min-height: clamp(240px, 30vw, 300px);
+}
+
+.distribution-map__overlay {
+    margin-top: 0.9rem;
+    display: grid;
+    gap: 0.75rem;
+    justify-items: stretch;
+    grid-auto-rows: auto;
+    pointer-events: auto;
+}
+
+.distribution-map__beacons {
+    position: absolute;
+    inset: 1.2rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.map-region {
+    position: absolute;
+    display: grid;
+    gap: 0.15rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(12, 38, 24, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 24px rgba(4, 15, 8, 0.4), inset 0 0 0 1px rgba(47, 158, 101, 0.24);
+    min-width: 120px;
+    text-align: left;
+    transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.map-region__label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: rgba(223, 242, 232, 0.7);
+}
+
+.map-region__value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #f1fff8;
+}
+
+.map-region--midwest {
+    top: 14%;
+    left: 6%;
+}
+
+.map-region--south {
+    bottom: 18%;
+    left: 14%;
+}
+
+.map-region--northeast {
+    top: 20%;
+    right: 8%;
+}
+
+.map-region::before {
+    content: '';
+    position: absolute;
+    inset: -30px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(47, 158, 101, 0.35), transparent 65%);
+    opacity: 0.6;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.map-region--caution {
+    background: rgba(100, 64, 10, 0.88);
+    border-color: rgba(244, 163, 64, 0.4);
+}
+
+.map-region--caution::before {
+    background: radial-gradient(circle, rgba(244, 163, 64, 0.35), transparent 70%);
+}
+
+.map-region--alert {
+    background: rgba(120, 33, 22, 0.88);
+    border-color: rgba(239, 123, 58, 0.5);
+}
+
+.map-region--alert::before {
+    background: radial-gradient(circle, rgba(239, 123, 58, 0.45), transparent 70%);
+    opacity: 0.85;
+}
+
+.distribution-map__center {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.55rem 0.8rem;
+    border-radius: 12px;
+    background: rgba(8, 22, 14, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(47, 158, 101, 0.18);
+    min-width: clamp(140px, 22vw, 200px);
+    backdrop-filter: blur(6px);
+    position: relative;
+}
+
+.center__name {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(205, 236, 217, 0.82);
+}
+
+.center__metric {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e8fff3;
+}
+
+.center__price {
+    font-size: 0.85rem;
+    color: rgba(160, 222, 188, 0.86);
+}
+
+.center__price--alert {
+    color: #f4a340;
+}
+
+.distribution-map__legend {
+    display: grid;
+    gap: 0.2rem;
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+}
+
+.dashboard-distribution__side {
+    display: grid;
+    gap: clamp(1rem, 2.2vw, 1.4rem);
+}
+
+.dashboard-card--pricing {
+    padding: clamp(1rem, 2.6vw, 1.45rem);
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(28, 124, 74, 0.16);
+}
+
+.pricing-list {
+    list-style: none;
+    margin: clamp(0.6rem, 2vw, 0.8rem) 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.65rem;
+}
+
+.pricing-list li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.35rem;
+    align-items: center;
+}
+
+.pricing-list__name {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.pricing-list__health {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+}
+
+.pricing-list__price {
+    justify-self: end;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-accent-strong);
+    font-weight: 600;
+}
+
+.pricing-list__price--alert {
+    color: #f97316;
+}
+
+.pricing-list__note {
+    margin: clamp(0.6rem, 2vw, 0.8rem) 0 0;
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+}
+
+.dashboard-distribution__bottom {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: clamp(0.9rem, 2.4vw, 1.2rem);
+    align-items: stretch;
+}
+
+.dashboard-distribution__bottom .dashboard-preview__signals {
+    margin: 0;
 }
 
 .dashboard-card--stream {

@@ -191,87 +191,135 @@
                         </div>
                     </div>
                     <div class="dashboard-preview__panels">
-                        <section class="dashboard-preview__panel is-active" data-dashboard-panel="distribution" role="tabpanel" aria-label="Distribution dashboard">
-                            <div class="dashboard-preview__map">
-                                <div class="dashboard-preview__routes">
-                                    <span class="route route--healthy" data-route-index="0"></span>
-                                    <span class="route route--warning" data-route-index="1"></span>
-                                    <span class="route route--healthy" data-route-index="2"></span>
+                        <section class="dashboard-preview__panel dashboard-preview__panel--distribution is-active" data-dashboard-panel="distribution" role="tabpanel" aria-label="Distribution dashboard">
+                            <div class="dashboard-distribution">
+                                <div class="dashboard-distribution__mapblock">
+                                    <div class="dashboard-preview__map dashboard-preview__map--distribution">
+                                        <div class="dashboard-preview__routes">
+                                            <span class="route route--healthy" data-route-index="0"></span>
+                                            <span class="route route--warning" data-route-index="1"></span>
+                                            <span class="route route--alert" data-route-index="2"></span>
+                                        </div>
+                                        <div class="dashboard-preview__nodes">
+                                            <span class="node node--hq" aria-label="HQ"></span>
+                                            <span class="node node--healthy" aria-label="Chicago DC"></span>
+                                            <span class="node node--warning" aria-label="Dallas DC"></span>
+                                            <span class="node node--healthy" aria-label="Newark DC"></span>
+                                        </div>
+                                        <div class="distribution-map__beacons" aria-live="polite">
+                                            <div class="map-region map-region--midwest" data-region-index="0">
+                                                <span class="map-region__label">Midwest</span>
+                                                <span class="map-region__value" data-region-health>Load 94%</span>
+                                            </div>
+                                            <div class="map-region map-region--south" data-region-index="1">
+                                                <span class="map-region__label">South</span>
+                                                <span class="map-region__value" data-region-health>Load 81%</span>
+                                            </div>
+                                            <div class="map-region map-region--northeast" data-region-index="2">
+                                                <span class="map-region__label">Northeast</span>
+                                                <span class="map-region__value" data-region-health>Load 89%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="distribution-map__overlay" aria-live="polite">
+                                        <div class="distribution-map__center" data-center-index="0">
+                                            <span class="center__name">Chicago DC</span>
+                                            <span class="center__metric" data-center-health="0">Shelf-life 92%</span>
+                                            <span class="center__price" data-center-price="0">$18.40 / crate</span>
+                                        </div>
+                                        <div class="distribution-map__center" data-center-index="1">
+                                            <span class="center__name">Dallas DC</span>
+                                            <span class="center__metric" data-center-health="1">Shelf-life 78%</span>
+                                            <span class="center__price center__price--alert" data-center-price="1">$15.60 / crate</span>
+                                        </div>
+                                        <div class="distribution-map__center" data-center-index="2">
+                                            <span class="center__name">Newark DC</span>
+                                            <span class="center__metric" data-center-health="2">Shelf-life 88%</span>
+                                            <span class="center__price" data-center-price="2">$19.20 / crate</span>
+                                        </div>
+                                    </div>
+                                    <aside class="distribution-map__legend">
+                                        <span>Live distribution coverage</span>
+                                        <span>Dynamic pricing adjusts by freshness + demand</span>
+                                    </aside>
                                 </div>
-                                <div class="dashboard-preview__nodes">
-                                    <span class="node node--hq" aria-label="HQ"></span>
-                                    <span class="node node--healthy" aria-label="Cross-dock"></span>
-                                    <span class="node node--warning" aria-label="High risk site"></span>
+                                <div class="dashboard-distribution__side">
+                                    <div class="dashboard-preview__stats-grid" data-dashboard-stats="distribution">
+                                        <article class="stat-card stat-card--positive" data-stat="distribution-on-time">
+                                            <span class="stat-card__label">On-time routes</span>
+                                            <span class="stat-card__value" data-stat-value>97%</span>
+                                            <span class="stat-card__progress" aria-hidden="true">
+                                                <span class="stat-card__progress-fill" style="--stat-progress: 97%;"></span>
+                                            </span>
+                                        </article>
+                                        <article class="stat-card stat-card--alert" data-stat="distribution-risk">
+                                            <span class="stat-card__label">Active risk flags</span>
+                                            <span class="stat-card__value" data-stat-value>4</span>
+                                            <span class="stat-card__progress" aria-hidden="true">
+                                                <span class="stat-card__progress-fill" style="--stat-progress: 48%;"></span>
+                                            </span>
+                                        </article>
+                                        <article class="stat-card" data-stat="distribution-throughput">
+                                            <span class="stat-card__label">Cases per hour</span>
+                                            <span class="stat-card__value" data-stat-value>1,240</span>
+                                            <span class="stat-card__progress" aria-hidden="true">
+                                                <span class="stat-card__progress-fill" style="--stat-progress: 68%;"></span>
+                                            </span>
+                                        </article>
+                                    </div>
+                                    <article class="dashboard-card dashboard-card--pricing">
+                                        <header>
+                                            <span class="dashboard-card__label">Dynamic pricing</span>
+                                            <span class="dashboard-card__trend">AI indexed</span>
+                                        </header>
+                                        <ul class="pricing-list" data-pricing-list>
+                                            <li data-pricing-center="0">
+                                                <span class="pricing-list__name">Chicago DC</span>
+                                                <span class="pricing-list__health" data-pricing-health>Freshness 92%</span>
+                                                <span class="pricing-list__price" data-pricing-price>$18.40 / crate</span>
+                                            </li>
+                                            <li data-pricing-center="1">
+                                                <span class="pricing-list__name">Dallas DC</span>
+                                                <span class="pricing-list__health" data-pricing-health>Freshness 78%</span>
+                                                <span class="pricing-list__price pricing-list__price--alert" data-pricing-price>$15.60 / crate</span>
+                                            </li>
+                                            <li data-pricing-center="2">
+                                                <span class="pricing-list__name">Newark DC</span>
+                                                <span class="pricing-list__health" data-pricing-health>Freshness 88%</span>
+                                                <span class="pricing-list__price" data-pricing-price>$19.20 / crate</span>
+                                            </li>
+                                        </ul>
+                                        <p class="pricing-list__note">SpoilSafe recommends markdowns when freshness dips below 80% and pushes premiums when inventory holds above 90%.</p>
+                                    </article>
+                                    <div class="dashboard-distribution__bottom">
+                                        <article class="dashboard-card dashboard-card--stream" data-distribution-log>
+                                            <header>
+                                                <span class="dashboard-card__label">Live command log</span>
+                                                <span class="dashboard-card__trend">Auto capture</span>
+                                            </header>
+                                            <ul class="dashboard-log" data-command-log>
+                                                <li>07:12 · Dock 4 – humidity vent cycle initiated</li>
+                                                <li>07:18 · Route 12 – ETA synced with retailer HQ</li>
+                                                <li>07:22 · Cold room 2B – purge completed</li>
+                                            </ul>
+                                        </article>
+                                        <ul class="dashboard-preview__signals" data-signal-list="distribution">
+                                            <li class="signal is-active">
+                                                <span class="signal__dot"></span>
+                                                <span class="signal__label">Chicago DC holding premium tier</span>
+                                            </li>
+                                            <li class="signal signal--alert">
+                                                <span class="signal__dot"></span>
+                                                <span class="signal__label">Dallas markdown triggered for ripening produce</span>
+                                            </li>
+                                            <li class="signal signal--info">
+                                                <span class="signal__dot"></span>
+                                                <span class="signal__label">Newark partner promo synced to retailers</span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="dashboard-preview__stats-grid" data-dashboard-stats="distribution">
-                                <article class="stat-card stat-card--positive" data-stat="distribution-on-time">
-                                    <span class="stat-card__label">On-time routes</span>
-                                    <span class="stat-card__value" data-stat-value>97%</span>
-                                    <span class="stat-card__progress" aria-hidden="true">
-                                        <span class="stat-card__progress-fill" style="--stat-progress: 97%;"></span>
-                                    </span>
-                                </article>
-                                <article class="stat-card stat-card--alert" data-stat="distribution-risk">
-                                    <span class="stat-card__label">Active risk flags</span>
-                                    <span class="stat-card__value" data-stat-value>4</span>
-                                    <span class="stat-card__progress" aria-hidden="true">
-                                        <span class="stat-card__progress-fill" style="--stat-progress: 48%;"></span>
-                                    </span>
-                                </article>
-                                <article class="stat-card" data-stat="distribution-throughput">
-                                    <span class="stat-card__label">Cases per hour</span>
-                                    <span class="stat-card__value" data-stat-value>1,240</span>
-                                    <span class="stat-card__progress" aria-hidden="true">
-                                        <span class="stat-card__progress-fill" style="--stat-progress: 68%;"></span>
-                                    </span>
-                                </article>
-                            </div>
-                            <div class="dashboard-preview__cards">
-                                <article class="dashboard-card">
-                                    <header>
-                                        <span class="dashboard-card__label">Network SLA</span>
-                                        <span class="dashboard-card__trend is-up">▲ 98.6%</span>
-                                    </header>
-                                    <p>8 of 312 vehicles breached temp bands this shift. Auto mitigation prevented spoilage at 6 sites.</p>
-                                </article>
-                                <article class="dashboard-card dashboard-card--stream" data-distribution-log>
-                                    <header>
-                                        <span class="dashboard-card__label">Live command log</span>
-                                        <span class="dashboard-card__trend">Auto capture</span>
-                                    </header>
-                                    <ul class="dashboard-log" data-command-log>
-                                        <li>07:12 · Dock 4 – humidity vent cycle initiated</li>
-                                        <li>07:18 · Route 12 – ETA synced with retailer HQ</li>
-                                        <li>07:22 · Cold room 2B – purge completed</li>
-                                    </ul>
-                                </article>
-                                <article class="dashboard-card dashboard-card--summary">
-                                    <header>
-                                        <span class="dashboard-card__label">Intervention queue</span>
-                                        <span class="dashboard-card__trend">3 active</span>
-                                    </header>
-                                    <ul>
-                                        <li>Route 14 · load re-stack before 08:10</li>
-                                        <li>Cold room 2B · humidity purge · <strong>Completed</strong></li>
-                                        <li>Retail dock 7 · assign QA audit</li>
-                                    </ul>
-                                </article>
-                            </div>
-                            <ul class="dashboard-preview__signals" data-signal-list="distribution">
-                                <li class="signal is-active">
-                                    <span class="signal__dot"></span>
-                                    <span class="signal__label">Cold rooms auto-balanced</span>
-                                </li>
-                                <li class="signal signal--alert">
-                                    <span class="signal__dot"></span>
-                                    <span class="signal__label">Route 7 requires dry ice reload</span>
-                                </li>
-                                <li class="signal signal--info">
-                                    <span class="signal__dot"></span>
-                                    <span class="signal__label">Supplier ETA sync complete</span>
-                                </li>
-                            </ul>
                         </section>
                         <section class="dashboard-preview__panel" data-dashboard-panel="transport" role="tabpanel" aria-label="Transport dashboard" hidden>
                             <div class="dashboard-preview__map dashboard-preview__map--transport">
@@ -803,6 +851,43 @@
                 'Route 11 · continuous monitoring switched to high sensitivity',
                 'Analytics · forecast extended to cover weekend deliveries'
             ];
+            const centerMetricNodes = Array.from(document.querySelectorAll('[data-center-health]'));
+            const centerPriceNodes = Array.from(document.querySelectorAll('[data-center-price]'));
+            const pricingListEl = document.querySelector('[data-pricing-list]');
+            const pricingRows = pricingListEl ? Array.from(pricingListEl.querySelectorAll('[data-pricing-center]')) : [];
+            const centerSpecMap = centerMetricNodes.reduce((acc, node) => {
+                const index = Number(node.dataset.centerHealth);
+                if (!Number.isNaN(index)) {
+                    acc[index] = acc[index] || {};
+                    acc[index].metric = node;
+                }
+                return acc;
+            }, {});
+            centerPriceNodes.forEach((node) => {
+                const index = Number(node.dataset.centerPrice);
+                if (!Number.isNaN(index)) {
+                    centerSpecMap[index] = centerSpecMap[index] || {};
+                    centerSpecMap[index].price = node;
+                }
+            });
+            const distributionCenters = [
+                { index: 0, minHealth: 88, maxHealth: 95, minPrice: 17.9, maxPrice: 19.8 },
+                { index: 1, minHealth: 72, maxHealth: 84, minPrice: 14.8, maxPrice: 16.2 },
+                { index: 2, minHealth: 83, maxHealth: 91, minPrice: 18.6, maxPrice: 20.2 }
+            ];
+            const regionNodes = Array.from(document.querySelectorAll('.map-region'));
+            const regionMap = regionNodes.reduce((acc, node) => {
+                const index = Number(node.dataset.regionIndex);
+                if (!Number.isNaN(index)) {
+                    acc[index] = node;
+                }
+                return acc;
+            }, {});
+            const regionSpecs = [
+                { index: 0, minScore: 88, maxScore: 98 },
+                { index: 1, minScore: 72, maxScore: 90 },
+                { index: 2, minScore: 82, maxScore: 95 }
+            ];
 
             const statSpecs = [
                 {
@@ -889,6 +974,52 @@
                 }
             ];
 
+            const updateDistributionCenters = () => {
+                distributionCenters.forEach((center) => {
+                    const freshness = Math.round(randomInRange(center.minHealth, center.maxHealth));
+                    const price = randomInRange(center.minPrice, center.maxPrice);
+                    const centerEntry = centerSpecMap[center.index];
+                    if (centerEntry?.metric) {
+                        centerEntry.metric.textContent = `Shelf-life ${freshness}%`;
+                    }
+                    if (centerEntry?.price) {
+                        centerEntry.price.textContent = `$${price.toFixed(2)} / crate`;
+                        centerEntry.price.classList.toggle('center__price--alert', freshness <= 80);
+                    }
+                    const pricingRow = pricingRows.find((row) => Number(row.dataset.pricingCenter) === center.index);
+                    if (pricingRow) {
+                        const healthEl = pricingRow.querySelector('[data-pricing-health]');
+                        const priceEl = pricingRow.querySelector('[data-pricing-price]');
+                        if (healthEl) {
+                            healthEl.textContent = `Freshness ${freshness}%`;
+                        }
+                        if (priceEl) {
+                            priceEl.textContent = `$${price.toFixed(2)} / crate`;
+                            priceEl.classList.toggle('pricing-list__price--alert', freshness <= 80);
+                        }
+                    }
+                });
+                updateRegionStatus();
+            };
+
+            const updateRegionStatus = () => {
+                regionSpecs.forEach((spec) => {
+                    const score = Math.round(randomInRange(spec.minScore, spec.maxScore));
+                    const node = regionMap[spec.index];
+                    if (!node) return;
+                    const valueEl = node.querySelector('[data-region-health]');
+                    if (valueEl) {
+                        valueEl.textContent = `${score}% healthy`;
+                    }
+                    node.classList.remove('map-region--alert', 'map-region--caution');
+                    if (score <= 80) {
+                        node.classList.add('map-region--alert');
+                    } else if (score <= 88) {
+                        node.classList.add('map-region--caution');
+                    }
+                });
+            };
+
             const transportTelemetrySpecs = [
                 {
                     selector: '[data-transport-telemetry="avgTemp"]',
@@ -971,8 +1102,10 @@
 
             updateStatCards();
             updateTransportTelemetry();
+            updateDistributionCenters();
             setInterval(updateStatCards, 2400);
             setInterval(updateTransportTelemetry, 1800);
+            setInterval(updateDistributionCenters, 3200);
             if (distributionLogEl) {
                 const appendDistributionLog = () => {
                     const entry = distributionLogTemplates[Math.floor(Math.random() * distributionLogTemplates.length)];
