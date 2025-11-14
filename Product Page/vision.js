@@ -25,56 +25,69 @@ document.addEventListener('DOMContentLoaded', () => {
       this.images = [];
       this.currentFrame = 0;
       this.section = document.querySelector('.exploded-section');
-      this.startOffset = 0;
-      this.endOffset = 0;
+      this.scrollTrigger = null;
       this.init();
     }
 
     init() {
       this.loadImages();
-      this.calculateOffsets();
-      window.addEventListener('scroll', () => this.handleScroll());
-      window.addEventListener('resize', () => this.calculateOffsets());
-    }  
+      this.createScrollTrigger();
+      window.addEventListener('resize', () => {
+        if (this.scrollTrigger) {
+          this.scrollTrigger.refresh();
+        }
+      });
+    }
 
     loadImages() {
       if (!this.container) {
         console.warn('[ExplodedAnimation] #exploded-container not found; skipping frame load');
         return;
       }
-      const basePath = 'Casing_Advika_v33_frames'; // Correct cased directory name for GitHub Pages
+      const basePath = 'Casing_Advika_v33_frames';
       for (let i = 0; i < this.totalFrames; i++) {
         const img = document.createElement('img');
         img.src = `${basePath}/Casing_Advika v33_${String(i + 1).padStart(4, '0')}.jpg`;
         img.alt = `Exploded Frame ${i + 1}`;
         img.className = 'exploded-image';
         img.loading = 'lazy';
-        img.onerror = () => {
-          if (!img.dataset.logged) {
-            console.warn('[ExplodedAnimation] Missing frame:', img.src);
-            img.dataset.logged = 'true';
-          }
-        };
         if (i === 0) img.classList.add('active');
         this.container.appendChild(img);
         this.images.push(img);
       }
     }
 
-    calculateOffsets() {
-      this.startOffset = this.section.offsetTop;
-      this.endOffset = this.startOffset + this.section.offsetHeight - window.innerHeight;
+    createScrollTrigger() {
+      if (!this.section || !this.images.length || typeof ScrollTrigger === 'undefined') return;
+
+      const animationContainer = document.querySelector('.exploded-animation-container');
+      if (!animationContainer) return;
+
+      this.scrollTrigger = ScrollTrigger.create({
+        trigger: this.section,
+        start: 'top top',
+        end: 'bottom bottom',
+        pin: animationContainer,
+        pinSpacing: false,
+        scrub: 0.5,
+        invalidateOnRefresh: true,
+        onUpdate: ({ progress }) => {
+          const frameIndex = Math.min(
+            this.totalFrames - 1,
+            Math.floor(progress * this.totalFrames)
+          );
+          this.updateFrame(frameIndex);
+        }
+      });
     }
 
-    handleScroll() {
-      const scrollY = window.scrollY;
-      const progress = Math.min(Math.max((scrollY - this.startOffset) / (this.endOffset - this.startOffset), 0), 1);
-      const frameIndex = Math.min(this.totalFrames - 1, Math.floor(progress * this.totalFrames));
-      if (frameIndex !== this.currentFrame) {
-        this.images[this.currentFrame].classList.remove('active');
-        this.images[frameIndex].classList.add('active');
-        this.currentFrame = frameIndex;
-      }
+    updateFrame(frameIndex) {
+      if (frameIndex === this.currentFrame || !this.images.length) return;
+      const previousImage = this.images[this.currentFrame];
+      previousImage?.classList.remove('active');
+      const nextImage = this.images[frameIndex];
+      nextImage?.classList.add('active');
+      this.currentFrame = frameIndex;
     }
   }
 
@@ -82,26 +95,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Overlay text animations
   function setupExplodedText() {
-  const steps = [
-    { id: "#exploded-step1", start: "top center" },
-    { id: "#exploded-step2", start: "top center+=300" },
-    { id: "#exploded-step3", start: "top center+=600" }
-  ];
+    const section = document.querySelector('.exploded-section');
+    if (!section) return;
 
-  steps.forEach((step) => {
-    gsap.to(step.id, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".exploded-section",
-        start: step.start,
-        toggleActions: "play none none none", // fade in only
-        scrub: false
-      }
+    const steps = [
+      { id: "#exploded-step1", progressStart: 0, progressEnd: 0.33 },
+      { id: "#exploded-step2", progressStart: 0.33, progressEnd: 0.66 },
+      { id: "#exploded-step3", progressStart: 0.66, progressEnd: 1.0 }
+    ];
+
+    steps.forEach((step) => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top top',
+        end: 'bottom bottom',
+        onUpdate: ({ progress }) => {
+          const element = document.querySelector(step.id);
+          if (!element) return;
+          
+          if (progress >= step.progressStart && progress <= step.progressEnd) {
+            const localProgress = (progress - step.progressStart) / (step.progressEnd - step.progressStart);
+            const opacity = Math.min(1, localProgress * 3);
+            const translateY = Math.max(0, 30 - (localProgress * 30));
+            element.style.opacity = opacity;
+            element.style.transform = `translateY(${translateY}px)`;
+          } else if (progress > step.progressEnd) {
+            element.style.opacity = 1;
+            element.style.transform = 'translateY(0)';
+          } else {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(30px)';
+          }
+        }
+      });
     });
-  });
-}
+  }
 
 
   setupExplodedText();
