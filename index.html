@@ -37,9 +37,10 @@
                         <span id="dynamic-text" class="hero__dynamic-text">distribution command centers</span>
                     </h1>
                     <p class="hero__lead">
-                        SpoilSafe unifies real-time sensing and predictive analytics for distributors, transporters, and retailers,
-                        so teams can protect margins and shelf-life before loss hits the balance sheet.
+                        SpoilSafe unifies real-time sensing with machine learning that predicts hours-to-spoil for distributors, transporters, and retailers—
+                        giving teams the confidence to act before loss touches the balance sheet.
                     </p>
+                    <p class="hero__subnote">Our predictive freshness models simulate every pallet and lane in real time so you always know the time remaining to intervene.</p>
                     <div class="hero__actions">
                         <a class="cta-button" href="#problem">Get Started ↓</a>
                         <a class="button-secondary" href="Product Page/product.html">Learn More</a>
@@ -54,8 +55,8 @@
                             <dd>of food lost before it’s eaten</dd>
                         </div>
                         <div class="hero__metric">
-                            <dt>24/7</dt>
-                            <dd>sensor-driven monitoring</dd>
+                            <dt>+18h</dt>
+                            <dd>average ML warning window</dd>
                         </div>
                     </dl>
                 </div>
@@ -140,7 +141,7 @@
                     </article>
                 </div>
                 <p class="call-to-action-subtitle scroll-float">
-                    SpoilSafe turns guesswork into insight, so teams can prevent loss instead of reacting to it.
+                    SpoilSafe’s machine-learning forecasts turn guesswork into foresight so teams prevent loss instead of reacting to it.
                 </p>
             </div>
         </section>
@@ -177,11 +178,11 @@
         <section class="core-capabilities" id="what-you-get-section">
             <div class="layout-max capabilities-container">
                 <p class="eyebrow">What You Get</p>
-                <h2 class="scroll-float">Freshness intelligence you can act on</h2>
+                <h2 class="scroll-float">Predictive freshness intelligence you can act on</h2>
                 <div class="dashboard-preview scroll-float">
                     <div class="dashboard-preview__header">
                         <div>
-                            <span class="chip">Command center</span>
+                            <span class="chip">Predictive command center</span>
                             <h3>Command intelligence for cold-chain leaders</h3>
                         </div>
                         <div class="dashboard-preview__views" role="tablist" aria-label="Dashboard views">
@@ -275,22 +276,49 @@
                                         </header>
                                         <ul class="pricing-list" data-pricing-list>
                                             <li data-pricing-center="0">
-                                                <span class="pricing-list__name">Chicago DC</span>
+                                                <div class="pricing-list__row">
+                                                    <span class="pricing-list__name">Chicago DC</span>
+                                                    <span class="pricing-list__price" data-pricing-price>$18.40 / crate</span>
+                                                </div>
+                                            <div class="pricing-list__freshness">
                                                 <span class="pricing-list__health" data-pricing-health>Freshness 92%</span>
-                                                <span class="pricing-list__price" data-pricing-price>$18.40 / crate</span>
+                                                <span class="pricing-list__timer" data-pricing-timer>+18h buffer</span>
+                                            </div>
+                                            <span class="pricing-list__action" data-pricing-action>Action: hold premiums, monitor ML cues</span>
+                                                <div class="pricing-progress">
+                                                    <span class="pricing-progress__fill" data-pricing-progress style="--progress:92%"></span>
+                                                </div>
                                             </li>
                                             <li data-pricing-center="1">
-                                                <span class="pricing-list__name">Dallas DC</span>
+                                                <div class="pricing-list__row">
+                                                    <span class="pricing-list__name">Dallas DC</span>
+                                                    <span class="pricing-list__price pricing-list__price--alert" data-pricing-price>$15.60 / crate</span>
+                                                </div>
+                                            <div class="pricing-list__freshness">
                                                 <span class="pricing-list__health" data-pricing-health>Freshness 78%</span>
-                                                <span class="pricing-list__price pricing-list__price--alert" data-pricing-price>$15.60 / crate</span>
+                                                <span class="pricing-list__timer" data-pricing-timer>4h to intervention</span>
+                                            </div>
+                                            <span class="pricing-list__action" data-pricing-action>Action: prep markdown + QA sweep</span>
+                                                <div class="pricing-progress">
+                                                    <span class="pricing-progress__fill pricing-progress__fill--alert" data-pricing-progress style="--progress:78%"></span>
+                                                </div>
                                             </li>
                                             <li data-pricing-center="2">
-                                                <span class="pricing-list__name">Newark DC</span>
+                                                <div class="pricing-list__row">
+                                                    <span class="pricing-list__name">Newark DC</span>
+                                                    <span class="pricing-list__price" data-pricing-price>$19.20 / crate</span>
+                                                </div>
+                                            <div class="pricing-list__freshness">
                                                 <span class="pricing-list__health" data-pricing-health>Freshness 88%</span>
-                                                <span class="pricing-list__price" data-pricing-price>$19.20 / crate</span>
+                                                <span class="pricing-list__timer" data-pricing-timer>+11h buffer</span>
+                                            </div>
+                                            <span class="pricing-list__action" data-pricing-action>Action: stage labor for rotation</span>
+                                                <div class="pricing-progress">
+                                                    <span class="pricing-progress__fill" data-pricing-progress style="--progress:88%"></span>
+                                                </div>
                                             </li>
                                         </ul>
-                                        <p class="pricing-list__note">SpoilSafe recommends markdowns when freshness dips below 80% and pushes premiums when inventory holds above 90%.</p>
+                                        <p class="pricing-list__note">SpoilSafe’s predictive models trigger markdowns when freshness dips below 80% and push premiums while ML forecasts show 90%+ integrity.</p>
                                     </article>
                                     <div class="dashboard-distribution__bottom">
                                         <article class="dashboard-card dashboard-card--stream" data-distribution-log>
@@ -399,11 +427,37 @@
                         </section>
                         <section class="dashboard-preview__panel" data-dashboard-panel="retail" role="tabpanel" aria-label="Retail dashboard" hidden>
                             <div class="dashboard-preview__map dashboard-preview__map--retail">
-                                <div class="dashboard-preview__tiles">
-                                    <div class="tile tile--fresh">Produce</div>
-                                    <div class="tile">Prepared</div>
-                                    <div class="tile tile--alert">Seafood</div>
-                                    <div class="tile">Dairy</div>
+                                <div class="retail-heatmap" data-retail-map>
+                                    <div class="retail-heatmap__grid">
+                                        <div class="retail-cell" data-retail-cell="produce">
+                                            <span class="retail-cell__label">Produce</span>
+                                            <span class="retail-cell__value" data-retail-hours="produce">18h until rot</span>
+                                            <span class="retail-cell__insight" data-retail-tip="produce">Action: keep planogram steady</span>
+                                        </div>
+                                        <div class="retail-cell" data-retail-cell="prepared">
+                                            <span class="retail-cell__label">Prepared</span>
+                                            <span class="retail-cell__value" data-retail-hours="prepared">12h until rot</span>
+                                            <span class="retail-cell__insight" data-retail-tip="prepared">Action: stage labor for re-pack</span>
+                                        </div>
+                                        <div class="retail-cell retail-cell--alert" data-retail-cell="seafood">
+                                            <span class="retail-cell__label">Seafood</span>
+                                            <span class="retail-cell__value" data-retail-hours="seafood">5h until rot</span>
+                                            <span class="retail-cell__insight" data-retail-tip="seafood">Action: prep markdown + QA sweep</span>
+                                        </div>
+                                        <div class="retail-cell" data-retail-cell="dairy">
+                                            <span class="retail-cell__label">Dairy</span>
+                                            <span class="retail-cell__value" data-retail-hours="dairy">15h until rot</span>
+                                            <span class="retail-cell__insight" data-retail-tip="dairy">Action: hold promos, monitor ML cues</span>
+                                        </div>
+                                    </div>
+                                    <div class="retail-legend">
+                                        <span class="retail-legend__label">Predicted hours-to-rot (ML)</span>
+                                        <div class="retail-legend__scale">
+                                            <span>&lt; 6h: intervene</span>
+                                            <span>&gt; 12h: premium window</span>
+                                        </div>
+                                    </div>
+                                    <p class="retail-note">Machine-learning forecasts surface the remaining hours per department so retail teams can plan markdowns, labor, and QA workflows before shrink hits.</p>
                                 </div>
                             </div>
                             <div class="dashboard-preview__stats-grid" data-dashboard-stats="retail">
@@ -477,7 +531,7 @@
                             </svg>
                         </div>
                         <h3>Network-wide monitoring</h3>
-                        <p>Track temperature, humidity, and gas composition across depots, trucks, and stores without manual checks.</p>
+                        <p>Track temperature, humidity, and gas composition across depots, trucks, and stores—feeding the ML engine that forecasts spoilage hours ahead.</p>
                     </article>
                     <article class="capability-card scroll-float">
                         <div class="card-icon">
@@ -489,7 +543,7 @@
                             </svg>
                         </div>
                         <h3>Predictive alerts</h3>
-                        <p>AI forecasts shelf-life and flags excursions before SKUs hit critical thresholds, routed by role and severity.</p>
+                        <p>Machine learning forecasts shelf-life, flags excursions, and shares time-to-rot countdowns by role and severity so teams know exactly when to intervene.</p>
                     </article>
                     <article class="capability-card scroll-float">
                         <div class="card-icon">
@@ -502,7 +556,7 @@
                             </svg>
                         </div>
                         <h3>Adaptive insights</h3>
-                        <p>Recommendations evolve with each environment to balance freshness, labor, and logistics constraints.</p>
+                        <p>Recommendations evolve with every sensor reading, balancing freshness, labor, and logistics constraints using continuously trained predictive models.</p>
                     </article>
                     <article class="capability-card scroll-float">
                         <div class="card-icon">
@@ -552,7 +606,7 @@
                 <div class="cta-card surface">
                     <div class="cta-content">
                         <h3>Ready to align distribution, transport, and retail on freshness?</h3>
-                        <p>Discover how SpoilSafe gives every operator predictive visibility, actionable SOPs, and measurable ROI.</p>
+                        <p>Discover how SpoilSafe’s predictive ML engine gives every operator visibility, actionable SOPs, and measurable ROI.</p>
                         <div class="cta-actions">
                             <a class="floating-button" href="Product Page/product.html">Explore the Vision</a>
                         </div>
@@ -871,6 +925,16 @@
                     centerSpecMap[index].price = node;
                 }
             });
+            const centerTimerNodes = Array.from(document.querySelectorAll('[data-pricing-timer]'));
+            centerTimerNodes.forEach((node, idx) => {
+                centerSpecMap[idx] = centerSpecMap[idx] || {};
+                centerSpecMap[idx].timer = node;
+            });
+            const centerProgressNodes = Array.from(document.querySelectorAll('[data-pricing-progress]'));
+            centerProgressNodes.forEach((node, idx) => {
+                centerSpecMap[idx] = centerSpecMap[idx] || {};
+                centerSpecMap[idx].bar = node;
+            });
             const distributionCenters = [
                 { index: 0, minHealth: 88, maxHealth: 95, minPrice: 17.9, maxPrice: 19.8 },
                 { index: 1, minHealth: 72, maxHealth: 84, minPrice: 14.8, maxPrice: 16.2 },
@@ -889,6 +953,18 @@
                 { index: 1, minScore: 72, maxScore: 90 },
                 { index: 2, minScore: 82, maxScore: 95 }
             ];
+            const retailHoursMap = {
+                produce: document.querySelector('[data-retail-hours="produce"]'),
+                prepared: document.querySelector('[data-retail-hours="prepared"]'),
+                seafood: document.querySelector('[data-retail-hours="seafood"]'),
+                dairy: document.querySelector('[data-retail-hours="dairy"]')
+            };
+            const retailTipMap = {
+                produce: document.querySelector('[data-retail-tip="produce"]'),
+                prepared: document.querySelector('[data-retail-tip="prepared"]'),
+                seafood: document.querySelector('[data-retail-tip="seafood"]'),
+                dairy: document.querySelector('[data-retail-tip="dairy"]')
+            };
 
             const statSpecs = [
                 {
@@ -987,20 +1063,50 @@
                         centerEntry.price.textContent = `$${price.toFixed(2)} / crate`;
                         centerEntry.price.classList.toggle('center__price--alert', freshness <= 80);
                     }
+                    if (centerEntry?.timer) {
+                        const hoursRemaining = Math.max(1, Math.round((freshness / 100) * 20));
+                        centerEntry.timer.textContent = hoursRemaining >= 12 ? `+${hoursRemaining}h reserve` : `${hoursRemaining}h to intervention`;
+                    }
+                    if (centerEntry?.bar) {
+                        centerEntry.bar.style.setProperty('--progress', `${freshness}%`);
+                        centerEntry.bar.classList.toggle('pricing-progress__fill--alert', freshness <= 80);
+                    }
                     const pricingRow = pricingRows.find((row) => Number(row.dataset.pricingCenter) === center.index);
                     if (pricingRow) {
                         const healthEl = pricingRow.querySelector('[data-pricing-health]');
                         const priceEl = pricingRow.querySelector('[data-pricing-price]');
+                        const timerEl = pricingRow.querySelector('[data-pricing-timer]');
+                        const barEl = pricingRow.querySelector('[data-pricing-progress]');
+                        const actionEl = pricingRow.querySelector('[data-pricing-action]');
                         if (healthEl) {
                             healthEl.textContent = `Freshness ${freshness}%`;
+                            healthEl.classList.toggle('pricing-list__health--alert', freshness <= 80);
                         }
                         if (priceEl) {
                             priceEl.textContent = `$${price.toFixed(2)} / crate`;
                             priceEl.classList.toggle('pricing-list__price--alert', freshness <= 80);
                         }
+                        const hoursRemaining = Math.max(1, Math.round((freshness / 100) * 20));
+                        if (timerEl) {
+                            timerEl.textContent = hoursRemaining >= 12 ? `+${hoursRemaining}h reserve` : `${hoursRemaining}h to intervention`;
+                        }
+                        if (barEl) {
+                            barEl.style.setProperty('--progress', `${freshness}%`);
+                            barEl.classList.toggle('pricing-progress__fill--alert', freshness <= 80);
+                        }
+                        if (actionEl) {
+                            if (hoursRemaining <= 6) {
+                                actionEl.textContent = 'Action: prep markdown + QA sweep';
+                            } else if (hoursRemaining <= 12) {
+                                actionEl.textContent = 'Action: stage labor for rotation';
+                            } else {
+                                actionEl.textContent = 'Action: hold premiums, monitor ML cues';
+                            }
+                        }
                     }
                 });
                 updateRegionStatus();
+                updateRetailHeatmap();
             };
 
             const updateRegionStatus = () => {
@@ -1017,6 +1123,39 @@
                         node.classList.add('map-region--alert');
                     } else if (score <= 88) {
                         node.classList.add('map-region--caution');
+                    }
+                });
+            };
+
+            const updateRetailHeatmap = () => {
+                const hourRanges = {
+                    produce: { min: 14, max: 24 },
+                    prepared: { min: 8, max: 16 },
+                    seafood: { min: 3, max: 8 },
+                    dairy: { min: 10, max: 18 }
+                };
+
+                Object.entries(hourRanges).forEach(([key, range]) => {
+                    const hours = Math.max(1, Math.round(randomInRange(range.min, range.max)));
+                    const hoursEl = retailHoursMap[key];
+                    const tipEl = retailTipMap[key];
+                    if (hoursEl) {
+                        hoursEl.textContent = `${hours}h until rot`;
+                    }
+                    if (tipEl) {
+                        if (hours <= 4) {
+                            tipEl.textContent = 'Action: activate markdown playbook + QA sweep';
+                        } else if (hours <= 8) {
+                            tipEl.textContent = 'Action: stage labor for repack + cold-room audit';
+                        } else if (hours <= 12) {
+                            tipEl.textContent = 'Action: pre-alert merchandising + prep rotation';
+                        } else {
+                            tipEl.textContent = 'Action: hold promos, monitor ML cues';
+                        }
+                    }
+                    const wrapper = hoursEl?.closest('[data-retail-cell]');
+                    if (wrapper) {
+                        wrapper.classList.toggle('retail-cell--alert', hours <= 6);
                     }
                 });
             };
