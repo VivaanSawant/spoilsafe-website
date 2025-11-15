@@ -78,31 +78,31 @@
                             </div>
                         </div>
                         <div class="hero__visual-kpis">
-                            <div class="hero__visual-readout hero__visual-readout--primary">
+                        <div class="hero__visual-readout hero__visual-readout--primary">
                                 <div>
-                                    <span class="hero__readout-label">Ethylene</span>
+                            <span class="hero__readout-label">Ethylene</span>
                                     <span class="hero__readout-value" data-telemetry="ethylene">3.2 ppm</span>
                                 </div>
                                 <div>
                                     <span class="hero__readout-label">Intervention window</span>
                                     <span class="hero__readout-value hero__readout-value--positive" data-telemetry="intervention">+9h</span>
                                 </div>
-                            </div>
-                            <div class="hero__visual-readout hero__visual-readout--secondary">
-                                <div>
+                        </div>
+                        <div class="hero__visual-readout hero__visual-readout--secondary">
+                            <div>
                                     <span class="hero__readout-label">Fleet temp</span>
                                     <span class="hero__readout-value" data-telemetry="fleetTemp">38°F</span>
-                                </div>
-                                <div>
-                                    <span class="hero__readout-label">Humidity</span>
+                            </div>
+                            <div>
+                                <span class="hero__readout-label">Humidity</span>
                                     <span class="hero__readout-value" data-telemetry="humidity">62%</span>
-                                </div>
+                            </div>
                                 <div>
                                     <span class="hero__readout-label">Spoilage risk</span>
                                     <span class="hero__readout-value hero__readout-value--alert" data-telemetry="risk">2 routes</span>
-                                </div>
-                            </div>
                         </div>
+                        </div>
+                    </div>
                         <div class="hero__visual-stream" aria-live="polite" data-stream-list>
                             <div class="hero__stream-item">
                                 <span class="hero__stream-label">Route 14 · Reefers</span>
@@ -184,7 +184,7 @@
                         <div>
                             <span class="chip">Predictive command center</span>
                             <h3>Command intelligence for cold-chain leaders</h3>
-                        </div>
+                    </div>
                         <div class="dashboard-preview__views" role="tablist" aria-label="Dashboard views">
                             <button class="dashboard-preview__view is-active" type="button" data-dashboard="distribution" role="tab" aria-selected="true">Distribution</button>
                             <button class="dashboard-preview__view" type="button" data-dashboard="transport" role="tab" aria-selected="false">Transport</button>
@@ -194,133 +194,8 @@
                     <div class="dashboard-preview__panels">
                         <section class="dashboard-preview__panel dashboard-preview__panel--distribution is-active" data-dashboard-panel="distribution" role="tabpanel" aria-label="Distribution dashboard">
                             <div class="dashboard-distribution">
-                                <div class="dashboard-distribution__mapblock">
-                                    <div class="dashboard-preview__map dashboard-preview__map--distribution">
-                                        <img class="distribution-map__background" data-map-image loading="lazy" src="assets/images/us-map-detailed.svg" alt="Live US coverage map">
-                                        <div class="dashboard-preview__routes">
-                                            <span class="route route--healthy" data-route-index="0"></span>
-                                            <span class="route route--warning" data-route-index="1"></span>
-                                            <span class="route route--alert" data-route-index="2"></span>
-                                        </div>
-                                        <div class="dashboard-preview__nodes">
-                                            <span class="node node--hq" aria-label="HQ"></span>
-                                            <span class="node node--healthy" aria-label="Chicago DC"></span>
-                                            <span class="node node--warning" aria-label="Dallas DC"></span>
-                                            <span class="node node--healthy" aria-label="Newark DC"></span>
-                                        </div>
-                                        <div class="distribution-map__beacons" aria-live="polite">
-                                            <div class="map-region map-region--midwest" data-region-index="0">
-                                                <span class="map-region__label">Midwest</span>
-                                                <span class="map-region__value" data-region-health>Load 94%</span>
-                                            </div>
-                                            <div class="map-region map-region--south" data-region-index="1">
-                                                <span class="map-region__label">South</span>
-                                                <span class="map-region__value" data-region-health>Load 81%</span>
-                                            </div>
-                                            <div class="map-region map-region--northeast" data-region-index="2">
-                                                <span class="map-region__label">Northeast</span>
-                                                <span class="map-region__value" data-region-health>Load 89%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="distribution-map__overlay" aria-live="polite">
-                                        <div class="distribution-map__center" data-center-index="0">
-                                            <span class="center__name">Chicago DC</span>
-                                            <span class="center__metric" data-center-health="0">Shelf-life 92%</span>
-                                            <span class="center__price" data-center-price="0">$18.40 / crate</span>
-                                        </div>
-                                        <div class="distribution-map__center" data-center-index="1">
-                                            <span class="center__name">Dallas DC</span>
-                                            <span class="center__metric" data-center-health="1">Shelf-life 78%</span>
-                                            <span class="center__price center__price--alert" data-center-price="1">$15.60 / crate</span>
-                                        </div>
-                                        <div class="distribution-map__center" data-center-index="2">
-                                            <span class="center__name">Newark DC</span>
-                                            <span class="center__metric" data-center-health="2">Shelf-life 88%</span>
-                                            <span class="center__price" data-center-price="2">$19.20 / crate</span>
-                                        </div>
-                                    </div>
-                                    <aside class="distribution-map__legend">
-                                        <span>Live distribution coverage</span>
-                                        <span>Dynamic pricing adjusts by freshness + demand</span>
-                                    </aside>
-                                </div>
-                                <div class="dashboard-distribution__side">
-                                    <div class="dashboard-preview__stats-grid" data-dashboard-stats="distribution">
-                                        <article class="stat-card stat-card--positive" data-stat="distribution-on-time">
-                                            <span class="stat-card__label">On-time routes</span>
-                                            <span class="stat-card__value" data-stat-value>97%</span>
-                                            <span class="stat-card__progress" aria-hidden="true">
-                                                <span class="stat-card__progress-fill" style="--stat-progress: 97%;"></span>
-                                            </span>
-                                        </article>
-                                        <article class="stat-card stat-card--alert" data-stat="distribution-risk">
-                                            <span class="stat-card__label">Active risk flags</span>
-                                            <span class="stat-card__value" data-stat-value>4</span>
-                                            <span class="stat-card__progress" aria-hidden="true">
-                                                <span class="stat-card__progress-fill" style="--stat-progress: 48%;"></span>
-                                            </span>
-                                        </article>
-                                        <article class="stat-card" data-stat="distribution-throughput">
-                                            <span class="stat-card__label">Cases per hour</span>
-                                            <span class="stat-card__value" data-stat-value>1,240</span>
-                                            <span class="stat-card__progress" aria-hidden="true">
-                                                <span class="stat-card__progress-fill" style="--stat-progress: 68%;"></span>
-                                            </span>
-                                        </article>
-                                    </div>
-                                    <article class="dashboard-card dashboard-card--pricing">
-                                        <header>
-                                            <span class="dashboard-card__label">Dynamic pricing</span>
-                                            <span class="dashboard-card__trend">AI indexed</span>
-                                        </header>
-                                        <ul class="pricing-list" data-pricing-list>
-                                            <li data-pricing-center="0">
-                                                <div class="pricing-list__row">
-                                                    <span class="pricing-list__name">Chicago DC</span>
-                                                    <span class="pricing-list__price" data-pricing-price>$18.40 / crate</span>
-                                                </div>
-                                            <div class="pricing-list__freshness">
-                                                <span class="pricing-list__health" data-pricing-health>Freshness 92%</span>
-                                                <span class="pricing-list__timer" data-pricing-timer>+18h buffer</span>
-                                            </div>
-                                            <span class="pricing-list__action" data-pricing-action>Action: hold premiums, monitor ML cues</span>
-                                                <div class="pricing-progress">
-                                                    <span class="pricing-progress__fill" data-pricing-progress style="--progress:92%"></span>
-                                                </div>
-                                            </li>
-                                            <li data-pricing-center="1">
-                                                <div class="pricing-list__row">
-                                                    <span class="pricing-list__name">Dallas DC</span>
-                                                    <span class="pricing-list__price pricing-list__price--alert" data-pricing-price>$15.60 / crate</span>
-                                                </div>
-                                            <div class="pricing-list__freshness">
-                                                <span class="pricing-list__health" data-pricing-health>Freshness 78%</span>
-                                                <span class="pricing-list__timer" data-pricing-timer>4h to intervention</span>
-                                            </div>
-                                            <span class="pricing-list__action" data-pricing-action>Action: prep markdown + QA sweep</span>
-                                                <div class="pricing-progress">
-                                                    <span class="pricing-progress__fill pricing-progress__fill--alert" data-pricing-progress style="--progress:78%"></span>
-                                                </div>
-                                            </li>
-                                            <li data-pricing-center="2">
-                                                <div class="pricing-list__row">
-                                                    <span class="pricing-list__name">Newark DC</span>
-                                                    <span class="pricing-list__price" data-pricing-price>$19.20 / crate</span>
-                                                </div>
-                                            <div class="pricing-list__freshness">
-                                                <span class="pricing-list__health" data-pricing-health>Freshness 88%</span>
-                                                <span class="pricing-list__timer" data-pricing-timer>+11h buffer</span>
-                                            </div>
-                                            <span class="pricing-list__action" data-pricing-action>Action: stage labor for rotation</span>
-                                                <div class="pricing-progress">
-                                                    <span class="pricing-progress__fill" data-pricing-progress style="--progress:88%"></span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p class="pricing-list__note">SpoilSafe’s predictive models trigger markdowns when freshness dips below 80% and push premiums while ML forecasts show 90%+ integrity.</p>
-                                    </article>
-                                    <div class="dashboard-distribution__bottom">
+                                <div class="dashboard-distribution__top">
+                                    <div class="dashboard-distribution__left">
                                         <article class="dashboard-card dashboard-card--stream" data-distribution-log>
                                             <header>
                                                 <span class="dashboard-card__label">Live command log</span>
@@ -347,175 +222,420 @@
                                             </li>
                                         </ul>
                                     </div>
+                                    <div class="dashboard-distribution__right">
+                                        <article class="dashboard-card dashboard-card--pricing">
+                                            <header>
+                                                <span class="dashboard-card__label">Dynamic pricing</span>
+                                                <span class="dashboard-card__trend">AI indexed</span>
+                                            </header>
+                                            <ul class="pricing-list" data-pricing-list>
+                                                <li data-pricing-center="0">
+                                                    <div class="pricing-list__row">
+                                                        <span class="pricing-list__name">Chicago DC</span>
+                                                        <span class="pricing-list__price" data-pricing-price>$18.40 / crate</span>
+                                                    </div>
+                                                    <div class="pricing-list__freshness">
+                                                        <span class="pricing-list__health" data-pricing-health>Freshness 92%</span>
+                                                        <span class="pricing-list__timer" data-pricing-timer>+18h buffer</span>
+                                                    </div>
+                                                    <span class="pricing-list__action" data-pricing-action>Action: hold premiums, monitor ML cues</span>
+                                                    <div class="pricing-progress">
+                                                        <span class="pricing-progress__fill" data-pricing-progress style="--progress:92%"></span>
+                                                    </div>
+                                                </li>
+                                                <li data-pricing-center="1">
+                                                    <div class="pricing-list__row">
+                                                        <span class="pricing-list__name">Dallas DC</span>
+                                                        <span class="pricing-list__price pricing-list__price--alert" data-pricing-price>$15.60 / crate</span>
+                                                    </div>
+                                                    <div class="pricing-list__freshness">
+                                                        <span class="pricing-list__health" data-pricing-health>Freshness 78%</span>
+                                                        <span class="pricing-list__timer" data-pricing-timer>4h to intervention</span>
+                                                    </div>
+                                                    <span class="pricing-list__action" data-pricing-action>Action: prep markdown + QA sweep</span>
+                                                    <div class="pricing-progress">
+                                                        <span class="pricing-progress__fill pricing-progress__fill--alert" data-pricing-progress style="--progress:78%"></span>
+                                                    </div>
+                                                </li>
+                                                <li data-pricing-center="2">
+                                                    <div class="pricing-list__row">
+                                                        <span class="pricing-list__name">Newark DC</span>
+                                                        <span class="pricing-list__price" data-pricing-price>$19.20 / crate</span>
+                                                    </div>
+                                                    <div class="pricing-list__freshness">
+                                                        <span class="pricing-list__health" data-pricing-health>Freshness 88%</span>
+                                                        <span class="pricing-list__timer" data-pricing-timer>+11h buffer</span>
+                                                    </div>
+                                                    <span class="pricing-list__action" data-pricing-action>Action: stage labor for rotation</span>
+                                                    <div class="pricing-progress">
+                                                        <span class="pricing-progress__fill" data-pricing-progress style="--progress:88%"></span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <p class="pricing-list__note">SpoilSafe's predictive models trigger markdowns when freshness dips below 80% and push premiums while ML forecasts show 90%+ integrity.</p>
+                                        </article>
+                                    </div>
+                                </div>
+                                <div class="dashboard-distribution__bottom">
+                                    <div class="dashboard-preview__stats-grid" data-dashboard-stats="distribution">
+                                        <article class="stat-card stat-card--positive" data-stat="distribution-on-time">
+                                            <span class="stat-card__label">On-time routes</span>
+                                            <span class="stat-card__value" data-stat-value>97%</span>
+                                            <span class="stat-card__progress" aria-hidden="true">
+                                                <span class="stat-card__progress-fill" style="--stat-progress: 97%;"></span>
+                                            </span>
+                                        </article>
+                                        <article class="stat-card stat-card--alert" data-stat="distribution-risk">
+                                            <span class="stat-card__label">Active risk flags</span>
+                                            <span class="stat-card__value" data-stat-value>4</span>
+                                            <span class="stat-card__progress" aria-hidden="true">
+                                                <span class="stat-card__progress-fill" style="--stat-progress: 48%;"></span>
+                                            </span>
+                                        </article>
+                                        <article class="stat-card" data-stat="distribution-throughput">
+                                            <span class="stat-card__label">Cases per hour</span>
+                                            <span class="stat-card__value" data-stat-value>1,240</span>
+                                            <span class="stat-card__progress" aria-hidden="true">
+                                                <span class="stat-card__progress-fill" style="--stat-progress: 68%;"></span>
+                                            </span>
+                                        </article>
+                                    </div>
                                 </div>
                             </div>
                         </section>
                         <section class="dashboard-preview__panel" data-dashboard-panel="transport" role="tabpanel" aria-label="Transport dashboard" hidden>
-                            <div class="dashboard-preview__map dashboard-preview__map--transport">
-                                <div class="dashboard-preview__telemetry">
-                                    <div>
-                                        <span class="telemetry-label">Avg temp</span>
-                                        <span class="telemetry-value" data-transport-telemetry="avgTemp">36.4°F</span>
+                            <div class="dashboard-transport">
+                                <div class="dashboard-transport__top">
+                                    <div class="dashboard-transport__left">
+                                        <article class="dashboard-card dashboard-card--stream" data-transport-log>
+                                            <header>
+                                                <span class="dashboard-card__label">Live command log</span>
+                                                <span class="dashboard-card__trend">Auto capture</span>
+                                            </header>
+                                            <ul class="dashboard-log" data-command-log>
+                                                <li>07:12 · Route 14 – temp stable, 12h buffer maintained</li>
+                                                <li>07:18 · Route 8 – compressor auto-adjusting for drift</li>
+                                                <li>07:22 · Route 18 – door ajar alert, intervention queued</li>
+                                            </ul>
+                                        </article>
+                                        <div class="dashboard-preview__stats-grid" data-dashboard-stats="transport">
+                                            <article class="stat-card stat-card--positive" data-stat="transport-temp">
+                                                <span class="stat-card__label">Avg temp compliance</span>
+                                                <span class="stat-card__value" data-stat-value>94%</span>
+                                                <span class="stat-card__progress" aria-hidden="true">
+                                                    <span class="stat-card__progress-fill" style="--stat-progress: 94%;"></span>
+                                                </span>
+                                            </article>
+                                            <article class="stat-card stat-card--alert" data-stat="transport-risk">
+                                                <span class="stat-card__label">Active risk routes</span>
+                                                <span class="stat-card__value" data-stat-value>2</span>
+                                                <span class="stat-card__progress" aria-hidden="true">
+                                                    <span class="stat-card__progress-fill" style="--stat-progress: 20%;"></span>
+                                                </span>
+                                            </article>
+                                            <article class="stat-card" data-stat="transport-buffer">
+                                                <span class="stat-card__label">Avg ML buffer</span>
+                                                <span class="stat-card__value" data-stat-value>+12h</span>
+                                                <span class="stat-card__progress" aria-hidden="true">
+                                                    <span class="stat-card__progress-fill" style="--stat-progress: 75%;"></span>
+                                                </span>
+                                            </article>
+                                        </div>
+                                        <ul class="dashboard-preview__signals" data-signal-list="transport">
+                                            <li class="signal is-active">
+                                                <span class="signal__dot"></span>
+                                                <span class="signal__label">Route 18 intervention queued · driver notified</span>
+                                            </li>
+                                            <li class="signal signal--warning">
+                                                <span class="signal__dot"></span>
+                                                <span class="signal__label">Route 8 compressor auto-adjusting for temp drift</span>
+                                            </li>
+                                            <li class="signal signal--info">
+                                                <span class="signal__dot"></span>
+                                                <span class="signal__label">312 vehicles synced to predictive freshness models</span>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div>
-                                        <span class="telemetry-label">Door events</span>
-                                        <span class="telemetry-value" data-transport-telemetry="doorEvents">12</span>
-                                    </div>
-                                    <div>
-                                        <span class="telemetry-label">Spoilage risk</span>
-                                        <span class="telemetry-value telemetry-value--alert" data-transport-telemetry="routeRisk">1 route</span>
+                                    <div class="dashboard-transport__right">
+                                        <div class="route-status-dashboard" data-route-status>
+                                            <div class="route-status__header">
+                                                <span class="status-title">Live route status</span>
+                                                <span class="status-subtitle">ML predicts hours-to-spoil & pricing tiers</span>
+                                            </div>
+                                            <div class="route-status__grid">
+                                                <div class="route-card route-card--premium">
+                                                    <div class="route-card__header">
+                                                        <span class="route-number">Route 14</span>
+                                                        <span class="route-tier">Premium</span>
+                                                    </div>
+                                                    <div class="route-card__metrics">
+                                                        <span class="metric-label">Buffer prediction</span>
+                                                        <span class="metric-value">12h</span>
+                                                    </div>
+                                                    <div class="route-card__metrics">
+                                                        <span class="metric-label">Temp</span>
+                                                        <span class="metric-value">36.2°F</span>
+                                                    </div>
+                                                    <div class="route-card__pricing">
+                                                        <span class="pricing-label">Pricing</span>
+                                                        <span class="pricing-value">+$2.40/crate</span>
+                                                    </div>
+                                                </div>
+                                                <div class="route-card route-card--standard">
+                                                    <div class="route-card__header">
+                                                        <span class="route-number">Route 8</span>
+                                                        <span class="route-tier">Standard</span>
+                                                    </div>
+                                                    <div class="route-card__metrics">
+                                                        <span class="metric-label">Buffer prediction</span>
+                                                        <span class="metric-value">6h</span>
+                                                    </div>
+                                                    <div class="route-card__metrics">
+                                                        <span class="metric-label">Temp</span>
+                                                        <span class="metric-value">38.1°F</span>
+                                                    </div>
+                                                    <div class="route-card__pricing">
+                                                        <span class="pricing-label">Pricing</span>
+                                                        <span class="pricing-value">Base rate</span>
+                                                    </div>
+                                                </div>
+                                                <div class="route-card route-card--alert">
+                                                    <div class="route-card__header">
+                                                        <span class="route-number">Route 18</span>
+                                                        <span class="route-tier">Alert</span>
+                                                    </div>
+                                                    <div class="route-card__metrics">
+                                                        <span class="metric-label">Buffer prediction</span>
+                                                        <span class="metric-value">3h</span>
+                                                    </div>
+                                                    <div class="route-card__metrics">
+                                                        <span class="metric-label">Temp</span>
+                                                        <span class="metric-value">39.4°F</span>
+                                                    </div>
+                                                    <div class="route-card__pricing">
+                                                        <span class="pricing-label">Action</span>
+                                                        <span class="pricing-value">Expedite</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <article class="dashboard-card">
+                                            <header>
+                                                <span class="dashboard-card__label">Predictive delivery & pricing</span>
+                                                <span class="dashboard-card__trend">ML-driven decisions</span>
+                                            </header>
+                                            <p>SpoilSafe's ML predictions enable transporters to make strategic delivery decisions based on hours-until-spoil. Routes with 12h+ freshness buffer can command 8-12% premium pricing, while shorter buffers trigger standard rates or expedited delivery options.</p>
+                                            <ul class="delivery-insights">
+                                                <li>Route 14: 12h buffer → Premium pricing ($2.40/crate premium)</li>
+                                                <li>Route 18: 3h buffer → Standard rate, expedited delivery recommended</li>
+                                                <li>Route 22: 15h buffer → Premium tier unlocked, freshness guarantee pricing</li>
+                                            </ul>
+                                            <p class="delivery-note">Freshness estimates from ML models allow transporters to price dynamically and optimize delivery routes based on predicted spoilage timelines.</p>
+                                        </article>
                                     </div>
                                 </div>
                             </div>
-                            <div class="dashboard-preview__stats-grid" data-dashboard-stats="transport">
-                                <article class="stat-card stat-card--positive" data-stat="transport-door">
-                                    <span class="stat-card__label">Door compliance</span>
-                                    <span class="stat-card__value" data-stat-value>92%</span>
-                                    <span class="stat-card__progress" aria-hidden="true">
-                                        <span class="stat-card__progress-fill" style="--stat-progress: 92%;"></span>
-                                    </span>
-                                </article>
-                                <article class="stat-card" data-stat="transport-payload">
-                                    <span class="stat-card__label">Avg payload</span>
-                                    <span class="stat-card__value" data-stat-value>18.4k lbs</span>
-                                    <span class="stat-card__progress" aria-hidden="true">
-                                        <span class="stat-card__progress-fill" style="--stat-progress: 72%;"></span>
-                                    </span>
-                                </article>
-                                <article class="stat-card" data-stat="transport-fuel">
-                                    <span class="stat-card__label">Fuel efficiency</span>
-                                    <span class="stat-card__value" data-stat-value>6.8 mpg</span>
-                                    <span class="stat-card__progress" aria-hidden="true">
-                                        <span class="stat-card__progress-fill" style="--stat-progress: 61%;"></span>
-                                    </span>
-                                </article>
-                            </div>
-                            <div class="dashboard-preview__cards">
-                                <article class="dashboard-card">
-                                    <header>
-                                        <span class="dashboard-card__label">Fleet health</span>
-                                        <span class="dashboard-card__trend is-down">▼ -18% incidents</span>
-                                    </header>
-                                    <p>Predictive alerts trimmed compressor downtime by pre-scheduling maintenance across reefers 4, 9, and 17.</p>
-                                </article>
-                                <article class="dashboard-card">
-                                    <header>
-                                        <span class="dashboard-card__label">Driver insights</span>
-                                        <span class="dashboard-card__trend">Top 3 actions</span>
-                                    </header>
-                                    <ul>
-                                        <li>Pre-cool warnings acknowledged in under 3 minutes.</li>
-                                        <li>Door exception training dropped warm excursions by 62%.</li>
-                                        <li>Geo-fenced handoff alerts removed blind spots at yards.</li>
-                                    </ul>
-                                </article>
-                            </div>
-                            <ul class="dashboard-preview__signals" data-signal-list="transport">
-                                <li class="signal is-active">
-                                    <span class="signal__dot"></span>
-                                    <span class="signal__label">Reefer 22 compressor staged for service</span>
-                                </li>
-                                <li class="signal signal--alert">
-                                    <span class="signal__dot"></span>
-                                    <span class="signal__label">Route 18 door ajar alert at 02:14</span>
-                                </li>
-                                <li class="signal signal--info">
-                                    <span class="signal__dot"></span>
-                                    <span class="signal__label">Fuel optimization playbook synced</span>
-                                </li>
-                            </ul>
                         </section>
                         <section class="dashboard-preview__panel" data-dashboard-panel="retail" role="tabpanel" aria-label="Retail dashboard" hidden>
-                            <div class="dashboard-preview__map dashboard-preview__map--retail">
-                                <div class="retail-heatmap" data-retail-map>
-                                    <div class="retail-heatmap__grid">
-                                        <div class="retail-cell" data-retail-cell="produce">
-                                            <span class="retail-cell__label">Produce</span>
-                                            <span class="retail-cell__value" data-retail-hours="produce">18h until rot</span>
-                                            <span class="retail-cell__insight" data-retail-tip="produce">Action: keep planogram steady</span>
+                            <div class="dashboard-retail">
+                                <div class="dashboard-retail__top">
+                                    <div class="dashboard-retail__left">
+                                        <article class="dashboard-card dashboard-card--stream" data-retail-log>
+                                            <header>
+                                                <span class="dashboard-card__label">Live command log</span>
+                                                <span class="dashboard-card__trend">Auto capture</span>
+                                            </header>
+                                            <ul class="dashboard-log" data-command-log>
+                                                <li>07:12 · Seafood counter – refresh triggered, 5h until rot</li>
+                                                <li>07:18 · Produce – planogram steady, 18h buffer maintained</li>
+                                                <li>07:22 · Prepared – labor staged for re-pack, 12h remaining</li>
+                                            </ul>
+                                        </article>
+                                        <div class="dashboard-preview__stats-grid" data-dashboard-stats="retail">
+                                            <article class="stat-card stat-card--positive" data-stat="retail-freshness">
+                                                <span class="stat-card__label">Timers synced</span>
+                                                <span class="stat-card__value" data-stat-value>94%</span>
+                                                <span class="stat-card__progress" aria-hidden="true">
+                                                    <span class="stat-card__progress-fill" style="--stat-progress: 94%;"></span>
+                                                </span>
+                                            </article>
+                                            <article class="stat-card stat-card--alert" data-stat="retail-shrink">
+                                                <span class="stat-card__label">Shrink forecast</span>
+                                                <span class="stat-card__value" data-stat-value>2.8%</span>
+                                                <span class="stat-card__progress" aria-hidden="true">
+                                                    <span class="stat-card__progress-fill" style="--stat-progress: 28%;"></span>
+                                                </span>
+                                            </article>
+                                            <article class="stat-card" data-stat="retail-planogram">
+                                                <span class="stat-card__label">Planogram adoption</span>
+                                                <span class="stat-card__value" data-stat-value>87%</span>
+                                                <span class="stat-card__progress" aria-hidden="true">
+                                                    <span class="stat-card__progress-fill" style="--stat-progress: 87%;"></span>
+                                                </span>
+                                            </article>
                                         </div>
-                                        <div class="retail-cell" data-retail-cell="prepared">
-                                            <span class="retail-cell__label">Prepared</span>
-                                            <span class="retail-cell__value" data-retail-hours="prepared">12h until rot</span>
-                                            <span class="retail-cell__insight" data-retail-tip="prepared">Action: stage labor for re-pack</span>
-                                        </div>
-                                        <div class="retail-cell retail-cell--alert" data-retail-cell="seafood">
-                                            <span class="retail-cell__label">Seafood</span>
-                                            <span class="retail-cell__value" data-retail-hours="seafood">5h until rot</span>
-                                            <span class="retail-cell__insight" data-retail-tip="seafood">Action: prep markdown + QA sweep</span>
-                                        </div>
-                                        <div class="retail-cell" data-retail-cell="dairy">
-                                            <span class="retail-cell__label">Dairy</span>
-                                            <span class="retail-cell__value" data-retail-hours="dairy">15h until rot</span>
-                                            <span class="retail-cell__insight" data-retail-tip="dairy">Action: hold promos, monitor ML cues</span>
-                                        </div>
+                                        <ul class="dashboard-preview__signals" data-signal-list="retail">
+                                            <li class="signal is-active">
+                                                <span class="signal__dot"></span>
+                                                <span class="signal__label">Seafood counter refresh triggered</span>
+                                            </li>
+                                            <li class="signal signal--info">
+                                                <span class="signal__dot"></span>
+                                                <span class="signal__label">Merchandising brief auto-sent to stores</span>
+                                            </li>
+                                            <li class="signal signal--alert">
+                                                <span class="signal__dot"></span>
+                                                <span class="signal__label">Dry goods aisle humidity spike watch</span>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div class="retail-legend">
-                                        <span class="retail-legend__label">Predicted hours-to-rot (ML)</span>
-                                        <div class="retail-legend__scale">
-                                            <span>&lt; 6h: intervene</span>
-                                            <span>&gt; 12h: premium window</span>
+                                    <div class="dashboard-retail__right">
+                                        <div class="store-heatmap" data-store-map>
+                                            <div class="store-heatmap__header">
+                                                <span class="heatmap-title">Store layout heatmap</span>
+                                                <span class="heatmap-subtitle">ML predicts hours-to-rot by department</span>
+                                            </div>
+                                            <div class="store-heatmap__layout">
+                                                <div class="store-zone store-zone--optimal" data-zone="produce">
+                                                    <div class="zone-content">
+                                                        <span class="zone-label">Produce</span>
+                                                        <span class="zone-hours">18h</span>
+                                                        <span class="zone-freshness">92% fresh</span>
+                                                        <span class="zone-action">Keep planogram steady</span>
+                                                    </div>
+                                                </div>
+                                                <div class="store-zone store-zone--good" data-zone="dairy">
+                                                    <div class="zone-content">
+                                                        <span class="zone-label">Dairy</span>
+                                                        <span class="zone-hours">15h</span>
+                                                        <span class="zone-freshness">88% fresh</span>
+                                                        <span class="zone-action">Monitor ML cues</span>
+                                                    </div>
+                                                </div>
+                                                <div class="store-zone store-zone--warning" data-zone="prepared">
+                                                    <div class="zone-content">
+                                                        <span class="zone-label">Prepared</span>
+                                                        <span class="zone-hours">12h</span>
+                                                        <span class="zone-freshness">78% fresh</span>
+                                                        <span class="zone-action">Stage labor for re-pack</span>
+                                                    </div>
+                                                </div>
+                                                <div class="store-zone store-zone--alert" data-zone="seafood">
+                                                    <div class="zone-content">
+                                                        <span class="zone-label">Seafood</span>
+                                                        <span class="zone-hours">5h</span>
+                                                        <span class="zone-freshness">62% fresh</span>
+                                                        <span class="zone-action">Prep markdown + QA</span>
+                                                    </div>
+                                                </div>
+                                                <div class="store-zone store-zone--optimal" data-zone="bakery">
+                                                    <div class="zone-content">
+                                                        <span class="zone-label">Bakery</span>
+                                                        <span class="zone-hours">20h</span>
+                                                        <span class="zone-freshness">94% fresh</span>
+                                                        <span class="zone-action">Optimal conditions</span>
+                                                    </div>
+                                                </div>
+                                                <div class="store-zone store-zone--good" data-zone="deli">
+                                                    <div class="zone-content">
+                                                        <span class="zone-label">Deli</span>
+                                                        <span class="zone-hours">14h</span>
+                                                        <span class="zone-freshness">85% fresh</span>
+                                                        <span class="zone-action">Hold promos</span>
+                                                    </div>
+                                                </div>
+                                                <div class="store-zone store-zone--good" data-zone="meat">
+                                                    <div class="zone-content">
+                                                        <span class="zone-label">Meat</span>
+                                                        <span class="zone-hours">16h</span>
+                                                        <span class="zone-freshness">87% fresh</span>
+                                                        <span class="zone-action">Monitor temp</span>
+                                                    </div>
+                                                </div>
+                                                <div class="store-zone store-zone--warning" data-zone="frozen">
+                                                    <div class="zone-content">
+                                                        <span class="zone-label">Frozen</span>
+                                                        <span class="zone-hours">11h</span>
+                                                        <span class="zone-freshness">75% fresh</span>
+                                                        <span class="zone-action">Check freezers</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="store-heatmap__legend">
+                                                <div class="legend-item">
+                                                    <span class="legend-dot legend-dot--optimal"></span>
+                                                    <span>Optimal (18h+)</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <span class="legend-dot legend-dot--good"></span>
+                                                    <span>Good (14-17h)</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <span class="legend-dot legend-dot--warning"></span>
+                                                    <span>Monitor (10-13h)</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <span class="legend-dot legend-dot--alert"></span>
+                                                    <span>Intervene (&lt;10h)</span>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <article class="dashboard-card">
+                                            <header>
+                                                <span class="dashboard-card__label">End-to-end monitoring</span>
+                                                <span class="dashboard-card__trend">Freshness timeline</span>
+                                            </header>
+                                            <div class="monitoring-chart" data-monitoring-chart>
+                                                <svg class="chart-svg" viewBox="0 0 400 104" xmlns="http://www.w3.org/2000/svg">
+                                                    <defs>
+                                                        <linearGradient id="chartGradientRetail" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                            <stop offset="0%" style="stop-color:rgba(52, 199, 89, 0.4);stop-opacity:1" />
+                                                            <stop offset="50%" style="stop-color:rgba(255, 193, 7, 0.3);stop-opacity:1" />
+                                                            <stop offset="100%" style="stop-color:rgba(255, 59, 48, 0.2);stop-opacity:1" />
+                                                        </linearGradient>
+                                                    </defs>
+                                                    <!-- Grid lines -->
+                                                    <line x1="40" y1="10" x2="40" y2="78" stroke="rgba(53, 84, 117, 0.1)" stroke-width="1"/>
+                                                    <line x1="40" y1="78" x2="360" y2="78" stroke="rgba(53, 84, 117, 0.1)" stroke-width="1"/>
+                                                    <!-- Data line -->
+                                                    <path class="chart-line" d="M 40,16 Q 130,18 220,25 Q 310,39 360,59" fill="none" stroke="rgba(52, 199, 89, 0.9)" stroke-width="2.5" stroke-linecap="round"/>
+                                                    <!-- Area fill -->
+                                                    <path class="chart-area" d="M 40,16 Q 130,18 220,25 Q 310,39 360,59 L 360,78 L 40,78 Z" fill="url(#chartGradientRetail)"/>
+                                                    <!-- Optimization points -->
+                                                    <circle class="optimization-point" cx="220" cy="25" r="5" fill="rgba(255, 193, 7, 1)" opacity="0">
+                                                        <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="2s"/>
+                                                        <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite" begin="2s"/>
+                                                    </circle>
+                                                    <circle class="optimization-point" cx="310" cy="39" r="5" fill="rgba(255, 149, 0, 1)" opacity="0">
+                                                        <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="2.5s"/>
+                                                        <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite" begin="2.5s"/>
+                                                    </circle>
+                                                    <!-- Optimization labels -->
+                                                    <text x="220" y="13" text-anchor="middle" class="optimization-label" opacity="0">Optimize DC</text>
+                                                    <text x="310" y="29" text-anchor="middle" class="optimization-label" opacity="0">Optimize Store</text>
+                                                    <!-- Data points -->
+                                                    <circle class="chart-point" cx="40" cy="16" r="3" fill="rgba(52, 199, 89, 1)"/>
+                                                    <circle class="chart-point" cx="130" cy="18" r="3" fill="rgba(52, 199, 89, 1)"/>
+                                                    <circle class="chart-point" cx="220" cy="25" r="3" fill="rgba(255, 193, 7, 1)"/>
+                                                    <circle class="chart-point" cx="310" cy="39" r="3" fill="rgba(255, 149, 0, 1)"/>
+                                                    <circle class="chart-point" cx="360" cy="59" r="3" fill="rgba(255, 59, 48, 1)"/>
+                                                    <!-- Labels -->
+                                                    <text x="40" y="88" text-anchor="middle" class="chart-axis-label">Supplier</text>
+                                                    <text x="130" y="88" text-anchor="middle" class="chart-axis-label">Transport</text>
+                                                    <text x="220" y="88" text-anchor="middle" class="chart-axis-label">DC</text>
+                                                    <text x="310" y="88" text-anchor="middle" class="chart-axis-label">Store</text>
+                                                    <!-- Values -->
+                                                    <text x="40" y="13" text-anchor="middle" class="chart-value">95%</text>
+                                                    <text x="130" y="15" text-anchor="middle" class="chart-value">92%</text>
+                                                    <text x="220" y="22" text-anchor="middle" class="chart-value">82%</text>
+                                                    <text x="310" y="36" text-anchor="middle" class="chart-value">72%</text>
+                                                </svg>
+                                            </div>
+                                            <p class="monitoring-note">ML tracks freshness degradation across the entire supply chain, identifying optimization points at each stage.</p>
+                                        </article>
                                     </div>
-                                    <p class="retail-note">Machine-learning forecasts surface the remaining hours per department so retail teams can plan markdowns, labor, and QA workflows before shrink hits.</p>
                                 </div>
                             </div>
-                            <div class="dashboard-preview__stats-grid" data-dashboard-stats="retail">
-                                <article class="stat-card stat-card--positive" data-stat="retail-freshness">
-                                    <span class="stat-card__label">Timers synced</span>
-                                    <span class="stat-card__value" data-stat-value>94%</span>
-                                    <span class="stat-card__progress" aria-hidden="true">
-                                        <span class="stat-card__progress-fill" style="--stat-progress: 94%;"></span>
-                                    </span>
-                                </article>
-                                <article class="stat-card stat-card--alert" data-stat="retail-shrink">
-                                    <span class="stat-card__label">Shrink forecast</span>
-                                    <span class="stat-card__value" data-stat-value>2.8%</span>
-                                    <span class="stat-card__progress" aria-hidden="true">
-                                        <span class="stat-card__progress-fill" style="--stat-progress: 28%;"></span>
-                                    </span>
-                                </article>
-                                <article class="stat-card" data-stat="retail-planogram">
-                                    <span class="stat-card__label">Planogram adoption</span>
-                                    <span class="stat-card__value" data-stat-value>87%</span>
-                                    <span class="stat-card__progress" aria-hidden="true">
-                                        <span class="stat-card__progress-fill" style="--stat-progress: 87%;"></span>
-                                    </span>
-                                </article>
-                            </div>
-                            <div class="dashboard-preview__cards">
-                                <article class="dashboard-card">
-                                    <header>
-                                        <span class="dashboard-card__label">Store execution</span>
-                                        <span class="dashboard-card__trend">92 stores</span>
-                                    </header>
-                                    <p>Store teams received planograms with freshness timers, reducing shrink by 19% in high-turn categories.</p>
-                                </article>
-                                <article class="dashboard-card">
-                                    <header>
-                                        <span class="dashboard-card__label">Supplier accountability</span>
-                                        <span class="dashboard-card__trend is-up">▲ +11% compliance</span>
-                                    </header>
-                                    <ul>
-                                        <li>Inbound CO₂ logging ensures supplier credits on late loads.</li>
-                                        <li>Shared dashboards keep merchandising and QA aligned.</li>
-                                    </ul>
-                                </article>
-                            </div>
-                            <ul class="dashboard-preview__signals" data-signal-list="retail">
-                                <li class="signal is-active">
-                                    <span class="signal__dot"></span>
-                                    <span class="signal__label">Seafood counter refresh triggered</span>
-                                </li>
-                                <li class="signal signal--info">
-                                    <span class="signal__dot"></span>
-                                    <span class="signal__label">Merchandising brief auto-sent to stores</span>
-                                </li>
-                                <li class="signal signal--alert">
-                                    <span class="signal__dot"></span>
-                                    <span class="signal__label">Dry goods aisle humidity spike watch</span>
-                                </li>
-                            </ul>
                         </section>
                     </div>
                 </div>
