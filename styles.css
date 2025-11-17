@@ -868,9 +868,9 @@
 .problem-section-with-banana {
     position: relative;
     background: 
-        radial-gradient(circle at 30% 40%, rgba(47, 158, 101, 0.08) 0%, transparent 60%),
-        radial-gradient(circle at 70% 60%, rgba(28, 124, 74, 0.06) 0%, transparent 60%),
-        linear-gradient(135deg, #1a2329 0%, #0f1619 30%, #141b20 70%, #1a2329 100%);
+        radial-gradient(circle at 30% 40%, rgba(47, 158, 101, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 70% 60%, rgba(28, 124, 74, 0.12) 0%, transparent 60%),
+        linear-gradient(135deg, #1e2d24 0%, #152018 30%, #1a2520 70%, #1e2d24 100%);
     padding-block: clamp(5rem, 12vw, 7rem);
     overflow: hidden;
     margin-bottom: clamp(20rem, 36vw, 36rem);
@@ -881,10 +881,10 @@
     position: absolute;
     inset: 0;
     background: 
-        repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(47, 158, 101, 0.02) 1px, rgba(47, 158, 101, 0.02) 2px),
-        repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(52, 199, 89, 0.015) 1px, rgba(52, 199, 89, 0.015) 2px);
+        repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(47, 158, 101, 0.03) 1px, rgba(47, 158, 101, 0.03) 2px),
+        repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(52, 199, 89, 0.02) 1px, rgba(52, 199, 89, 0.02) 2px);
     pointer-events: none;
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .problem-section-with-banana::after {
@@ -894,7 +894,7 @@
     right: -10%;
     width: 60%;
     height: 200%;
-    background: radial-gradient(ellipse, rgba(47, 158, 101, 0.06) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(47, 158, 101, 0.08) 0%, transparent 70%);
     pointer-events: none;
     animation: backgroundPulse 8s ease-in-out infinite;
 }
@@ -936,20 +936,20 @@
     border-radius: 12px;
     background-image: 
         /* Viewfinder corner brackets - Top-left */
-        linear-gradient(to right, rgba(52, 199, 89, 0.9) 0%, rgba(52, 199, 89, 0.9) 20px, transparent 20px),
-        linear-gradient(to bottom, rgba(52, 199, 89, 0.9) 0%, rgba(52, 199, 89, 0.9) 20px, transparent 20px),
+        linear-gradient(to right, rgba(47, 158, 101, 0.7) 0%, rgba(47, 158, 101, 0.7) 20px, transparent 20px),
+        linear-gradient(to bottom, rgba(47, 158, 101, 0.7) 0%, rgba(47, 158, 101, 0.7) 20px, transparent 20px),
         /* Top-right */
-        linear-gradient(to left, rgba(52, 199, 89, 0.9) 0%, rgba(52, 199, 89, 0.9) 20px, transparent 20px),
-        linear-gradient(to bottom, rgba(52, 199, 89, 0.9) 0%, rgba(52, 199, 89, 0.9) 20px, transparent 20px),
+        linear-gradient(to left, rgba(47, 158, 101, 0.7) 0%, rgba(47, 158, 101, 0.7) 20px, transparent 20px),
+        linear-gradient(to bottom, rgba(47, 158, 101, 0.7) 0%, rgba(47, 158, 101, 0.7) 20px, transparent 20px),
         /* Bottom-left */
-        linear-gradient(to right, rgba(52, 199, 89, 0.9) 0%, rgba(52, 199, 89, 0.9) 20px, transparent 20px),
-        linear-gradient(to top, rgba(52, 199, 89, 0.9) 0%, rgba(52, 199, 89, 0.9) 20px, transparent 20px),
+        linear-gradient(to right, rgba(47, 158, 101, 0.7) 0%, rgba(47, 158, 101, 0.7) 20px, transparent 20px),
+        linear-gradient(to top, rgba(47, 158, 101, 0.7) 0%, rgba(47, 158, 101, 0.7) 20px, transparent 20px),
         /* Bottom-right */
-        linear-gradient(to left, rgba(52, 199, 89, 0.9) 0%, rgba(52, 199, 89, 0.9) 20px, transparent 20px),
-        linear-gradient(to top, rgba(52, 199, 89, 0.9) 0%, rgba(52, 199, 89, 0.9) 20px, transparent 20px),
+        linear-gradient(to left, rgba(47, 158, 101, 0.7) 0%, rgba(47, 158, 101, 0.7) 20px, transparent 20px),
+        linear-gradient(to top, rgba(47, 158, 101, 0.7) 0%, rgba(47, 158, 101, 0.7) 20px, transparent 20px),
         /* Main background */
-        radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.95) 0%, rgba(10, 14, 39, 0.98) 100%),
-        linear-gradient(135deg, rgba(20, 30, 60, 0.9) 0%, rgba(10, 14, 39, 0.95) 100%);
+        radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.85) 0%, rgba(30, 45, 36, 0.9) 100%),
+        linear-gradient(135deg, rgba(22, 32, 24, 0.9) 0%, rgba(30, 45, 36, 0.95) 100%);
     background-size: 
         20px 3px, 3px 20px, /* Top-left */
         20px 3px, 3px 20px, /* Top-right */
@@ -963,12 +963,12 @@
         bottom right, bottom right, /* Bottom-right */
         center, center; /* Main backgrounds */
     background-repeat: no-repeat;
-    border: 3px solid rgba(52, 199, 89, 0.4);
+    border: 3px solid rgba(47, 158, 101, 0.4);
     box-shadow: 
-        0 0 30px rgba(52, 199, 89, 0.3),
-        0 0 60px rgba(47, 158, 101, 0.2),
-        inset 0 0 20px rgba(52, 199, 89, 0.1),
-        inset 0 0 40px rgba(0, 0, 0, 0.5);
+        0 0 30px rgba(47, 158, 101, 0.25),
+        0 0 60px rgba(47, 158, 101, 0.15),
+        inset 0 0 20px rgba(47, 158, 101, 0.1),
+        inset 0 0 40px rgba(0, 0, 0, 0.4);
     overflow: hidden;
     margin-inline: auto;
     padding: clamp(1.25rem, 3vw, 1.8rem);
@@ -979,14 +979,14 @@
     content: '';
     position: absolute;
     inset: 8px;
-    border: 2px solid rgba(52, 199, 89, 0.3);
+    border: 2px solid rgba(47, 158, 101, 0.3);
     border-radius: 8px;
     pointer-events: none;
     z-index: 2;
     background: 
         /* Grid pattern */
-        repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(52, 199, 89, 0.1) 19px, rgba(52, 199, 89, 0.1) 20px),
-        repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(52, 199, 89, 0.1) 19px, rgba(52, 199, 89, 0.1) 20px);
+        repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(47, 158, 101, 0.1) 19px, rgba(47, 158, 101, 0.1) 20px),
+        repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(47, 158, 101, 0.1) 19px, rgba(47, 158, 101, 0.1) 20px);
     opacity: 0.7;
 }
 
@@ -1023,12 +1023,12 @@
 
 .banana-image-container:hover {
     transform: translateY(-4px) scale(1.02);
-    border-color: rgba(52, 199, 89, 0.7);
+    border-color: rgba(47, 158, 101, 0.6);
     box-shadow: 
-        0 0 40px rgba(52, 199, 89, 0.5),
-        0 0 80px rgba(47, 158, 101, 0.4),
-        inset 0 0 30px rgba(52, 199, 89, 0.2),
-        inset 0 0 50px rgba(0, 0, 0, 0.6);
+        0 0 40px rgba(47, 158, 101, 0.35),
+        0 0 80px rgba(47, 158, 101, 0.2),
+        inset 0 0 30px rgba(47, 158, 101, 0.15),
+        inset 0 0 50px rgba(0, 0, 0, 0.5);
 }
 
 .banana-image {
@@ -1085,7 +1085,7 @@
     font-size: clamp(2rem, 4vw, 2.75rem);
     margin-bottom: 1rem;
     color: rgba(255, 255, 255, 0.95);
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .problem-text-side p {
@@ -1100,10 +1100,10 @@
     gap: 1rem;
     padding: 1.5rem;
     border-radius: var(--radius-md);
-    background: rgba(26, 35, 41, 0.7);
-    border: 1px solid rgba(47, 158, 101, 0.25);
+    background: rgba(30, 45, 36, 0.7);
+    border: 1px solid rgba(47, 158, 101, 0.3);
     box-shadow: 
-        0 4px 16px rgba(0, 0, 0, 0.25),
+        0 4px 16px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(52, 199, 89, 0.1);
     backdrop-filter: blur(10px);
 }
@@ -1137,9 +1137,9 @@
 .progress-bar {
     height: 6px;
     border-radius: 999px;
-    background: rgba(74, 144, 226, 0.2);
+    background: rgba(47, 158, 101, 0.25);
     overflow: hidden;
-    border: 1px solid rgba(74, 144, 226, 0.3);
+    border: 1px solid rgba(47, 158, 101, 0.35);
 }
 
 .progress-fill {
