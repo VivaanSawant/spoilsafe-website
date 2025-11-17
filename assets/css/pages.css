@@ -1,8 +1,9 @@
 /* Shared layout for secondary pages (about, contact, product) */
 
 .page-hero {
-    padding-block: clamp(3rem, 8vw, 5rem);
+    padding-block: clamp(1rem, 3vw, 2rem);
     background: linear-gradient(180deg, #ffffff 0%, #f2f8f3 70%);
+    min-height: auto;
 }
 
 .page-hero--frost {
@@ -14,14 +15,14 @@
     margin-inline: auto;
     padding-inline: clamp(1.5rem, 5vw, 3.5rem);
     display: grid;
-    gap: 1.5rem;
+    gap: clamp(1rem, 2.5vw, 1.5rem);
     text-align: center;
 }
 
 .page-hero__title {
     margin: 0;
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    line-height: 1.1;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    line-height: 1.15;
     letter-spacing: -0.015em;
     color: var(--color-text);
 }
@@ -29,8 +30,8 @@
 .page-hero__subtitle {
     margin: 0;
     color: var(--color-text-muted);
-    font-size: clamp(1.05rem, 2.3vw, 1.2rem);
-    line-height: 1.65;
+    font-size: clamp(0.9rem, 1.9vw, 1.05rem);
+    line-height: 1.6;
     justify-self: center;
     max-width: 60ch;
 }
