@@ -1056,6 +1056,7 @@
     justify-items: center;
     justify-content: center;
     padding-inline: clamp(1.5rem, 5vw, 3.5rem);
+    padding-bottom: clamp(4rem, 10vh, 6rem);
     position: relative;
     z-index: 2;
     width: 100%;
@@ -1101,10 +1102,12 @@
 
 .banana-side {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     max-width: 100%;
+    position: relative;
 }
 
 .banana-image-container {
@@ -1246,6 +1249,60 @@
     transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
+.scroll-indicator {
+    position: absolute;
+    bottom: clamp(1.5rem, 4vh, 2.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 10;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    pointer-events: none;
+    width: auto;
+}
+
+.scroll-indicator.fade-out {
+    opacity: 0 !important;
+    transform: translateX(-50%) translateY(10px);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.scroll-indicator__text {
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-indicator__arrow {
+    color: var(--color-accent);
+    width: 24px;
+    height: 24px;
+    display: block;
+    animation: scrollBounce 2s ease-in-out infinite;
+    filter: drop-shadow(0 2px 4px rgba(47, 158, 101, 0.3));
+}
+
+@keyframes scrollBounce {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(8px);
+        opacity: 1;
+    }
+}
+
 .restart-animation-btn.show {
     opacity: 1;
     pointer-events: auto;
@@ -1339,6 +1396,19 @@
 
     .problem-text-side {
         order: -1;
+    }
+
+    .scroll-indicator {
+        bottom: clamp(1rem, 3vh, 2rem);
+    }
+
+    .scroll-indicator__text {
+        font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    }
+
+    .scroll-indicator__arrow {
+        width: 18px;
+        height: 18px;
     }
 
     .spoilage-indicator {

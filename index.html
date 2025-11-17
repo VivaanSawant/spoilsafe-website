@@ -159,6 +159,12 @@
                 <div class="banana-side">
                     <div class="banana-image-container"></div>
                 </div>
+                <div class="scroll-indicator" id="banana-scroll-indicator">
+                    <span class="scroll-indicator__text">Scroll to animate</span>
+                    <svg class="scroll-indicator__arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14M19 12l-7 7-7-7"/>
+                    </svg>
+                </div>
                 <div class="problem-text-side">
                     <h2 id="problem-banana-heading">Predict hours-until-spoil before quality declines</h2>
                     <p>
@@ -1465,6 +1471,15 @@
                 this.calculateDimensions();
                 this.bindScrollEvent();
                 window.addEventListener('resize', this.calculateDimensions.bind(this));
+                
+                // Show scroll indicator initially with a slight delay
+                const scrollIndicator = document.getElementById('banana-scroll-indicator');
+                if (scrollIndicator) {
+                    scrollIndicator.style.opacity = '0';
+                    setTimeout(() => {
+                        scrollIndicator.style.opacity = '1';
+                    }, 500);
+                }
             }
 
             calculateDimensions() {
@@ -1542,6 +1557,24 @@
             }
 
             handleScroll(scrollY) {
+                const scrollIndicator = document.getElementById('banana-scroll-indicator');
+                
+                // Show/hide scroll indicator based on scroll position
+                if (scrollIndicator) {
+                    // Show indicator if we're before the animation starts (with some buffer)
+                    // Hide it once we're well into the animation
+                    const animationStartBuffer = 200; // Show indicator until 200px into animation
+                    const shouldShow = scrollY < this.startOffset + animationStartBuffer;
+                    
+                    if (shouldShow) {
+                        // Show indicator when scrolling back up
+                        scrollIndicator.classList.remove('fade-out');
+                    } else {
+                        // Fade out indicator when scrolling into animation
+                        scrollIndicator.classList.add('fade-out');
+                    }
+                }
+                
                 const whatYouGetSection = document.getElementById('what-you-get-section');
 
                 if (whatYouGetSection && !this.bananaHidden) {
