@@ -1,7 +1,7 @@
 /* Shared layout for secondary pages (about, contact, product) */
 
 .page-hero {
-    padding-block: clamp(5rem, 12vw, 7.5rem);
+    padding-block: clamp(3rem, 8vw, 5rem);
     background: linear-gradient(180deg, #ffffff 0%, #f2f8f3 70%);
 }
 
@@ -44,12 +44,20 @@
 }
 
 .page-section {
-    padding-block: clamp(4.5rem, 11vw, 6.5rem);
-    background: #ffffff;
+    padding-block: clamp(3rem, 8vw, 5rem);
+    background: transparent;
+}
+
+.product-hero + .page-section {
+    padding-top: clamp(3rem, 8vw, 5rem);
+    background: transparent;
+    margin-top: 0;
 }
 
 .page-section--surface {
-    background: var(--color-surface);
+    background: transparent;
+    margin-top: 0;
+    padding-top: clamp(3rem, 8vw, 5rem);
 }
 
 .page-section--muted {

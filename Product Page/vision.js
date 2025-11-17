@@ -99,9 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!section) return;
 
     const steps = [
-      { id: "#exploded-step1", progressStart: 0, progressEnd: 0.33 },
-      { id: "#exploded-step2", progressStart: 0.33, progressEnd: 0.66 },
-      { id: "#exploded-step3", progressStart: 0.66, progressEnd: 1.0 }
+      { id: "#exploded-step1", progressStart: 0, progressEnd: 0.4, fadeOutStart: 0.3 },
+      { id: "#exploded-step2", progressStart: 0.3, progressEnd: 0.7, fadeOutStart: 0.6 },
+      { id: "#exploded-step3", progressStart: 0.6, progressEnd: 1.0, fadeOutStart: 0.9 }
     ];
 
     steps.forEach((step) => {
@@ -113,18 +113,30 @@ document.addEventListener('DOMContentLoaded', () => {
           const element = document.querySelector(step.id);
           if (!element) return;
           
-          if (progress >= step.progressStart && progress <= step.progressEnd) {
-            const localProgress = (progress - step.progressStart) / (step.progressEnd - step.progressStart);
-            const opacity = Math.min(1, localProgress * 3);
-            const translateY = Math.max(0, 30 - (localProgress * 30));
+          if (progress >= step.progressStart && progress < step.fadeOutStart) {
+            // Fade in
+            const localProgress = (progress - step.progressStart) / (step.fadeOutStart - step.progressStart);
+            const opacity = Math.min(1, localProgress * 2);
             element.style.opacity = opacity;
-            element.style.transform = `translateY(${translateY}px)`;
-          } else if (progress > step.progressEnd) {
+            element.style.transform = 'translateY(-50%)';
+            element.style.pointerEvents = 'auto';
+          } else if (progress >= step.fadeOutStart && progress < step.progressEnd) {
+            // Stay visible
             element.style.opacity = 1;
-            element.style.transform = 'translateY(0)';
+            element.style.transform = 'translateY(-50%)';
+            element.style.pointerEvents = 'auto';
+          } else if (progress >= step.progressEnd) {
+            // Fade out
+            const localProgress = (progress - step.progressEnd) / (1 - step.progressEnd);
+            const opacity = Math.max(0, 1 - (localProgress * 2));
+            element.style.opacity = opacity;
+            element.style.transform = 'translateY(-50%)';
+            element.style.pointerEvents = opacity > 0 ? 'auto' : 'none';
           } else {
+            // Before this step
             element.style.opacity = 0;
-            element.style.transform = 'translateY(30px)';
+            element.style.transform = 'translateY(-50%)';
+            element.style.pointerEvents = 'none';
           }
         }
       });
