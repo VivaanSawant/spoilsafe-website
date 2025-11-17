@@ -1,3 +1,3 @@
 # spoilsafe-website
 
-quack quack quacity quack
+Website for Spoilsafe INC
