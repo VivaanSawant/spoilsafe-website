@@ -3807,14 +3807,16 @@ footer {
 @media (max-width: 768px) {
     .capabilities-grid {
         grid-template-columns: 1fr;
+        gap: clamp(1.25rem, 3vw, 1.75rem);
     }
 
     .hero__metrics {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: clamp(1rem, 2.5vw, 1.5rem);
     }
 
     .capability-card {
-        padding: 1.8rem 1.5rem;
+        padding: clamp(1.5rem, 4vw, 1.8rem) clamp(1.25rem, 3vw, 1.5rem);
     }
 
     .dashboard-preview__panel {
@@ -3824,19 +3826,62 @@ footer {
     .dashboard-preview__nodes {
         inset: 26% 0 0 0;
     }
+
+    .problem-section,
+    .solution-section {
+        padding-block: clamp(3rem, 8vw, 5rem);
+    }
+
+    .problem-stats-container {
+        gap: clamp(1.25rem, 3vw, 1.75rem);
+    }
+}
+
+@media (max-width: 640px) {
+    .capability-card h3 {
+        font-size: clamp(1.1rem, 3vw, 1.3rem);
+    }
+
+    .capability-card p {
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+
+    .problem-section,
+    .solution-section {
+        padding-block: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    .problem-stats-container {
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    .problem-stat {
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 520px) {
     .hero__metric dt {
-        font-size: 1.35rem;
+        font-size: clamp(1.2rem, 4vw, 1.35rem);
+    }
+
+    .hero__metric dd {
+        font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+    }
+
+    .capability-card {
+        padding: clamp(1.25rem, 4vw, 1.5rem) clamp(1rem, 3vw, 1.25rem);
     }
 
     .capability-card h3 {
-        font-size: 1.2rem;
+        font-size: clamp(1rem, 3vw, 1.2rem);
     }
 
     .dashboard-preview {
-        padding: 1.5rem;
+        padding: clamp(1rem, 4vw, 1.5rem);
     }
 
     .dashboard-preview__views {
