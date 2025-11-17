@@ -47,24 +47,64 @@
         </section>
 
         <section class="page-section page-section--surface">
-            <div class="layout-max typewriter-card">
-            <div class="document-header">
-                    <span class="document-title">freshness_report.txt</span>
-                <div class="document-controls">
-                        <span class="control-dot control-dot--close"></span>
-                        <span class="control-dot control-dot--minimise"></span>
-                        <span class="control-dot control-dot--expand"></span>
+            <div class="layout-max combined-section">
+                <div class="typewriter-card">
+                    <div class="document-header">
+                        <span class="document-title">freshness_report.txt</span>
+                        <div class="document-controls">
+                            <span class="control-dot control-dot--close"></span>
+                            <span class="control-dot control-dot--minimise"></span>
+                            <span class="control-dot control-dot--expand"></span>
+                        </div>
+                    </div>
+                    <div class="document-body">
+                        <div id="typewriter"></div>
+                    </div>
+                    <div class="document-footer">
+                        <span class="status-indicator"></span>
+                        <span>Live data stream active &mdash; last update 5 sec ago</span>
+                    </div>
+                </div>
+                <div class="how-it-works-meta">
+                    <div class="how-it-works-meta__container">
+                        <h2 class="how-it-works-meta__heading">How SpoilSafe works</h2>
+                        <div class="how-it-works-meta__grid">
+                            <div class="meta-card">
+                                <div class="meta-card__icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                    </svg>
+                                </div>
+                                <h3 class="meta-card__title">Sensor deployment</h3>
+                                <p class="meta-card__description">Compact modules install in minutes across distribution centers, transport vehicles, and retail locations.</p>
+                            </div>
+                            <div class="meta-card">
+                                <div class="meta-card__icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                        <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                    </svg>
+                                </div>
+                                <h3 class="meta-card__title">ML model training</h3>
+                                <p class="meta-card__description">Our machine learning models learn from your specific product mix, storage conditions, and historical patterns.</p>
+                            </div>
+                            <div class="meta-card">
+                                <div class="meta-card__icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22 4 12 14.01 9 11.01"/>
+                                    </svg>
+                                </div>
+                                <h3 class="meta-card__title">Continuous optimization</h3>
+                                <p class="meta-card__description">Models improve over time as they process more data, becoming more accurate and providing better recommendations.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-                <div class="document-body">
-                <div id="typewriter"></div>
-            </div>
-            <div class="document-footer">
-                    <span class="status-indicator"></span>
-                    <span>Live data stream active &mdash; last update 5 sec ago</span>
-        </div>
-    </div>
-</section>
+        </section>
 
 <section class="exploded-section">
   <div class="exploded-animation-container">
@@ -101,45 +141,6 @@
   </div>
 </section>
 
-        <section class="page-section">
-            <div class="layout-max product-summary">
-                <h2 class="section-heading">How SpoilSafe works</h2>
-                <p class="contact-lead">Our platform integrates seamlessly into existing operations, providing predictive intelligence without disrupting workflows. See how each component works together to deliver actionable freshness forecasts.</p>
-                <div class="summary-grid">
-                    <div class="summary-card">
-                        <div class="summary-card__icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-                            </svg>
-                        </div>
-                        <h3>Sensor deployment</h3>
-                        <p>Compact modules install in minutes across distribution centers, transport vehicles, and retail locations. No infrastructure changes required.</p>
-                    </div>
-                    <div class="summary-card">
-                        <div class="summary-card__icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                                <line x1="12" y1="22.08" x2="12" y2="12"/>
-                            </svg>
-                        </div>
-                        <h3>ML model training</h3>
-                        <p>Our machine learning models learn from your specific product mix, storage conditions, and historical patterns to deliver accurate forecasts.</p>
-                    </div>
-                    <div class="summary-card">
-                        <div class="summary-card__icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                <polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                        </div>
-                        <h3>Continuous optimization</h3>
-                        <p>Models improve over time as they process more data, becoming more accurate and providing better intervention recommendations.</p>
-            </div>
-                </div>
-        </div>
-        </section>
 
         <section class="page-section">
             <div class="layout-max image-cta-card">
