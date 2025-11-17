@@ -7,6 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="styles.css">
+    <!-- Preload critical animation images -->
+    <link rel="preload" as="image" href="home/images/bananas/processed_1.png">
+    <link rel="preload" as="image" href="home/images/bananas/processed_15.png">
+    <link rel="preload" as="image" href="home/images/bananas/processed_30.png">
 </head>
 <body>
     <nav class="top-nav">
@@ -1455,8 +1459,8 @@
                 }
             }
 
-            init() {
-                this.loadImages();
+            async init() {
+                await this.loadImages();
                 this.createRestartButton();
                 this.calculateDimensions();
                 this.bindScrollEvent();
@@ -1483,7 +1487,29 @@
                 this.container.appendChild(this.restartBtn);
             }
 
-            loadImages() {
+            async loadImages() {
+                const imagePromises = [];
+                
+                // Preload all images first
+                for (let i = 0; i < this.totalImages; i += 1) {
+                    const img = new Image();
+                    const promise = new Promise((resolve, reject) => {
+                        img.onload = resolve;
+                        img.onerror = reject;
+                        img.src = `home/images/bananas/processed_${i + 1}.png`;
+                    });
+                    imagePromises.push(promise);
+                }
+
+                // Wait for all images to load
+                try {
+                    await Promise.all(imagePromises);
+                    console.log('[BananaAnimation] All images preloaded');
+                } catch (error) {
+                    console.warn('[BananaAnimation] Some images failed to load:', error);
+                }
+
+                // Now create and append image elements
                 for (let i = 0; i < this.totalImages; i += 1) {
                     const img = document.createElement('img');
                     img.src = `home/images/bananas/processed_${i + 1}.png`;

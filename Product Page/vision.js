@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
       this.init();
     }
 
-    init() {
-      this.loadImages();
+    async init() {
+      await this.loadImages();
       this.createScrollTrigger();
       window.addEventListener('resize', () => {
         if (this.scrollTrigger) {
@@ -39,18 +39,39 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    loadImages() {
+    async loadImages() {
       if (!this.container) {
         console.warn('[ExplodedAnimation] #exploded-container not found; skipping frame load');
         return;
       }
       const basePath = 'Casing_Advika_v33_frames';
+      const imagePromises = [];
+      
+      // Preload all images first
+      for (let i = 0; i < this.totalFrames; i++) {
+        const img = new Image();
+        const promise = new Promise((resolve, reject) => {
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = `${basePath}/Casing_Advika v33_${String(i + 1).padStart(4, '0')}.jpg`;
+        });
+        imagePromises.push(promise);
+      }
+
+      // Wait for all images to load
+      try {
+        await Promise.all(imagePromises);
+        console.log('[ExplodedAnimation] All images preloaded');
+      } catch (error) {
+        console.warn('[ExplodedAnimation] Some images failed to load:', error);
+      }
+
+      // Now create and append image elements
       for (let i = 0; i < this.totalFrames; i++) {
         const img = document.createElement('img');
         img.src = `${basePath}/Casing_Advika v33_${String(i + 1).padStart(4, '0')}.jpg`;
         img.alt = `Exploded Frame ${i + 1}`;
         img.className = 'exploded-image';
-        img.loading = 'lazy';
         if (i === 0) img.classList.add('active');
         this.container.appendChild(img);
         this.images.push(img);
