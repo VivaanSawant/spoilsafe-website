@@ -1007,7 +1007,7 @@
 
 .filler-section {
     height: clamp(6rem, 15vw, 12rem);
-    background: linear-gradient(180deg, #f2f7eb 0%, #ffffff 100%);
+    background: linear-gradient(180deg, #f5faf0 0%, #2a3d1a 100%);
 }
 
 /* ------------------------------
