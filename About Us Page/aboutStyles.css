@@ -223,6 +223,8 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     overflow: hidden;
     position: relative;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .sponsor-carousel-meta::before {
@@ -233,14 +235,16 @@
     right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.08) 50%, transparent 100%);
+    z-index: 1;
 }
 
 .sponsor-track-meta {
     display: flex;
     gap: clamp(3rem, 6vw, 5rem);
     align-items: center;
-    animation: sponsorMarquee 24s linear infinite;
+    animation: sponsorMarquee 60s linear infinite;
     will-change: transform;
+    width: max-content;
 }
 
 .sponsor-item-meta {
@@ -267,10 +271,10 @@
 }
 
 @keyframes sponsorMarquee {
-    0% {
+    from {
         transform: translateX(0);
     }
-    100% {
+    to {
         transform: translateX(-50%);
     }
 }
