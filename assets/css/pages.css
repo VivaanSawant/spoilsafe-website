@@ -2,12 +2,12 @@
 
 .page-hero {
     padding-block: clamp(1rem, 3vw, 2rem);
-    background: linear-gradient(180deg, #ffffff 0%, #f2f8f3 70%);
+    background: linear-gradient(180deg, #ffffff 0%, #f2f7eb 70%);
     min-height: auto;
 }
 
 .page-hero--frost {
-    background: linear-gradient(180deg, #f6fbf7 0%, #ffffff 80%);
+    background: linear-gradient(180deg, #f5faf0 0%, #ffffff 80%);
 }
 
 .page-hero__inner {
@@ -62,7 +62,7 @@
 }
 
 .page-section--muted {
-    background: linear-gradient(180deg, #f4f8f4 0%, #ffffff 100%);
+    background: linear-gradient(180deg, #f5faf0 0%, #ffffff 100%);
 }
 
 .page-section--narrow {
@@ -97,7 +97,7 @@
 .info-card {
     padding: clamp(1.75rem, 4vw, 2.1rem);
     border-radius: var(--radius-lg);
-    background: #ffffff;
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-sm);
     display: grid;

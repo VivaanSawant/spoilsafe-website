@@ -138,7 +138,7 @@
 .submit-btn:focus-visible {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(28, 124, 74, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15);
-    background: linear-gradient(120deg, #2a8d5a 0%, #1a6d3f 100%);
+    background: linear-gradient(120deg, #8dc63f 0%, #6ba02f 100%);
 }
 
 .submit-btn:active {

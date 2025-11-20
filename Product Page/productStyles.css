@@ -11,7 +11,7 @@
 }
 
 body {
-    background: linear-gradient(180deg, #e8f5ed 0%, #f0faf3 10%, #f6fbf7 20%, #fafcfa 30%, #ffffff 40%, #ffffff 100%);
+    background: linear-gradient(180deg, #f0f7eb 0%, #f2f8ed 10%, #f5faf0 20%, #f8fbf2 30%, #ffffff 40%, #ffffff 100%);
     background-attachment: fixed;
     background-size: 100% 100%;
     min-height: 100vh;
@@ -236,7 +236,7 @@ body {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--color-accent, #2f9e65) 0%, var(--color-accent-strong, #1c7c4a) 100%);
+    background: linear-gradient(90deg, var(--color-accent, #8dc63f) 0%, var(--color-accent-strong, #6ba02f) 100%);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -260,7 +260,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-accent-strong, #1c7c4a);
+    color: var(--color-accent-strong, #6ba02f);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink: 0;
 }
@@ -545,7 +545,7 @@ body {
     display: inline;
     margin-left: 2px;
     animation: cursor 1s steps(2) infinite;
-    color: var(--color-accent-strong, #1c7c4a);
+    color: var(--color-accent-strong, #6ba02f);
     font-weight: 700;
 }
 
@@ -663,7 +663,7 @@ body {
 
 .image-cta-card .cta-button {
     background: #ffffff;
-    color: var(--color-accent-strong, #1c7c4a);
+    color: var(--color-accent-strong, #6ba02f);
     font-weight: 600;
     padding: 0.875rem 2rem;
     border-radius: 999px;
