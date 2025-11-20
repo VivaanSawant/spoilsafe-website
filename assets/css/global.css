@@ -2,19 +2,19 @@
     --color-background: #f9fbf8;
     --color-surface: #ffffff;
     --color-surface-alt: #f1f5f2;
-    --color-border: #dbe8de;
-    --color-border-strong: #c6d8cc;
-    --color-text: #163524;
-    --color-text-muted: #4b6654;
-    --color-accent: #2f9e65;
-    --color-accent-strong: #1c7c4a;
-    --color-accent-soft: rgba(47, 158, 101, 0.14);
+    --color-border: #f5d4c8;
+    --color-border-strong: #e8b8a8;
+    --color-text: #2d1a0f;
+    --color-text-muted: #6b4a3a;
+    --color-accent: #f15a29;
+    --color-accent-strong: #d14a1f;
+    --color-accent-soft: rgba(241, 90, 41, 0.14);
     --color-secondary: #f7b733;
     --color-secondary-soft: rgba(247, 183, 51, 0.18);
     --color-positive: #1f8f4f;
-    --shadow-sm: 0 8px 24px rgba(20, 38, 25, 0.06);
-    --shadow-md: 0 18px 44px rgba(20, 38, 25, 0.08);
-    --shadow-lg: 0 26px 64px rgba(20, 38, 25, 0.12);
+    --shadow-sm: 0 8px 24px rgba(45, 26, 15, 0.06);
+    --shadow-md: 0 18px 44px rgba(45, 26, 15, 0.08);
+    --shadow-lg: 0 26px 64px rgba(45, 26, 15, 0.12);
     --radius-lg: 24px;
     --radius-md: 16px;
     --radius-sm: 12px;
@@ -35,15 +35,49 @@ html {
     scroll-behavior: smooth;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* Newake Demo font */
+@font-face {
+    font-family: 'Newake Demo';
+    src: url('../../indieground-newakefont-demo/Newake-Font-Demo.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
     overflow-x: hidden;
     margin: 0;
-    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-family: 'Source Sans 3', 'Inter', 'Segoe UI', sans-serif;
+    font-weight: 400;
     background: var(--color-background);
     color: var(--color-text);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Newake Demo', 'Bebas Neue', 'Source Sans 3', sans-serif;
+    font-weight: 400;
+}
+
+/* Font weight utility classes */
+.font-secondary {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600; /* Semibold */
+}
+
+.font-tertiary {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400; /* Regular */
+}
+
+.font-quaternary {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300; /* Light */
 }
 
 img,
@@ -108,16 +142,18 @@ main {
 }
 
 .nav-logo {
-    font-weight: 700;
+    font-family: 'Newake Demo', 'Bebas Neue', 'Source Sans 3', sans-serif;
+    font-weight: 400;
     font-size: 1.15rem;
     letter-spacing: 0.03em;
-    color: var(--color-accent-strong);
+    color: #f15a29;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     white-space: nowrap;
     text-decoration: none;
     transition: opacity var(--transition-standard);
+    text-transform: lowercase;
 }
 
 .nav-logo:hover {
@@ -127,6 +163,14 @@ main {
 .nav-logo__icon {
     flex-shrink: 0;
     color: var(--color-accent-strong);
+}
+
+.nav-logo__image {
+    height: 96px;
+    width: 96px;
+    flex-shrink: 0;
+    display: block;
+    object-fit: contain;
 }
 
 .nav-logo span {
@@ -245,6 +289,11 @@ main {
         height: 18px;
     }
 
+    .nav-logo__image {
+        height: 80px;
+        width: 80px;
+    }
+
     .nav-logo span {
         font-size: 0.7rem;
         padding: 0.15rem 0.45rem;
@@ -326,6 +375,11 @@ main {
     .nav-logo__icon {
         width: 16px;
         height: 16px;
+    }
+
+    .nav-logo__image {
+        height: 72px;
+        width: 72px;
     }
 
     .nav-toggle {
